@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Soft Sage & Slate — Clean, calm, professional */
+    --background: 210 18% 97%;
+    --foreground: 220 25% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 18%;
+
+    --primary: 215 45% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 220 25% 25%;
+
+    --muted: 210 16% 93%;
+    --muted-foreground: 215 12% 50%;
+
+    --accent: 168 28% 90%;
+    --accent-foreground: 220 25% 18%;
+
+    --destructive: 0 55% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 18% 88%;
+    --input: 214 18% 88%;
+    --ring: 215 45% 52%;
+
+    --radius: 0.625rem;
+
+    /* Chart colors — distinct but soft */
+    --chart-1: 215 45% 52%;
+    --chart-2: 160 32% 45%;
+    --chart-3: 270 28% 58%;
+    --chart-4: 340 30% 55%;
+    --chart-5: 32 45% 52%;
+
+    --success: 152 35% 46%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 55% 52%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Gradient tokens */
+    --gradient-header: linear-gradient(135deg, hsl(210 18% 97%) 0%, hsl(215 25% 94%) 100%);
+    --gradient-card: linear-gradient(160deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-card-hover: linear-gradient(160deg, hsl(0 0% 100%) 0%, hsl(215 22% 96%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(215 45% 52%) 0%, hsl(200 40% 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(168 28% 90%) 0%, hsl(200 25% 92%) 100%);
+    --shadow-soft: 0 1px 3px 0 hsl(215 20% 50% / 0.06), 0 1px 2px -1px hsl(215 20% 50% / 0.06);
+    --shadow-card: 0 2px 8px -2px hsl(215 20% 50% / 0.08), 0 1px 3px -1px hsl(215 20% 50% / 0.06);
+    --shadow-elevated: 0 4px 16px -4px hsl(215 20% 50% / 0.1), 0 2px 6px -2px hsl(215 20% 50% / 0.06);
+  }
+
+  .dark {
+    --background: 222 30% 8%;
+    --foreground: 210 18% 90%;
+
+    --card: 222 28% 12%;
+    --card-foreground: 210 18% 90%;
+
+    --popover: 222 28% 12%;
+    --popover-foreground: 210 18% 90%;
+
+    --primary: 215 50% 58%;
+    --primary-foreground: 222 30% 8%;
+
+    --secondary: 218 20% 18%;
+    --secondary-foreground: 210 18% 90%;
+
+    --muted: 218 18% 18%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 168 20% 18%;
+    --accent-foreground: 210 18% 90%;
+
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 210 18% 95%;
+
+    --border: 218 16% 20%;
+    --input: 218 16% 20%;
+    --ring: 215 50% 58%;
+
+    /* Chart colors — distinct but soft (dark) */
+    --chart-1: 215 50% 58%;
+    --chart-2: 160 35% 48%;
+    --chart-3: 270 30% 60%;
+    --chart-4: 340 32% 55%;
+    --chart-5: 32 42% 52%;
+
+    --success: 152 35% 46%;
+    --success-foreground: 210 18% 95%;
+    --warning: 35 50% 52%;
+    --warning-foreground: 210 18% 95%;
+
+    /* Gradient tokens (dark) */
+    --gradient-header: linear-gradient(135deg, hsl(222 30% 8%) 0%, hsl(222 28% 11%) 100%);
+    --gradient-card: linear-gradient(160deg, hsl(222 28% 12%) 0%, hsl(222 26% 14%) 100%);
+    --gradient-card-hover: linear-gradient(160deg, hsl(222 28% 13%) 0%, hsl(222 26% 16%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(215 50% 58%) 0%, hsl(200 45% 52%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(168 20% 18%) 0%, hsl(200 18% 20%) 100%);
+    --shadow-soft: 0 1px 3px 0 hsl(222 30% 4% / 0.3), 0 1px 2px -1px hsl(222 30% 4% / 0.2);
+    --shadow-card: 0 2px 8px -2px hsl(222 30% 4% / 0.4), 0 1px 3px -1px hsl(222 30% 4% / 0.2);
+    --shadow-elevated: 0 4px 16px -4px hsl(222 30% 4% / 0.5), 0 2px 6px -2px hsl(222 30% 4% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  /* Glass morphism */
+  .glass {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+  }
+
+  /* Premium card with gradient */
+  .card-gradient {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.25s ease, background 0.25s ease, transform 0.2s ease;
+  }
+
+  .card-gradient:hover {
+    background: var(--gradient-card-hover);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Header gradient */
+  .header-gradient {
+    background: var(--gradient-header);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Primary gradient for buttons or accents */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  /* Soft shadow utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide up animation */
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scale in animation */
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Smooth interactive states */
+  .interactive {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .interactive:hover {
+    @apply -translate-y-0.5;
+  }
+
+  .interactive:active {
+    @apply translate-y-0 scale-[0.98];
+  }
+}

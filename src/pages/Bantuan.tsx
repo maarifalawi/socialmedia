@@ -1,0 +1,632 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { useApp } from "@/contexts/AppContext";
+import AppLayout from "@/components/layout/AppLayout";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { MessageSquare, CheckCircle, Clock, Star, Pencil, Trash2 } from "lucide-react";
+import { format } from "date-fns";
+import { id } from "date-fns/locale";
+import RatingDialog from "@/components/RatingDialog";
+import { EditQuestionDialog } from "@/components/EditQuestionDialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+
+interface Question {
+  id_pertanyaan: string;
+  id_pengguna: string;
+  id_proyek: string;
+  judul_pertanyaan: string;
+  isi_pertanyaan: string;
+  jawaban: string | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  rating: number | null;
+  komentar_rating: string | null;
+  rating_at: string | null;
+  proyek?: { nama_proyek: string };
+  profil?: { nama_lengkap: string };
+}
+
+const Bantuan = () => {
+  const navigate = useNavigate();
+  const { user, loading: authLoading, profile } = useAuth();
+  const { selectedProject } = useApp();
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [judul, setJudul] = useState("");
+  const [pertanyaan, setPertanyaan] = useState("");
+  const [nama, setNama] = useState("");
+  const [filter, setFilter] = useState<"semua" | "menunggu" | "dijawab">("semua");
+  const [ratingDialogOpen, setRatingDialogOpen] = useState(false);
+  const [selectedQuestionForRating, setSelectedQuestionForRating] = useState<string | null>(null);
+  const [myQuestionsOnly, setMyQuestionsOnly] = useState(false);
+  const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+  const [deletingQuestionId, setDeletingQuestionId] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Calculate statistics
+  const stats = {
+    totalTerjawab: questions.filter(q => q.status === "dijawab").length,
+    rataRataRating: questions.filter(q => q.rating).length > 0 
+      ? (questions.reduce((sum, q) => sum + (q.rating || 0), 0) / questions.filter(q => q.rating).length).toFixed(1)
+      : "0",
+    waktuResponTercepat: questions
+      .filter(q => q.status === "dijawab" && q.jawaban)
+      .map(q => {
+        const created = new Date(q.created_at).getTime();
+        const updated = new Date(q.updated_at).getTime();
+        return (updated - created) / (1000 * 60 * 60); // hours
+      })
+      .sort((a, b) => a - b)[0] || 0
+  };
+
+  useEffect(() => {
+    if (!authLoading && !user) navigate("/auth");
+  }, [user, authLoading, navigate]);
+
+  useEffect(() => {
+    if (user) {
+      fetchQuestions();
+      subscribeToChanges();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (profile?.nama_lengkap) {
+      setNama(profile.nama_lengkap);
+    }
+  }, [profile]);
+
+  const fetchQuestions = async () => {
+    setLoading(true);
+    try {
+      // Fetch questions first
+      const { data: questionsData, error: questionsError } = await supabase
+        .from("pertanyaan")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (questionsError) throw questionsError;
+
+      // Fetch related data separately to avoid relationship issues
+      const projectIds = [...new Set(questionsData?.map(q => q.id_proyek) || [])];
+      const userIds = [...new Set(questionsData?.map(q => q.id_pengguna) || [])];
+
+      const [projectsRes, profilesRes] = await Promise.all([
+        supabase.from("proyek").select("id_proyek, nama_proyek").in("id_proyek", projectIds),
+        supabase.from("profil").select("id_profil, nama_lengkap").in("id_profil", userIds)
+      ]);
+
+      const projectsMap = new Map(projectsRes.data?.map(p => [p.id_proyek, p]) || []);
+      const profilesMap = new Map(profilesRes.data?.map(p => [p.id_profil, p]) || []);
+
+      const questionsWithRelations = questionsData?.map(q => ({
+        ...q,
+        proyek: projectsMap.get(q.id_proyek) ? { nama_proyek: projectsMap.get(q.id_proyek)?.nama_proyek || '' } : undefined,
+        profil: profilesMap.get(q.id_pengguna) ? { nama_lengkap: profilesMap.get(q.id_pengguna)?.nama_lengkap || '' } : undefined
+      })) || [];
+
+      setQuestions(questionsWithRelations);
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+      toast.error("Gagal memuat pertanyaan");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const subscribeToChanges = () => {
+    const channel = supabase
+      .channel("pertanyaan_changes")
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "pertanyaan",
+        },
+        (payload) => {
+          fetchQuestions(); // Refresh all questions
+          if ((payload.new as Question).status === "dijawab" && (payload.old as Question).status === "menunggu") {
+            toast.success("Pertanyaan telah dijawab!");
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!nama.trim()) {
+      toast.error("Nama harus diisi");
+      return;
+    }
+
+    if (!judul.trim() || !pertanyaan.trim()) {
+      toast.error("Judul dan pertanyaan harus diisi");
+      return;
+    }
+
+    if (!selectedProject) {
+      toast.error("Pilih project terlebih dahulu");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      // Update profile name only if changed (RLS allows UPDATE but not INSERT)
+      if (profile?.nama_lengkap !== nama.trim()) {
+        const { error: profileError } = await supabase
+          .from("profil")
+          .update({ nama_lengkap: nama.trim() })
+          .eq("id_profil", user?.id);
+
+        if (profileError) {
+          console.error("Error updating profile:", profileError);
+          toast.error("Gagal mengupdate nama profil");
+          throw profileError;
+        }
+      }
+
+      // Insert question and get the created record
+      const { data: insertedQuestion, error } = await supabase
+        .from("pertanyaan")
+        .insert({
+          id_pengguna: user?.id,
+          id_proyek: selectedProject.id_proyek,
+          judul_pertanyaan: judul.trim(),
+          isi_pertanyaan: pertanyaan.trim(),
+          status: "menunggu",
+        })
+        .select("id_pertanyaan")
+        .single();
+
+      if (error) {
+        console.error("Error inserting question:", error);
+        toast.error(`Gagal menambah pertanyaan: ${error.message}`);
+        throw error;
+      }
+
+      // Trigger admin notification email (non-blocking for user)
+      if (insertedQuestion?.id_pertanyaan) {
+        supabase.functions
+          .invoke("notify-admin-new-question", {
+            body: {
+              question_id: insertedQuestion.id_pertanyaan,
+              judul_pertanyaan: judul.trim(),
+              isi_pertanyaan: pertanyaan.trim(),
+              nama_penanya: nama.trim(),
+              nama_proyek: selectedProject.nama_proyek,
+            },
+          })
+          .then(({ error }) => {
+            if (error) {
+              console.error("Error sending admin notification:", error);
+            }
+          })
+          .catch((fnError) => {
+            console.error("Error invoking notify-admin-new-question:", fnError);
+          });
+      }
+
+      toast.success("Pertanyaan berhasil dikirim");
+      setJudul("");
+      setPertanyaan("");
+      fetchQuestions(); // Refresh list
+    } catch (error) {
+      console.error("Error submitting question:", error);
+      toast.error("Gagal mengirim pertanyaan");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const filteredQuestions = questions.filter((q) => {
+    // Filter by my questions
+    if (myQuestionsOnly && q.id_pengguna !== user?.id) return false;
+    
+    // Filter by status
+    if (filter !== "semua" && q.status !== filter) return false;
+    
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      const matchTitle = q.judul_pertanyaan.toLowerCase().includes(query);
+      const matchContent = q.isi_pertanyaan.toLowerCase().includes(query);
+      const matchAnswer = q.jawaban?.toLowerCase().includes(query);
+      if (!matchTitle && !matchContent && !matchAnswer) return false;
+    }
+    
+    return true;
+  });
+
+  const handleDeleteQuestion = async (questionId: string) => {
+    try {
+      const { error } = await supabase
+        .from("pertanyaan")
+        .delete()
+        .eq("id_pertanyaan", questionId);
+
+      if (error) throw error;
+
+      toast.success("Pertanyaan berhasil dihapus");
+      fetchQuestions();
+    } catch (error: any) {
+      console.error("Error deleting question:", error);
+      toast.error("Gagal menghapus pertanyaan");
+    } finally {
+      setDeletingQuestionId(null);
+    }
+  };
+
+
+  return (
+    <AppLayout>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Bantuan & Pertanyaan</h1>
+          <p className="text-sm sm:text-base text-muted-foreground mt-2">Ajukan pertanyaan dan dapatkan bantuan dari admin</p>
+        </div>
+
+        {/* Statistics Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground">Total Terjawab</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-foreground mt-1">{stats.totalTerjawab}</p>
+                </div>
+                <CheckCircle className="h-8 w-8 text-success" />
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="pt-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground">Rata-rata Rating</p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <p className="text-2xl sm:text-3xl font-bold text-foreground">{stats.rataRataRating}</p>
+                    <Star className="h-6 w-6 fill-primary text-primary" />
+                  </div>
+                </div>
+                <Star className="h-8 w-8 text-primary" />
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="pt-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-muted-foreground">Respon Tercepat</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-foreground mt-1">
+                    {stats.waktuResponTercepat > 0 
+                      ? stats.waktuResponTercepat < 1 
+                        ? `${Math.round(stats.waktuResponTercepat * 60)} menit`
+                        : `${Math.round(stats.waktuResponTercepat)} jam`
+                      : "-"}
+                  </p>
+                </div>
+                <Clock className="h-8 w-8 text-primary" />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Ajukan Pertanyaan</CardTitle>
+            <CardDescription>Tim kami akan menjawab pertanyaan Anda secepatnya</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="nama">Nama Anda</Label>
+                <Input
+                  id="nama"
+                  value={nama}
+                  onChange={(e) => setNama(e.target.value)}
+                  placeholder="Masukkan nama Anda"
+                  maxLength={100}
+                  required
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  Nama akan ditampilkan di riwayat pertanyaan dan rating
+                </p>
+              </div>
+              <div>
+                <Label htmlFor="judul">Judul Pertanyaan</Label>
+                <Input
+                  id="judul"
+                  value={judul}
+                  onChange={(e) => setJudul(e.target.value)}
+                  placeholder="Contoh: Bagaimana cara import data CSV?"
+                  maxLength={200}
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="pertanyaan">Detail Pertanyaan</Label>
+                <Textarea
+                  id="pertanyaan"
+                  value={pertanyaan}
+                  onChange={(e) => setPertanyaan(e.target.value)}
+                  placeholder="Jelaskan pertanyaan Anda secara detail..."
+                  rows={5}
+                  maxLength={2000}
+                  required
+                />
+              </div>
+              <Button type="submit" disabled={submitting}>
+                <MessageSquare className="h-4 w-4 mr-2" />
+                {submitting ? "Mengirim..." : "Kirim Pertanyaan"}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <div className="flex flex-col gap-4">
+              <CardTitle>Riwayat Pertanyaan</CardTitle>
+              
+              {/* Search Bar */}
+              <div className="w-full">
+                <Input
+                  type="text"
+                  placeholder="Cari pertanyaan berdasarkan judul, isi, atau jawaban..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full"
+                />
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+                <div className="flex gap-2">
+                  <Button
+                    size="sm"
+                    variant={filter === "semua" ? "default" : "outline"}
+                    onClick={() => setFilter("semua")}
+                  >
+                    Semua
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={filter === "menunggu" ? "default" : "outline"}
+                    onClick={() => setFilter("menunggu")}
+                  >
+                    Menunggu
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant={filter === "dijawab" ? "default" : "outline"}
+                    onClick={() => setFilter("dijawab")}
+                  >
+                    Dijawab
+                  </Button>
+                </div>
+                <Button
+                  variant={myQuestionsOnly ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setMyQuestionsOnly(!myQuestionsOnly)}
+                >
+                  {myQuestionsOnly ? "Semua Pertanyaan" : "Pertanyaan Saya"}
+                </Button>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {loading ? (
+              <p className="text-center text-muted-foreground py-8">Memuat...</p>
+            ) : filteredQuestions.length === 0 ? (
+              <p className="text-center text-muted-foreground py-8">
+                {filter === "semua" ? "Belum ada pertanyaan" : `Tidak ada pertanyaan dengan status "${filter}"`}
+              </p>
+            ) : (
+              <div className="space-y-4">
+                {filteredQuestions.map((q) => (
+                  <Card key={q.id_pertanyaan} className="border-l-4" style={{ borderLeftColor: q.status === "dijawab" ? "hsl(var(--success))" : "hsl(var(--warning))" }}>
+                    <CardHeader>
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <CardTitle className="text-lg">{q.judul_pertanyaan}</CardTitle>
+                            {q.id_pengguna === user?.id && (
+                              <Badge variant="outline" className="text-xs">Pertanyaan Anda</Badge>
+                            )}
+                          </div>
+                          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-1">
+                              <span className="font-medium text-foreground">Ditanya oleh:</span>
+                              <span className="text-foreground font-semibold">{q.profil?.nama_lengkap || 'Unknown'}</span>
+                            </div>
+                            <span>•</span>
+                            <span>{format(new Date(q.created_at), "dd MMM yyyy HH:mm", { locale: id })}</span>
+                            {q.proyek && (
+                              <>
+                                <span>•</span>
+                                <span className="font-medium">{q.proyek.nama_proyek}</span>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {q.id_pengguna === user?.id && q.status === "menunggu" && (
+                            <div className="flex gap-1">
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => setEditingQuestion(q)}
+                                title="Edit pertanyaan"
+                              >
+                                <Pencil className="h-4 w-4" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => setDeletingQuestionId(q.id_pertanyaan)}
+                                title="Hapus pertanyaan"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          )}
+                          <Badge variant={q.status === "dijawab" ? "default" : "secondary"}>
+                          {q.status === "dijawab" ? (
+                            <>
+                              <CheckCircle className="h-3 w-3 mr-1" />
+                              Dijawab
+                            </>
+                          ) : (
+                            <>
+                              <Clock className="h-3 w-3 mr-1" />
+                              Menunggu
+                            </>
+                          )}
+                        </Badge>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div>
+                        <p className="text-sm font-medium mb-1">Pertanyaan:</p>
+                        <p className="text-sm text-muted-foreground whitespace-pre-wrap">{q.isi_pertanyaan}</p>
+                      </div>
+                      {q.jawaban && (
+                        <div className="bg-muted p-4 rounded-lg space-y-3">
+                          <div>
+                            <p className="text-sm font-medium mb-1">Jawaban Admin:</p>
+                            <p className="text-sm whitespace-pre-wrap">{q.jawaban}</p>
+                            <p className="text-xs text-muted-foreground mt-2">
+                              Dijawab: {format(new Date(q.updated_at), "dd MMM yyyy HH:mm", { locale: id })}
+                            </p>
+                          </div>
+                          {q.rating ? (
+                            <div className="border-t pt-3">
+                              <div className="mb-2">
+                                <p className="text-sm font-semibold text-foreground">
+                                  Rating dari {q.profil?.nama_lengkap || 'Unknown'}:
+                                </p>
+                                {q.rating_at && (
+                                  <p className="text-xs text-muted-foreground">
+                                    {format(new Date(q.rating_at), "dd MMM yyyy HH:mm", { locale: id })}
+                                  </p>
+                                )}
+                              </div>
+                              <div className="flex items-center gap-2">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <Star
+                                    key={star}
+                                    className={`h-4 w-4 ${
+                                      star <= q.rating!
+                                        ? "fill-primary text-primary"
+                                        : "text-muted-foreground"
+                                    }`}
+                                  />
+                                ))}
+                                <span className="text-sm text-muted-foreground ml-1">({q.rating}/5)</span>
+                              </div>
+                              {q.komentar_rating && (
+                                <p className="text-sm text-muted-foreground mt-2 italic">"{q.komentar_rating}"</p>
+                              )}
+                            </div>
+                           ) : q.id_pengguna === user?.id ? (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => {
+                                setSelectedQuestionForRating(q.id_pertanyaan);
+                                setRatingDialogOpen(true);
+                              }}
+                            >
+                              <Star className="h-4 w-4 mr-2" />
+                              Beri Rating
+                            </Button>
+                          ) : (
+                            <p className="text-xs text-muted-foreground">Belum ada rating</p>
+                          )}
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
+      <RatingDialog
+        questionId={selectedQuestionForRating || ""}
+        isOpen={ratingDialogOpen}
+        onClose={() => {
+          setRatingDialogOpen(false);
+          setSelectedQuestionForRating(null);
+        }}
+        onSuccess={() => {
+          fetchQuestions();
+        }}
+      />
+
+      {editingQuestion && (
+        <EditQuestionDialog
+          question={editingQuestion}
+          open={!!editingQuestion}
+          onOpenChange={(open) => !open && setEditingQuestion(null)}
+          onSuccess={fetchQuestions}
+        />
+      )}
+
+      <AlertDialog
+        open={!!deletingQuestionId}
+        onOpenChange={(open) => !open && setDeletingQuestionId(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Hapus Pertanyaan?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Apakah Anda yakin ingin menghapus pertanyaan ini? Tindakan ini tidak dapat dibatalkan.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Batal</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => deletingQuestionId && handleDeleteQuestion(deletingQuestionId)}
+            >
+              Hapus
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </AppLayout>
+  );
+};
+
+export default Bantuan;

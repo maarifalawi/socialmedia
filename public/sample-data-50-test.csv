@@ -1,0 +1,51 @@
+platform,content_type,post_id,posted_at,reach,likes,comments,shares,saved,views,followers,caption
+instagram,image,TEST001,2025-07-01 09:00:00,6200,520,45,38,55,6800,2500,Tips bisnis pagi hari
+instagram,reel,TEST002,2025-07-01 14:30:00,14500,1180,140,95,130,17000,2520,Tutorial editing video
+instagram,carousel,TEST003,2025-07-02 10:15:00,9300,750,65,52,88,10200,2540,Review gadget terbaru
+instagram,story,TEST004,2025-07-02 18:00:00,4200,280,22,18,25,4500,2560,Sneak peek project
+instagram,video,TEST005,2025-07-03 12:00:00,11800,920,98,75,102,13500,2580,Vlog traveling seru
+tiktok,video,TEST006,2025-07-03 20:00:00,28000,2400,420,480,200,32000,1850,Trend dance baru
+tiktok,video,TEST007,2025-07-04 11:00:00,21500,1750,280,340,175,25000,1880,Tips hemat uang
+instagram,image,TEST008,2025-07-04 15:30:00,5800,480,38,32,48,6200,2600,Quote inspirasi
+instagram,reel,TEST009,2025-07-05 09:45:00,17200,1450,165,118,145,19500,2620,Fashion tips
+tiktok,video,TEST010,2025-07-05 19:00:00,35000,3100,540,580,250,40000,1920,Skit komedi viral
+instagram,carousel,TEST011,2025-07-06 08:30:00,7500,620,52,45,65,8200,2640,Infografis keuangan
+instagram,image,TEST012,2025-07-06 16:00:00,5200,440,35,28,42,5600,2660,Foto OOTD
+tiktok,video,TEST013,2025-07-07 12:30:00,31000,2700,440,510,225,35500,1960,Tutorial DIY
+instagram,reel,TEST014,2025-07-07 18:45:00,13800,1120,115,92,108,15500,2680,Video aesthetic
+instagram,story,TEST015,2025-07-08 10:00:00,3800,250,18,15,22,4100,2700,Quiz seru
+tiktok,video,TEST016,2025-07-08 21:00:00,25000,2150,350,380,195,29000,2000,Review honest
+instagram,image,TEST017,2025-07-09 14:00:00,6500,550,48,40,58,7100,2720,Photography tips
+instagram,carousel,TEST018,2025-07-09 19:30:00,8800,720,62,55,78,9600,2740,Skincare routine
+tiktok,video,TEST019,2025-07-10 10:30:00,38000,3400,580,640,280,43000,2050,Sound trending
+instagram,reel,TEST020,2025-07-10 15:00:00,15500,1280,135,105,122,17200,2760,Daily vlog mini
+instagram,video,TEST021,2025-07-11 11:00:00,9200,740,78,62,85,10400,2780,Tutorial makeup
+tiktok,video,TEST022,2025-07-11 20:30:00,22500,1950,320,355,185,26000,2100,Story viral
+instagram,image,TEST023,2025-07-12 09:00:00,5600,470,40,34,50,6000,2800,Feed aesthetic
+instagram,story,TEST024,2025-07-12 17:00:00,4000,280,20,16,24,4300,2820,Behind scenes
+tiktok,video,TEST025,2025-07-13 13:00:00,45000,4000,680,740,320,51000,2150,Viral challenge mega
+instagram,reel,TEST026,2025-07-13 19:00:00,18800,1580,180,135,155,21000,2840,Transformation video
+instagram,carousel,TEST027,2025-07-14 10:30:00,10200,840,72,60,92,11200,2860,Travel guide
+tiktok,video,TEST028,2025-07-14 21:30:00,29500,2550,420,460,215,34000,2200,Comedy POV
+instagram,image,TEST029,2025-07-15 14:30:00,6800,580,52,45,62,7400,2880,Product shot
+instagram,reel,TEST030,2025-07-15 18:00:00,16200,1350,155,115,135,18000,2900,Outfit inspiration
+tiktok,video,TEST031,2025-07-16 11:30:00,34000,2950,500,550,245,39000,2250,Educational viral
+instagram,video,TEST032,2025-07-16 16:30:00,8500,680,68,55,75,9400,2920,Unboxing tech
+instagram,story,TEST033,2025-07-17 09:30:00,3600,240,16,12,20,3900,2940,Morning routine share
+tiktok,video,TEST034,2025-07-17 20:00:00,27000,2350,400,430,205,31000,2300,Duet trending
+instagram,carousel,TEST035,2025-07-18 12:00:00,9800,800,68,58,85,10800,2960,Recipe healthy
+instagram,image,TEST036,2025-07-18 17:30:00,6100,510,44,38,54,6600,2980,Minimalist shot
+tiktok,video,TEST037,2025-07-19 14:00:00,41000,3650,620,680,295,47000,2350,Mega trend baru
+instagram,reel,TEST038,2025-07-19 19:30:00,14200,1180,128,98,115,16000,3000,Quick tips
+instagram,image,TEST039,2025-07-20 10:00:00,5400,450,38,32,46,5850,3020,Nature vibes
+tiktok,video,TEST040,2025-07-20 21:00:00,24000,2080,340,375,190,27500,2400,Reaction funny
+instagram,reel,TEST041,2025-07-21 15:00:00,19500,1650,190,145,165,22000,3040,Fashion haul mega
+instagram,carousel,TEST042,2025-07-21 18:30:00,8200,675,58,50,72,9000,3060,Workout plan
+tiktok,video,TEST043,2025-07-22 12:00:00,32000,2780,470,520,230,37000,2450,Satisfying compilation
+instagram,story,TEST044,2025-07-22 16:00:00,4100,290,22,18,26,4400,3080,Poll weekend
+instagram,video,TEST045,2025-07-23 11:00:00,9800,790,82,65,90,11000,3100,Room makeover
+tiktok,video,TEST046,2025-07-23 19:30:00,36000,3150,540,595,260,41500,2500,GRWM viral
+instagram,image,TEST047,2025-07-24 09:00:00,6300,530,46,40,56,6850,3120,Coffee aesthetic shot
+instagram,reel,TEST048,2025-07-24 14:00:00,13500,1120,122,94,110,15200,3140,Night skincare
+tiktok,video,TEST049,2025-07-25 10:30:00,30000,2600,440,485,220,34500,2550,Pranks compilation
+instagram,carousel,TEST050,2025-07-25 16:30:00,10500,860,74,62,95,11500,3160,Home decor tips
