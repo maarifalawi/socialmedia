@@ -1,0 +1,39 @@
+3.	PEMBAHASAN
+
+
+3.1.	Tahapan Umum Penelitian
+Penelitian ini menggunakan metode System Development Life Cycle dengan model Waterfall, yang merupakan pendekatan terstruktur dan sistematis dengan urutan tahapan yang dilakukan secara berurutan. Metode ini menekankan pada penyelesaian satu tahap secara menyeluruh sebelum melanjutkan ke tahap berikutnya, sehingga setiap proses dapat dikendalikan dan terdokumentasi dengan baik. Tahapan-tahapan pada model Waterfall terdiri dari tahap analisis kebutuhan, desain sistem, implementasi, pengujian, dan penerapan. Tahapan-tahapan tersebut dapat dilihat pada Gambar 3.1.
+ 
+Gambar 3.1 Metode Waterfall
+
+3.2.	Pengumpulan Data
+Pengumpulan data merupakan tahap penting dalam penelitian ini untuk memperoleh informasi yang akurat dan relevan sebagai landasan perancangan Sistem Analisis Performa Konten Digital. Pada penelitian ini, pengumpulan data dilakukan melalui dua metode, yaitu studi literatur dan observasi. Pemilihan kedua metode tersebut didasarkan pada kesesuaiannya dengan pendekatan penelitian yang bersifat rancangan (design research), di mana pemahaman terhadap kebutuhan pengguna dan landasan teoritis menjadi dasar utama dalam proses perancangan sistem.
+3.1.1.	Studi Literatur
+Studi literatur dilakukan dengan mengkaji jurnal ilmiah, artikel penelitian, dan dokumentasi teknis yang relevan dengan topik penelitian. Kajian ini bertujuan untuk memperoleh landasan teoritis yang kuat mengenai social media analytics, metrik performa konten digital, serta pendekatan teknis dalam pengembangan sistem berbasis web. Seluruh sumber yang dikaji merupakan pustaka yang diterbitkan dalam kurun waktu lima tahun terakhir untuk memastikan kemutakhiran informasi yang digunakan.
+Drivas, Kouis, Kyriaki-Manessi & Giannakopoulou (2022) dalam penelitiannya yang berjudul "Social Media Analytics and Metrics for Improving Users Engagement" yang diterbitkan di jurnal Knowledge (MDPI) menjelaskan pendekatan berbasis data (data-driven methodology) untuk mengukur performa halaman media sosial. Penelitian tersebut mengidentifikasi variabel-variabel metrik yang berpengaruh terhadap tingkat engagement pengguna, termasuk likes, comments, shares, dan reach. Kajian ini menjadi acuan dalam menentukan KPI (Key Performance Indicator) utama yang ditampilkan pada dashboard sistem, seperti engagement rate, reach, dan pertumbuhan followers.
+Zachloda, Samuel, Ochsner & Werthmüller (2022) dalam "Analytics of Social Media Data – State of Characteristics and Application" yang diterbitkan di Journal of Business Research (Elsevier, Vol. 144) menyajikan tinjauan literatur ekstensif mengenai karakteristik data media sosial, permasalahan kualitas data, dan prosedur analisisnya. Selain itu, Moon & Iacobucci (2022) dalam "Social Media Analytics and Its Applications in Marketing" yang terbit di Foundations and Trends® in Marketing (Vol. 15, No. 4) memperkenalkan kerangka kerja AAVF (Acquisition–Analysis–Value–Feedback) sebagai pendekatan sistematis dalam analitik media sosial. Kedua penelitian tersebut menjadi rujukan dalam merancang alur kerja sistem secara menyeluruh, mulai dari tahap import data, proses analisis, hingga penyajian insight otomatis kepada pengguna.
+3.1.2.	Observasi
+Observasi dilakukan terhadap kondisi dan kebiasaan kerja pengguna sasaran sistem, yaitu content creator, UMKM, dan brand yang aktif mengelola akun media sosial. Metode ini dipilih untuk memperoleh pemahaman langsung mengenai permasalahan yang dihadapi pengguna dalam proses analisis performa konten, sehingga fitur-fitur yang dirancang benar-benar menjawab kebutuhan nyata di lapangan. Nanda & Kumar (2021) dalam "Social Media Analytics Tools, Techniques and Present Day Practices" yang diterbitkan di International Journal of Services Operations and Informatics (Vol. 11, No. 4) menegaskan bahwa pemahaman terhadap alur kerja pengguna merupakan faktor penentu dalam perancangan sistem analitik yang efektif dan mudah digunakan.
+Hasil observasi menunjukkan bahwa sebagian besar pengguna sasaran masih melakukan analisis performa konten secara manual menggunakan Microsoft Excel atau Google Sheets. Data metrik seperti likes, comments, reach, dan engagement rate disalin satu per satu dari platform media sosial ke dalam spreadsheet, kemudian diolah secara manual untuk menghasilkan ringkasan performa. Proses tersebut membutuhkan waktu yang signifikan, rentan terhadap kesalahan input data, dan tidak memberikan rekomendasi yang dapat langsung ditindaklanjuti (actionable insight) oleh pengguna.
+Selain itu, observasi juga dilakukan terhadap platform media sosial yang paling banyak digunakan oleh pengguna sasaran, yaitu Instagram, TikTok, Twitter/X, Facebook, YouTube, dan LinkedIn, serta jenis konten yang umum dipublikasikan seperti foto, video, carousel, reels, dan story. Temuan ini digunakan sebagai acuan dalam merancang master data platform dan jenis konten pada sistem, serta dalam menentukan atribut metrik performa yang perlu dipantau. Kendala utama yang ditemukan, yaitu sulitnya membandingkan performa antar periode dan tidak adanya rekomendasi otomatis, menjadi dasar perancangan fitur perbandingan multi-dataset, analisis waktu terbaik posting, dan insight otomatis pada sistem yang dikembangkan.
+3.3.	Perencanaan Konsep
+Pada tahap perencanaan konsep dilakukan analisis untuk memahami kebutuhan yang tepat dari pengguna sasaran sistem. Kebutuhan sistem diperoleh berdasarkan hasil studi literatur dan observasi yang telah dilakukan pada tahap sebelumnya, yaitu dengan mengidentifikasi permasalahan yang dihadapi content creator, UMKM, dan brand dalam menganalisis performa konten digital mereka. Dari proses tersebut didapatkan dua hasil utama, yaitu analisis kebutuhan sistem dan spesifikasi kebutuhan sistem.
+Analisis kebutuhan sistem menghasilkan daftar seluruh persyaratan yang harus dipenuhi dalam pengembangan perangkat lunak, yang dibagi menjadi dua kelompok. Pertama, kebutuhan fungsional, yaitu fitur-fitur yang harus dapat dijalankan oleh sistem: manajemen akun pengguna, manajemen proyek, import data dari CSV, visualisasi KPI pada dashboard, analisis performa konten, analisis waktu terbaik posting, perbandingan dataset, AI Caption Generator, analisis kompetitor, serta ekspor laporan dalam format Excel dan PDF. Kedua, kebutuhan non-fungsional, yaitu aspek kualitas sistem yang meliputi keamanan data, performa, ketersediaan sistem, dan kemudahan penggunaan (usability) bagi pengguna non-teknis.
+Spesifikasi kebutuhan sistem merupakan dokumentasi tertulis yang merangkum seluruh kebutuhan di atas secara terstruktur sebagai acuan dalam tahap perancangan dan implementasi. Spesifikasi ini mencakup deskripsi fungsi sistem, batasan sistem, dan kriteria penerimaan (acceptance criteria) yang menjadi tolok ukur keberhasilan pengembangan. Dokumen spesifikasi ini memastikan bahwa sistem yang dibangun sesuai dengan tujuan yang telah ditetapkan dan dapat menjawab permasalahan yang ditemukan pada tahap pengumpulan data.
+3.4.	Pemodelan Sistem
+3.4.1.	Struktur Navigasi
+3.4.2.	Use Case Diagram
+3.4.3.	Activity Diagram
+3.4.4.	Entity Relationship Diagram (ERD)
+3.4.5.	Rancangan Antarmuka (Wireframe/Mockup)
+3.5.	Implementasi
+3.5.1.	Lingkungan Pengembangan 
+3.5.2.	Teknologi yang Digunakan
+3.5.3.	Proses Implementasi
+3.6.	Pengujian
+3.6.1.	Metode Pengujian
+3.6.2.	Skenario Pengujian
+3.6.3.	Hasil Pengujian
+3.7.	Pemeliharaan
+3.7.1.	Strategi Pemeliharaan
+3.7.2.	Potensi Pengembangan Lanjutan
