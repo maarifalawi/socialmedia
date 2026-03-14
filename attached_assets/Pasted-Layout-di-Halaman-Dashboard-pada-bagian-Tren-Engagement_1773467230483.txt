@@ -1,0 +1,41 @@
+Layout di Halaman Dashboard pada bagian
+
+Tren Engagement Rate Mingguan
+Distribusi Platform
+Distribusi Tipe Konten
+serta 3 insightnya itu harus di rapihin lagi layoutnya . karena masih kurang bagus, tidak rapih
+
+di halaman Performa Konten itu ada table kan, nah gua mau ditampilkan 10 postingan aja. terus bawahnya ada button buat nampilin semua postingan atau lebih banyak, lebih bagus ada filternya. mau di tampilin berapa postingan di table ini
+
+di bagian Waktu Terbaik Posting itu ketiuka kiita pilih "Periode:" itu akan muncul "Bandingkan dengan periode sebelumnya" gua mau tampilan "Bandingkan dengan periode sebelumnya" ini di bedain biar keliatan jelas dan rapih. sama serperti Ketika memencet platform dan jenis konten, Ketika kita memencet ituu akan muncul bacaan"reset" nah gua mau reset ini juga di bedain, biar lebih bagus posisinya layoutnya juga
+
+terus di Target KPI. misalkan kita udah setting nih, gua mau ada pilihan nantinya, memenuhi target atau ngga. ada buttonnya tersendiri. kalo emang memenuhi target kelompokan ke yang memenuhi target, kalo ngga memenuhi juga kelompokin ke yang gak memenuhi target
+
+Terus di Daftar Kampanye juga sama, kalo udah dibuat. itu ada buttonnya. kaya ini tuh kampanye udah terlaksana atau belum sih. gitu... ya sama halnya kaya di target KPI
+
+terus di analisis competitor, Ketika mau tambahkan data
+Pengikut
+0
+Engagement Rate (%)
+0
+Total Postingan
+0
+Rata-rata Suka
+0
+
+itu gausah ada 0, jadi ribet gitu. pas gua mau ngetik misalkan engagement rate 2.6 pake gua ketik jadi 02.6,jadi ngeribetin angka 0 nya ini, buatkan yang lebih efektif lagi
+
+terus juga pas ngebandingin 2 competitor ya, bagian Perbandingan Followers itu chartnya masih sangat sederhana banget. bener bener kurang, harus di improve lagi yang lengkap dan menarik. terus sama halnya di Perbandingan Engagement Rate. warnanya juga aneh banget. chartnya masih basic banget, gua gamau, ini semua harus di improve
+
+lanjut di halaman laoporan "Generator Laporan" Ketika gua buat laporan, itu kan muncul ya. 
+KPI
+Top 5 (INI TUH TOP 5 APA??? JELASIN)
+Bottom 5 (INI JUGA APA???)
+Waktu Terbaik
+Tipe Konten Terbaik
+
+Terus juga di "Tambah Anggota Baru" ngga perlu ada peran, langsung aja pengguna
+
+terus juag pas gua import dan "Preview Data sebenernya ada 50 baris data, tapi keterangannya "19 baris valid, 0 baris tidak valid" terus pas di dashboard ternyata ada 50 postingan, jadi semuanya valid sebenernya.
+
+Ini semua harus di improve lagi!!
