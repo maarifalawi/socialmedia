@@ -1,0 +1,18 @@
+Gambar 3.3 menunjukkan struktur navigasi sistem Analytics Sosmed untuk pengguna dengan peran Admin. Alur navigasi dimulai dari halaman Login / Register sebagai titik masuk utama sistem. Setelah berhasil melakukan autentikasi, pengguna diarahkan ke halaman Buat Proyek Baru untuk membuat atau memilih proyek yang akan digunakan.
+
+Setelah proyek aktif dipilih, Admin memiliki akses penuh terhadap seluruh menu utama yang tersedia pada bilah navigasi sistem, yaitu Dashboard, Analitik, Perencanaan Konten, Tools, Laporan, Admin, dan Keluar.
+
+Menu Dashboard merupakan halaman utama yang menampilkan ringkasan KPI dan grafik performa, dilengkapi dengan akses ke halaman Import Data untuk mengunggah data postingan dalam format CSV.
+
+Menu Analitik memuat empat halaman turunan, yaitu Performa Konten untuk melihat detail metrik setiap postingan, Waktu Terbaik untuk mengetahui waktu optimal publikasi konten, Audiens untuk memantau pertumbuhan pengikut, dan Ringkasan Insight untuk membaca analisis performa secara menyeluruh.
+
+Menu Perencanaan Konten terdiri dari halaman Target KPI untuk menetapkan dan memantau pencapaian target metrik, serta halaman Kampanye untuk mengelola kampanye konten media sosial.
+
+Menu Tools menyediakan dua fitur pendukung, yaitu AI Caption untuk membuat caption konten secara otomatis menggunakan kecerdasan buatan, dan Analisis Kompetitor untuk membandingkan performa akun kompetitor.
+
+Menu Laporan memuat halaman Pembuat Laporan untuk menghasilkan laporan performa dalam periode tertentu, serta halaman Perbandingan Dataset untuk membandingkan dua dataset secara berdampingan.
+
+Menu Admin merupakan menu eksklusif yang hanya dapat diakses oleh pengguna berperan Admin, memuat halaman Platform untuk mengelola daftar platform media sosial yang tersedia dalam sistem, serta halaman Kelola Q&A untuk melihat dan menjawab pertanyaan yang diajukan oleh pengguna.
+
+Terakhir, menu Keluar mengakhiri sesi pengguna dan mengarahkan kembali ke halaman Login / Register.
+
