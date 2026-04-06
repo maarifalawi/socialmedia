@@ -1,0 +1,111 @@
+Berikut adalah transkrip dari rekaman percakapan antara dosen pembimbing dan mahasiswa (Marif) terkait bimbingan skripsi dan perancangan website yang Anda berikan:
+
+### Transkrip Percakapan
+
+* **Dosen:** ...tapi menggambarkan secara garis besar dari topik yang Anda ambil. Jadi, dashboard itu memang belum aktif, tapi ada gambar yang berhubungan dengan topik yang Anda ambil. Setelah aktif baru gambarnya yang tadi, gitu kan?
+* **Mahasiswa:** Iya, betul Bu.
+* **Dosen:** Nah, jadi di sini nggak blank, tapi ada gambar yang menjelaskan dataset-nya itu belum aktif.
+* **Mahasiswa:** Berarti teks ini belum cukup ya Bu ya?
+* **Dosen:** Enggak, bukan belum cukup ya. Kamu kayaknya nggampangin banget gitu loh. Orang kan buat web pasti gambarnya dibuat semenarik mungkin, ya kan?
+* **Mahasiswa:** Iya.
+* **Dosen:** Nih kayak kayak gini kalau saya lihat apaan nih belum jadi. Nah, kamu gambar apa kek di sini yang berhubungan dengan topik yang Anda buat, tapi tetap ada tulisan bahwa belum ada dataset. Heeh, tapi ada gambarnya apa gitu loh yang berhubungan dengan topik yang Anda ambil. Nah, jadi kan orang lihat tuh ada ketertarikan untuk melanjutkan kan?
+* **Mahasiswa:** Tinggal ditambahin gambar doang kan, Bu?
+* **Dosen:** Iya, yang berhubungan dengan topik Anda. Nah, sekarang katakanlah dataset tersebut sudah aktif. Lanjut ke halaman berikutnya yang mana?
+* **Mahasiswa:** Ini, Bu.
+* **Dosen:** Nah, ini tolong dikasih variasi warna. Apakah berat? Sebelum ini tadi mana?
+* **Mahasiswa:** Ini, Bu.
+* **Dosen:** Nah, yang ini. Saya soalnya suka buat, saya juga sering membuat penelitian ya. Nah, ini unggah SCF kamu kasih warna misalnya kotak di sini warnanya hijau muda, Google sheet-nya warnanya pink baby, terus ini ada kotak yang paling sebelah kanan data sample warnanya kuning kalem gitu. Jadi kan buat website kan seindah mungkin kan? Ya? Jadi variasi warnanya tolong ya di background-nya. Saya kalau buat gambar aja alur data saya ada background belakang yang kalem, nanti gambar kotak atau belah ketupatnya saya kasih warna lagi. Jadi itu, ini kamu udah jadi kan, udah oke gitu ya. Tapi kamu ingin membuat orang yang melihat tampilan website kamu itu ih keren banget nih, nah ada variasi dari warna dan topik yang Anda buat, ya. Oke lanjut.
+* **Mahasiswa:** Selanjutnya ke sini, Bu, performa konten.
+* **Dosen:** Oke, lanjut.
+* **Mahasiswa:** Waktu terbaik posting, ini...
+* **Dosen:** Nah itu nanti ya, Sabtu apalagi tadi ke atas... No, no, no, next ke atas. Sabtu, Kamis, Sabtu. Nah itu kasih warna yang berbeda karena menunjukkan beda hari ya.
+* **Mahasiswa:** Oke, siap Bu. Lanjut... Audience, ini Bu.
+* **Dosen:** Nah itu Anda buat grafik berdasarkan sama node... a note, note, note ya. Itu note-note-nya bisa nggak kamu isi?
+* **Mahasiswa:** Yang ininya, Bu?
+* **Dosen:** Ya, ya, itu... Nah itu ada isinya tuh. Nah itu kasih warna.
+* **Mahasiswa:** Oh... Warna garisnya, Bu?
+* **Dosen:** Bukan warna garisnya, yang lingkaran itu kamu kasih warna. Heeh. Bisa kan?
+* **Mahasiswa:** Bisa, Bu.
+* **Dosen:** Iya, saya kan waktu dulu penelitiannya pakai grafik gini juga. Ya jadi kelihatan jelas gitu ya, di note-nya. Ke bawah coba.
+* **Mahasiswa:** Ini, Bu.
+* **Dosen:** Ya, nanti ini tolong ini kan masih kosong ya... Nah ini dadu berwarna note-nya ya. Eee ini note, note, note-nya itu yang 0... Coba tuh 0 sampai 2500. Apa bedanya 2500 sampai 5000, 5000, 7500 apa bedanya? Tolong dibedakan note-nya. Paham?
+* **Mahasiswa:** Paham, Ibu, paham, paham.
+* **Dosen:** Lanjut.
+* **Mahasiswa:** Baru...
+* **Dosen:** Jadi ada irisan ya, dari note tersebut ya kan?
+* **Mahasiswa:** Iya, Bu.
+* **Dosen:** Oke, lanjut.
+* **Mahasiswa:** Ini ringkasan insight, Bu, dari seluruhnya.
+* **Dosen:** Ya, ini sebelum... sebelum hasil kan ya?
+* **Mahasiswa:** Iya, ini udah di hasil akhir sih, Bu.
+* **Dosen:** Ini ada di bab berapa?
+* **Mahasiswa:** Ini di... maksudnya, Bu?
+* **Dosen:** Nanti kan kamu screenshot. Iya, kamu screenshot ini nanti ditaruh di bab berapa?
+* **Mahasiswa:** Di bab... di bab 3 untuk mockup, Bu, untuk tampilan website yang jadi itu di bab 4, Bu. Kalau mockup di bab 3.
+* **Dosen:** Besok yang jadi dibedakan ya. Berarti kalau website yang udah jadi sudah diisi kan pilih tanggalnya?
+* **Mahasiswa:** Sudah, Bu.
+* **Dosen:** Mockup-nya belum kan?
+* **Mahasiswa:** Mockup-nya belum.
+* **Dosen:** Ya, lanjut. Jadi ada perbedaan antara bab 3 dan bab 4.
+* **Mahasiswa:** Siap, Bu. Ini target... cuma kayak gini aja, Bu.
+* **Dosen:** Ya, nanti sudah ada isi kan daftar targetnya di bab 4.
+* **Mahasiswa:** Betul, Bu.
+* **Dosen:** Ya, next.
+* **Mahasiswa:** Laporannya juga sama, Bu. Terus ini kayak... AI. Mau dicoba, Bu?
+* **Dosen:** Coba.
+* **Mahasiswa:** Terus di sini ada pilihannya juga, Bu, mau ramah, santai... Nah... Nah, Bu, hasilnya kayak gini, Bu.
+* **Dosen:** Hmm... Ini yang jawab mesin ya?
+* **Mahasiswa:** Iya, Bu. Gemini 2.5, Bu.
+* **Dosen:** Oh, 2.5 yang free ya?
+* **Mahasiswa:** Iya, betul Bu.
+* **Dosen:** Dia online kan? Kalau nggak online nggak bisa ya?
+* **Mahasiswa:** Online, Bu. Enggak bisa, Ibu.
+* **Dosen:** Nah itu ada di bab 4.
+* **Mahasiswa:** Ini ada di bab 4, Bu.
+* **Dosen:** Ya, next.
+* **Mahasiswa:** Ini kompetitor, Bu, belum ada, tapi di bab 4 nanti ada datanya.
+* **Dosen:** Ee berarti di bab 3-nya ini ya. Terus laporan seperti apa?
+* **Mahasiswa:** Ini buat nge-generate semua ringkasan, Bu, dijadiin PDF. Dari tanggal mulai sampai selesai.
+* **Dosen:** Iya, Bu. Terus admin untuk apa?
+* **Mahasiswa:** Untuk kelola platform, Ibu. Jadi kalau misalkan saya nggak aktifin TikTok, yang kalau user upload CSV ada TikTok-nya, itu dia nggak ke-detect, Bu. Jadi nggak masuk.
+* **Dosen:** Terus? Sudah?
+* **Mahasiswa:** Udah, itu aja, Bu. Sama kelola QA...
+* **Dosen:** Apa Ibu? Kelola?
+* **Mahasiswa:** Jadi nanti ada pertanyaan, Ibu, dari user. Nah nanti tinggal dijawab sama admin di sini, Ibu.
+* **Dosen:** Ya, ee bab 4-nya mana?
+* **Mahasiswa:** Bab 4 nanti belum ada sih, Bu, tinggal ditambahin pertanyaan aja, apa mau dicoba, Bu?
+* **Dosen:** Ya coba. Oh berarti kamu belum selesai di bab 4-nya?
+* **Mahasiswa:** Iya, belum... belum semuanya, Ibu.
+* **Dosen:** Penulisannya?
+* **Mahasiswa:** Iya, belum, Bu.
+* **Dosen:** Bentar, Bu. Udah jalan ya?
+* **Mahasiswa:** Lagi registrasi dulu, Bu. Bentar ya, Bu ya. Ini belum ada email-nya, Bu.
+* **Dosen:** Penulisan bab 4 kamu lihat... Nanti bab 3-nya tolong direvisi lagi ya.
+* **Mahasiswa:** Siap, Bu. Ini, Bu, bab 4 saya.
+* **Dosen:** Kamu udah lihat skripsi sebelumnya di Gunadarma belum?
+* **Mahasiswa:** Sudah, Bu. Tapi ada yang beda-beda, Bu.
+* **Dosen:** Nya?
+* **Mahasiswa:** Ada yang screenshot-nya di bab 3, ada yang di bab 4, kayak gitu, Bu.
+* **Dosen:** Kamu lihat punya siapa? Lihat punyanya Prof. Lintang ya, karena kamu kajurnya Prof. Lintang, Lintang Yuniar. Kalau punya beliau nggak mungkin salah, karena dia kajur, gitu loh.
+* **Mahasiswa:** Oke, Bu.
+* **Dosen:** Jadi, ya, eee kalau hasil itu ada di bab 4. Tahapan metode yang dilakukan di bab 3, ya. Coba kamu lihat punyanya Prof. Lintang yang nggak jauh beda sama topik Anda, ya. Marif?
+* **Mahasiswa:** Siap, Bu.
+* **Dosen:** Apa lagi, Marif?
+* **Mahasiswa:** Udah sih, itu aja, Bu. Saya...
+* **Dosen:** Ini kan bab 4 berarti kamu belum selesai kan?
+* **Mahasiswa:** Iya, belum, Bu.
+* **Dosen:** Ya kamu selesaiin dulu aja, ya. Ee sesuai dengan contoh penulisan punyanya Prof. Lintang. Tahapan-tahapan, bukan itu ya, bentuk tadi kamu ada yang, ada yang bagian yang benar punyanya Prof. Lintang. Punya mahasiswa saya, saya suruh ngikutin gaya penulisannya, bukan eee template-nya maksud saya ya, template penulisannya. Bukan tulisannya yang dicontek ya. Terus nanti kamu plagiarismenya tolong di bawah 25% ya.
+* **Mahasiswa:** Siap, Bu. Paham, paham, Bu.
+* **Dosen:** Heeh. Nah terus ee gap analisis dari riset Anda itu Anda tulis di bab 1. Kan saya sudah punyanya prof siapa itu dari Instagram saya taruh di grup skripsi kan? Nah, itu kan harus ada gap analisis setelah Anda membaca jurnal sehingga eee karena belum ada yang membuat penelitian ini, jadi punya nilai loyalty. Ada keterbaruannya. Hah, apakah memang bener belum ada yang buat punya kamu ini gitu loh. Nah berarti kan Anda baca jurnal tadi Anda bilang baru dua.
+* **Mahasiswa:** Iya, baru dua, Ibu.
+* **Dosen:** Minimal empat lah atau lima ya, karena nanti di bab 2 akhir... Coba punyanya Prof. Lintang itu penelitian terdahulu ditaruh di bab berapa? Karena ada yang naruh di bab 2 akhir, ada yang ditaruh di bab 1, makanya berdasarkan punyanya Prof. Lintang aja ya. Karena dia kajurnya, ya.
+* **Mahasiswa:** Iya, Bu, siap.
+* **Dosen:** Ya udah, Marif, hari ini sampai di sini. Saya belum salat eee zuhur. Kamu lanjutkan dulu, nanti jangan lupa eee jurnalnya minimal empat lah, kalau bisa lima, karena nanti ada tabel penelitian terdahulu ya. Ee gap analisis kamu tarik dari eee jurnal yang kamu baca, eee sehingga kamu membuat penelitian tersebut gitu loh, ya Marif. Karena kamu harus meyakinkan penguji memang penelitian yang Anda buat itu belum ada. Kamu cek pakai eee bahasa Inggris di Google Translate, jangan-jangan udah ada yang pakai bahasa Inggris judul tersebut. Ya?
+* **Mahasiswa:** Siap, Bu. Siap, siap, Bu.
+* **Dosen:** Oke. Ya udah nanti kamu masukkan tanggal hari ini, eee presentasi bab 3 gitu aja dulu ya.
+* **Mahasiswa:** Makasih banyak ya, Bu, ya.
+* **Dosen:** Ini berarti dua kali pertemuan ya kita ya? Ke-dua apa tiga?
+* **Mahasiswa:** Kedua, Ibu.
+* **Dosen:** Ya udah nanti jangan lupa kamu buat nanti tinggal saya tandatanganin saat ketemu ya.
+* **Mahasiswa:** Oke, siap. Makasih banyak, Bu.
+* **Dosen:** Iya, ayo, sama-sama. Assalamualaikum.

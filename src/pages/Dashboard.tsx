@@ -288,9 +288,76 @@ const Dashboard = () => {
   if (!activeDataset) {
     return (
       <AppLayout>
-        <div className="flex flex-col items-center justify-center h-64 space-y-4">
-          <p className="text-foreground text-lg">Belum ada dataset aktif</p>
-          <p className="text-muted-foreground">Silakan import data CSV di halaman Import</p>
+        <div className="flex flex-col items-center justify-center min-h-[520px] space-y-6 py-10">
+          <svg
+            width="320"
+            height="220"
+            viewBox="0 0 320 220"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="opacity-90"
+          >
+            {/* Background card */}
+            <rect x="20" y="20" width="280" height="180" rx="16" fill="#F8FAFC" stroke="#E2E8F0" strokeWidth="1.5"/>
+
+            {/* Bar chart bars */}
+            <rect x="50" y="130" width="28" height="50" rx="6" fill="#94A3B8"/>
+            <rect x="90" y="100" width="28" height="80" rx="6" fill="#60A5FA"/>
+            <rect x="130" y="80" width="28" height="100" rx="6" fill="#34D399"/>
+            <rect x="170" y="110" width="28" height="70" rx="6" fill="#F472B6"/>
+            <rect x="210" y="70" width="28" height="110" rx="6" fill="#818CF8"/>
+            <rect x="250" y="90" width="28" height="90" rx="6" fill="#FB923C"/>
+
+            {/* Line chart on top */}
+            <polyline
+              points="64,115 104,88 144,68 184,98 224,58 264,78"
+              stroke="#6366F1"
+              strokeWidth="2.5"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            {/* Dots on line */}
+            <circle cx="64" cy="115" r="4" fill="#6366F1"/>
+            <circle cx="104" cy="88" r="4" fill="#6366F1"/>
+            <circle cx="144" cy="68" r="4" fill="#6366F1"/>
+            <circle cx="184" cy="98" r="4" fill="#6366F1"/>
+            <circle cx="224" cy="58" r="4" fill="#6366F1"/>
+            <circle cx="264" cy="78" r="4" fill="#6366F1"/>
+
+            {/* Social media icons (simplified circles with letters) */}
+            <circle cx="60" cy="40" r="14" fill="#1877F2" opacity="0.9"/>
+            <text x="60" y="45" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">f</text>
+
+            <circle cx="100" cy="40" r="14" fill="#E1306C" opacity="0.9"/>
+            <text x="100" y="45" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">IG</text>
+
+            <circle cx="140" cy="40" r="14" fill="#000000" opacity="0.85"/>
+            <text x="140" y="45" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold">TT</text>
+
+            <circle cx="180" cy="40" r="14" fill="#1DA1F2" opacity="0.9"/>
+            <text x="180" y="45" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold">Tw</text>
+
+            <circle cx="220" cy="40" r="14" fill="#FF0000" opacity="0.9"/>
+            <text x="220" y="45" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold">YT</text>
+
+            {/* X axis line */}
+            <line x1="40" y1="182" x2="295" y2="182" stroke="#CBD5E1" strokeWidth="1.5"/>
+          </svg>
+
+          <div className="text-center space-y-2">
+            <p className="text-foreground text-lg font-semibold">Belum Ada Dataset Aktif</p>
+            <p className="text-muted-foreground text-sm max-w-xs mx-auto">
+              Import data media sosial Anda dalam format CSV untuk mulai melihat analitik performa konten di sini.
+            </p>
+          </div>
+
+          <Button
+            onClick={() => navigate("/import")}
+            className="mt-2"
+          >
+            Import Data Sekarang
+          </Button>
         </div>
       </AppLayout>
     );
