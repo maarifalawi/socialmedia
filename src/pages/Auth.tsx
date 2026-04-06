@@ -69,13 +69,13 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
       style={{ background: "var(--gradient-page)" }}>
 
-      {/* Decorative blobs */}
-      <div className="absolute top-[-80px] right-[-80px] w-64 h-64 rounded-full opacity-20 animate-float pointer-events-none"
-        style={{ background: "var(--gradient-primary)", filter: "blur(48px)" }} />
-      <div className="absolute bottom-[-60px] left-[-60px] w-56 h-56 rounded-full opacity-15 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, hsl(340 55% 62%) 0%, hsl(258 65% 62%) 100%)", filter: "blur(48px)" }} />
-      <div className="absolute top-1/2 left-[-40px] w-36 h-36 rounded-full opacity-10 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, hsl(195 70% 52%) 0%, hsl(152 45% 48%) 100%)", filter: "blur(40px)" }} />
+      {/* Decorative blobs — pastel mint, peach, blush */}
+      <div className="absolute top-[-80px] right-[-80px] w-64 h-64 rounded-full opacity-25 animate-float pointer-events-none"
+        style={{ background: "linear-gradient(135deg, hsl(172 50% 70%) 0%, hsl(185 50% 65%) 100%)", filter: "blur(52px)" }} />
+      <div className="absolute bottom-[-60px] left-[-60px] w-56 h-56 rounded-full opacity-20 pointer-events-none"
+        style={{ background: "linear-gradient(135deg, hsl(25 70% 78%) 0%, hsl(340 50% 80%) 100%)", filter: "blur(48px)" }} />
+      <div className="absolute top-1/2 left-[-40px] w-36 h-36 rounded-full opacity-15 pointer-events-none"
+        style={{ background: "linear-gradient(135deg, hsl(210 60% 76%) 0%, hsl(172 45% 68%) 100%)", filter: "blur(40px)" }} />
 
       <div className="w-full max-w-[420px] animate-fade-in relative z-10">
         {/* Logo */}
