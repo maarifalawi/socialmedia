@@ -135,6 +135,23 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   const isActivePath = (paths: string[]) => paths.includes(location.pathname);
 
+  // Scroll reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    const elements = document.querySelectorAll(".reveal");
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
   const NavDropdown = ({ label, paths, items }: { label: string; paths: string[]; items: { path: string; label: string }[] }) => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -184,15 +201,18 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border/40 header-gradient backdrop-blur-md sticky top-0 z-50">
+      <header className="border-b border-border/40 header-gradient backdrop-blur-md sticky top-0 z-50 shadow-soft">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
-                <BarChart3 className="h-4.5 w-4.5 text-primary-foreground" />
+              <div className="h-8 w-8 rounded-xl gradient-primary flex items-center justify-center shrink-0 shadow-button">
+                <BarChart3 className="h-4 w-4 text-white" />
               </div>
-              <span className="text-base font-semibold text-foreground truncate hidden sm:block">Analytics Sosmed</span>
+              <span className="text-base font-bold truncate hidden sm:block"
+                style={{ background: "var(--gradient-primary)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                Analytics Sosmed
+              </span>
             </div>
 
             {/* Desktop Navigation */}
