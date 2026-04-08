@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="garuda garba rujukan digital">
+        <meta name="author" content="kementrian riset, teknologi dan pendidikan tinggi">
+        <link rel="icon" href="/assets/img/garuda-icon.png">
+
+        <title>Garuda - Garba Rujukan Digital</title>
+
+        <!-- SEMANTIC UI -->
+        <link href="/assets/semantic/semantic.min.css" rel="stylesheet">
+        <link href="/assets/semantic/components/reset.css" rel="stylesheet"> 
+
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link href="/assets/css/app.css" rel="stylesheet">
+        <link href="/assets/css/flash-message.css" rel="stylesheet">
+        
+        <!-- JQUERY UI - AUTOCOMPLETE -->
+        <link href="/assets/css/jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+        <script src="/assets/js/jquery.js"></script>
+        <script src="/assets/semantic/semantic.min.js"></script>
+        <script src="/assets/js/jquery.tagcloud.js" type="text/javascript"></script>
+        <script src="/assets/js/Chart.js"></script>
+        <script src="/assets/custom/main.js"></script>
+        <script src="/assets/js/app.js"></script>
+        <!-- JQUERY UI - AUTOCOMPLETE -->
+        <script src="/assets/js/jquery-ui/jquery-ui.min.js"></script>
+    </head>
+
+
+
+    <body>
+                <div class="ui stackable menu top-menu">
+            <a class="header item brand" href="/">
+                 <img src="/assets/img/garuda1.png" alt=""> 
+            </a>
+            <div class="right menu">
+                <a class="nav item " href="/">Home</a>
+                <a class="nav item " href="/publisher">Publisher</a>
+                <a class="nav item active" href="/journal">Journal / Conference</a>
+                <a class="nav item " href="/area">Subject</a>
+                <a class="nav item " href="/suggest">Suggest</a>
+                <a class="nav item" target="_blank" href="https://drive.google.com/drive/folders/19TuyOLkABcMgh99AgLweV-B8BE1wcUl8?usp=sharing">Guidebook</a>
+                <a class="nav item disabled">&nbsp;</a>
+            </div>
+        </div>
+
+        <main role="main" class="container">
+
+<style>
+    #more-issue {display: none;}
+</style>
+
+<div class="clearfix"></div>
+<div class="ui grid stackable stat-box">
+
+</div>
+<div class="ui stackable grid content-wrapper">
+    <div class="ui three wide column">
+        <div class="ui segment">
+            <div class="j-meta-img">
+                <img width="100%" class="ui image rounded" src="/imageview/journal?id=32451&size=" alt="cover" />
+            </div>
+        </div>
+
+        <div class="ui segment padded">
+            <a class="ui top attached label">Article Per Year (5 Year)</a>
+            <div style="height:200px; width:100%">
+                <canvas id="myChart"></canvas>
+            </div>
+            <a class="ui mini fluid button" href="/journal/analysis/32451">All</a>
+        </div>
+    
+        <div class="ui segment padded">
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.pelitanusa.or.id/index.php/komunita" target="_blank"><i class="angle right icon"></i>Home Page</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.pelitanusa.or.id/index.php/komunita/oai" target="_blank"><i class="angle right icon"></i>OAI Link</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.pelitanusa.or.id/index.php/komunita/editorialboard" target="_blank"><i class="angle right icon"></i>Editorial Team</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.pelitanusa.or.id/index.php/komunita/contact" target="_blank"><i class="angle right icon"></i>Contact</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.pelitanusa.or.id/index.php/komunita/reviewer" target="_blank"><i class="angle right icon"></i>Reviewer</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://scholar.google.com/citations?user=6r-8g1UAAAAJ" target="_blank"><i class="angle right icon"></i>Google Scholar</a></h5>
+            
+        </div>
+        <div class="ui segment">
+        <h5 class="ui header">
+                <i class="user outline icon red"></i>
+                <div class="content">
+                    Contact Name
+                    <div class="sub header">Muhamad Akrom</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="mail outline icon red"></i>
+                <div class="content">
+                    Contact Email
+                    <div class="sub header" style="word-break: break-all !important;">jurnalkomunita@gmail.com</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="phone icon red"></i>
+                <div class="content">
+                    Phone
+                    <div class="sub header">+6281937942860</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="mail outline icon red"></i>
+                <div class="content">
+                    Journal Mail Official
+                    <div class="sub header" style="word-break: break-all !important;">jurnalkomunita@gmail.com</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="marker icon red"></i>
+                <div class="content">
+                    Editorial Address
+                    <div class="sub header">Graha Pelita Nusa Tenggara, Mataram, Provinsi Nusa Tenggara Barat, 83361</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="marker icon red"></i>
+                <div class="content">
+                    Location
+                    <div class="sub header">Kota mataram,</div>
+                    <div class="sub header">Nusa tenggara barat</div>
+                    <div class="sub header">INDONESIA</div>
+                </div>
+            </h5>
+        </div>
+    </div>
+    <div class="nine wide column">
+        <div class="ui segment j-info-box">
+            <div class="j-meta-title">
+				Komunita: Jurnal Pengabdian dan Pemberdayaan Masyarakat			</div>
+            <div class="j-meta-abbrev">
+                <ul>
+                    <li>komunita</li>
+                    <li><a target="_blank" href="https://journal.pelitanusa.or.id/index.php/komunita"><i class="ui icon globe"></i>Website</a></li>
+                </ul>
+            </div>
+            <div class="j-meta-pub">
+                Published by <a href="#!">Pelita Nusa Tenggara</a>
+            </div>
+
+            <div class="j-meta-pub">
+                ISSN : <a href="#!">-</a> &nbsp;&nbsp;&nbsp;
+                EISSN : <a href="#!">28291972</a> &nbsp;&nbsp;&nbsp;
+                DOI : <a href="#!">https://doi.org/10.60004/komunita</a>
+            </div>
+            
+            <div class="j-meta-pub">
+                Core Subject : <a href="#!">
+                                    Economy,
+                                    Health,
+                                    Social,
+                </a>
+            </div>
+            
+            <div class="j-meta-subject">
+                                    <a class="ui tag label grey mini" href="/area/index/95">Economics, Econometrics &amp; Finance</a>
+                                    <a class="ui tag label grey mini" href="/area/index/120">Environmental Science</a>
+                                    <a class="ui tag label grey mini" href="/area/index/185">Public Health</a>
+                                    <a class="ui tag label grey mini" href="/area/index/190">Social Sciences</a>
+                            </div>
+
+
+            <div class="j-meta-desc">Jurnal Pengabdian dan Pemberdayaan Masyarakat merupakan jurnal pengabdian kepada masyarakat yang menjadi wadah ilmiah untuk pengabdian, dengan nomor terdaftar E-ISSN. KOMUNITA adalah jurnal multidisiplin ilmiah yang diterbitkan oleh PELITA NUSA TENGGARA. Penerbitan jurnal ini akan dilakukan dalam satu tahun, mulai tahun 2022 terbit sebanyak dua kali terbit yaitu pada bulan Februari dan Agustus. KOMUNITA: Jurnal Pengabdian dan Pemberdayaan kepada Masyarakat memfokuskan pada masalah umum atau masalah yang terkait dengan layanan masyarakat. Tujuan dari publikasi jurnal ini adalah untuk menyebarluaskan pemikiran konseptual atau ide dan hasil penelitian yang telah dicapai di bidang pengabdian masyarakat. KOMUNITA: Jurnal Pengabdian dan Pemberdayaan kepada Masyarakat, berisi berbagai kegiatan dalam menangani dan mengelola berbagai potensi, hambatan, tantangan, dan masalah yang ada di masyarakat. Implementasi kegiatan layanan juga melibatkan partisipasi masyarakat dan mitra. Kegiatan pelayanan diorganisasikan menjadi kegiatan yang bertujuan untuk meningkatkan kesejahteraan masyarakat.</div>
+            
+            <div class="j-meta-pub" style="font-size: 14px;">
+                Arjuna Subject : 
+                <a href="#!">
+                    Umum - Umum                </a>
+            </div>
+        </div>
+        <div class="ui segment padded article-box">
+            <div class="ui top attached label">Articles 
+                <span style="float: right;">223 Documents</span>
+            </div>
+
+            <div class="ui equal width grid">
+                <div class="column">                    
+                    <form id="form-journal" class="ui form mini search-pub-form" action="" method="GET">
+                                                                                                <div class="inline fields">                            
+                            <div class="fourteen wide field">
+                                <input type="text" name="q" placeholder="Search Title" value="" minlength="3" required>
+                            </div>
+                            <div class="two wide field">
+                                <button class="ui icon button mini red" type="submit"><i class="icon search"></i></button>
+                            </div>
+                        </div>
+                    </form>                  
+                </div>
+                <div class="column right aligned">
+                                            <a href="?page=1" class="ui mini icon button">
+                            <i class="angle double left icon"></i>
+                        </a>                                
+                                                    <a href="?page=1" class="ui mini icon button red">
+                                &nbsp;1&nbsp;
+                            </a>
+                                                    <a href="?page=2" class="ui mini icon button ">
+                                &nbsp;2&nbsp;
+                            </a>
+                                                    <a href="?page=3" class="ui mini icon button ">
+                                &nbsp;3&nbsp;
+                            </a>
+                                                    <a href="?page=4" class="ui mini icon button ">
+                                &nbsp;4&nbsp;
+                            </a>
+                                                    <a href="?page=5" class="ui mini icon button ">
+                                &nbsp;5&nbsp;
+                            </a>
+                                                    
+                        <a href="?page=23" class="ui mini icon button page-button">
+                            <i class="angle double right icon"></i>
+                        </a>
+                                    </div>
+            </div>
+
+                        
+            <div class="ui divider"></div>
+
+                                                <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664542">
+                            <xmp>The Dissemination of Pineapple Processed Innovations as a Form of Peatland Restoration for the Bunga Desa Group in Selingsing, Pelintung Village, Riau </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/7244254"><xmp>Zuhri, Moh Sayful</xmp></a>; <a class="author-article" href="/author/view/546485"><xmp>Rusdiyana, Eksa</xmp></a>; <a class="author-article" href="/author/view/355021"><xmp>Rahayu, Rahayu</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 1 (2022): Februari </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664542" onclick="show_abstract(3664542)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/6/3" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/6/3" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;The+Dissemination+of+Pineapple+Processed+Innovations+as+a+Form+of+Peatland+Restoration+for+the+Bunga+Desa+Group+in+Selingsing+Pelintung+Village+Riau&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i1.6">
+                                    DOI: 10.60004/komunita.v1i1.6                                </a>
+                                                    </p>
+                        <div id="show_abstract3664542" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Low fertility on peatlands has its own impact on people living in peatland areas. Areas that have peatlands include Selingsing village, Pelintung, Dumai City, Riau Province. In addition to influencing environmental factors, this also affects factors in the economy. Therefore, it is necessary to seek a solution for revitalization in order to overcome the problems in peatlands. One of the revitalization activities is an activity that has economic value but does not damage the environment. There needs to be socialization related to the use of peatlands and supporting innovations. Pineapple is one of the plants that can live well on peatlands. It is hoped that innovation in pineapple processing can be a solution for revitalizing peatlands. There are so many innovations of processed pineapple that can be of high economic value. The community service program that is packaged through real work lecture activities and the collaboration with the Peat Restoration Agency can provide benefits in the program. Through this program, he hopes to be able to provide the role of academics in devoting themselves to the community, especially in peatlands</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664543">
+                            <xmp>Pembuatan Rumah Burung Hantu Sebagai Sarana Pengentasan Hama Tikus di Desa Tanjung Kecamatan Klego, Boyolali </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/396923"><xmp>Sutanto, Sutanto</xmp></a>; <a class="author-article" href="/author/view/7244255"><xmp>Albar, Luthfirmansyah</xmp></a>; <a class="author-article" href="/author/view/7244257"><xmp>Jordy Kantona, Emmanuel</xmp></a>; <a class="author-article" href="/author/view/7244258"><xmp>Dewi Nur Anisa, Shopia</xmp></a>; <a class="author-article" href="/author/view/7244259"><xmp>Qoonita, Najihah</xmp></a>; <a class="author-article" href="/author/view/7244260"><xmp>Nila Sari, Fadhila</xmp></a>; <a class="author-article" href="/author/view/2171177"><xmp>Luthfy Abdul Halim Al Manshur, Muhammad</xmp></a>; <a class="author-article" href="/author/view/7244262"><xmp>Ananda Putra, Fajar</xmp></a>; <a class="author-article" href="/author/view/7244263"><xmp>Adeldarma Hikmatullah, Abdillah</xmp></a>; <a class="author-article" href="/author/view/7244265"><xmp>Nor Hayati, Saropa</xmp></a>; <a class="author-article" href="/author/view/7244267"><xmp>Uswatun Hasanah, Laili</xmp></a>; <a class="author-article" href="/author/view/7244268"><xmp>Adi Nugroho, Khoiruddin</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 1 (2022): Februari </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664543" onclick="show_abstract(3664543)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/7/4" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/7/4" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Pembuatan+Rumah+Burung+Hantu+Sebagai+Sarana+Pengentasan+Hama+Tikus+di+Desa+Tanjung+Kecamatan+Klego+Boyolali&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i1.7">
+                                    DOI: 10.60004/komunita.v1i1.7                                </a>
+                                                    </p>
+                        <div id="show_abstract3664543" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Tanjung merupakan sebuah Desa yang terletak di bagian utara Kabupaten Boyolali, yang daerahnya sebagian besar mengandalkan sektor pertanian. Hampir setiap tahun ada areal persawahan terkena serangan hama tikus yang menyebabkan petani mengalami gagal panen. Salah satu cara yang dapat dilakukan untuk pengendalian hama tikus adalah menggunakan musuh alami (biologi). Burung hantu adalah salah satu jenis predator tikus yang sangat potensial. Dalam tahap perencanaan pembuatan rumah burung hantu digunakan menggunakan metode diskusi.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664544">
+                            <xmp>The Handicraft Training for Diffability by KKN UNS in Comoro, Timor Leste </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/7244270"><xmp>Gama Hatta Novika, Revi</xmp></a>; <a class="author-article" href="/author/view/7244271"><xmp>Sayful Zuhri, Moh</xmp></a>; <a class="author-article" href="/author/view/7244272"><xmp>Noronha Martins, Pascoela</xmp></a>; <a class="author-article" href="/author/view/7244273"><xmp>Baptista Barros, Odete</xmp></a>; <a class="author-article" href="/author/view/7244275"><xmp>Cipriana de Araujo Liberata, Melania</xmp></a>; <a class="author-article" href="/author/view/7244276"><xmp>F. A. P. Gonçalves, Julia</xmp></a>; <a class="author-article" href="/author/view/7244278"><xmp>I. da Silva Castanheira, Odelia</xmp></a>; <a class="author-article" href="/author/view/7244279"><xmp>de Araujo Fernandes, Antonio</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 1 (2022): Februari </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664544" onclick="show_abstract(3664544)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/8/5" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/8/5" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;The+Handicraft+Training+for+Diffability+by+KKN+UNS+in+Comoro+Timor+Leste&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i1.8">
+                                    DOI: 10.60004/komunita.v1i1.8                                </a>
+                                                    </p>
+                        <div id="show_abstract3664544" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">The university has the tri dharma of higher education, one of which is community service. Community service programs for students can be carried out by taking real work courses (KKN). In KKN activities, students are required to have a work program that is tailored to the needs of the community at the KKN location. The implementation of KKN in addition to Indonesia is also carried out in Timor Leste which is carried out by UNS foreign students. After the survey was carried out, KKN students carried out a program intended for persons with disabilities. This program is motivated by the problems faced so that people with disabilities have independence through the program to be implemented. People with disabilities are often underestimated and have stereotypes from society because of their physical limitations. Students carry out handicraft training programs for people with disabilities. This is so that people with disabilities can optimize and improve their abilities. In addition to handicraft training, other supporting programs are also implemented, such as educational activities, entrepreneurship and many more. This is done so that people with disabilities can live independently in the future. This program has quite a good impact for people with disabilities because there is encouragement from KKN students. And have confidence in their work.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664545">
+                            <xmp>Penyuluhan Potensi Mikrohidro Desa Kemuning Kabupaten Karanganyar Untuk Pemberdayaan Masyarakat Dan Umkm Desa Kemuning </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/541577"><xmp>Yunus, Ahmad</xmp></a>; <a class="author-article" href="/author/view/7244280"><xmp>Udin Galang GA, Nur</xmp></a>; <a class="author-article" href="/author/view/7244281"><xmp>Muhammad Rizqi, Farhan</xmp></a>; <a class="author-article" href="/author/view/7244283"><xmp>Estarini, Elisa</xmp></a>; <a class="author-article" href="/author/view/7244284"><xmp>Damayanti, Farikha</xmp></a>; <a class="author-article" href="/author/view/7244285"><xmp>Aliya, Syafika</xmp></a>; <a class="author-article" href="/author/view/7244286"><xmp>Ika Lestari, Ayu</xmp></a>; <a class="author-article" href="/author/view/7244287"><xmp>Febriyanti, Hani</xmp></a>; <a class="author-article" href="/author/view/7244288"><xmp>Siti Jamilah, Lu’lu’</xmp></a>; <a class="author-article" href="/author/view/7244289"><xmp>Endah Pratiwi, Sekar</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 1 (2022): Februari </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664545" onclick="show_abstract(3664545)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/9/6" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/9/6" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Penyuluhan+Potensi+Mikrohidro+Desa+Kemuning+Kabupaten+Karanganyar+Untuk+Pemberdayaan+Masyarakat+Dan+Umkm+Desa+Kemuning&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i1.9">
+                                    DOI: 10.60004/komunita.v1i1.9                                </a>
+                                                    </p>
+                        <div id="show_abstract3664545" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Pembangkit Listrik Tenaga Mikro Hidro (PLTMH) merupakan sistem pembangkit listrik tenaga air kapasitas dibawah 100 KW. Adapun tujuan dari pembangunan PLTMH ini adalah untuk memacu perekonomian daerah-daerah mengingat potensi tenaga air yang dimiliki oleh daerah tersebut. Metode kegiatan pembangunan PLTMH ini meliputi survei lokasi, studi kelayakan, perencanaan, persiapan sistem, pembangunan dan pelatihan serta sosialisasi. Kegiatan survei dilakukan untuk mendapatkan lokasi yang benar-benar membutuhkan listrik dan memang mempunyai potensi energi yang dapat menghasilkan listrik. Selanjutnya dilakukan perencanaan dan pembangunan sistem PLTMH. Pembangunan ini meliputi pembuatan bak penampungan, pipa penstok, system PLTMH , bangunan sipil dan jaringan listrik. Setelah semua sistem dibangun, dilakukan uji coba dan pelatihan pada masyarakat tentang pengoperasian dan pengelolaan PLTMH. Pelatihan ini ditujukan agar masyarakat mampu mengelola, mengoperasikan dan pemeliharaan sistem PLTMH tersebut. Hasil dari implementasi ini adalah sebuah PLTMH dengan kapasitas daya 5kWatt yang memenuhi kebutuhan listrik. Adapun turbin yang digunakan adalah turbin Crossflow. Pembangkit listrik skala kecil yang menggunakan tenaga air sebagai tenaga penggeraknya seperti, saluran irigasi, sungai atau air terjun alam dengan cara memanfaatkan tinggi terjunan dan jumlah debit air. Tujuan penulisan ini untuk memberikan informasi mengenai sumber energi listrik dengan sistem mikrohidro di Desa Kemuning yang memiliki beberapa aliran sungai yang berpotensi untuk dibangun energi listrik dengan sistem mikrohidro, serta merekomendasikan sistem pembangkitan listrik yang bisa dibuat dari potensi yang ada tersebut. Sehingga bisa menjamin ketersediaan cadangan listrik bagi masyarakat untuk pemberdayaan UMKM Desa Kemuning.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664546">
+                            <xmp>Mengenal Tipologi Sosial Masyarakat Desa Sapit Kecamatan Suela dalam Pengembangan Desa Wisata Budaya </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/7244290"><xmp>Amrina, Lisa</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 1 (2022): Februari </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664546" onclick="show_abstract(3664546)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/10/7" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/10/7" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Mengenal+Tipologi+Sosial+Masyarakat+Desa+Sapit+Kecamatan+Suela+dalam+Pengembangan+Desa+Wisata+Budaya&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i1.10">
+                                    DOI: 10.60004/komunita.v1i1.10                                </a>
+                                                    </p>
+                        <div id="show_abstract3664546" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Sapit is a village that has seen rapid development in the tourism sector. Sapit is also known as a village with many cultures that have been preserved from generation to generation. In general, with the establishment of Sapit village as a tourist village, the social and cultural values ​​that are maintained should begin to fade, but in fact, the people of Sapit village really maintain local wisdom, namely customs and culture which are then used as profiles in developing tourism. This study aims to discuss the social typology of the Sapit village community, Suela sub-district in developing a tourist village. Data collection tools through interview guidelines, documentation, and surveys by distributing questionnaires. The sample selection in this study used a random sampling of 50 respondents. Next, the data analysis technique is to interpret, describe, and draw research conclusions. The results show that Sapit village is included in mechanical solidarity, because the Sapit village community in developing a tourist village cooperates with each other in any way, especially in the Sapit village youth group and for the community both from teenagers to adults, still willing to participate in the development process, even though it only provides support in material and non-material forms. Sapit merupakan desa yang memiliki perkembangan pesat dalam sektor pariwisata. Sapit juga terkenal sebagai desa dengan banyaknya budaya-budaya yang dilestarikan secara turun-temurun. Secara umum, dengan dijadikannya desa Sapit sebagai desa wisata, seharusnya sedikit tidak nilai sosial dan budaya yang dipertahankan mulai luntur, tetapi kenyataannya masyarakat desa Sapit justru sangat mempertahankan kearifan lokal, yaitu adat dan budaya yang kemudian dijadikan profil dalam mengembangkan wisata. Penelitian ini bertujuan untuk membahas tentang tipologi sosial masyarakat desa Sapit kecamatan suela dalam mengembangkan desa wisata. Alat pengumpulan data melalui pedomaan wawancara, dokumentasi, dan survey dengan menyebarkan kuesioner. Pemilihan sampel pada penelitian ini menggunakan random sampling sebanyak 50 orang responden. Selanutnya teknik analisis data dengan mengterpretasikan, mendeskripsikan dan menarik kesimpulan penelitian. Hasil penelitian menunjukkan bahwa desa Sapit termasuk dalam solidaritas mekanik, karena masyarakat desa Sapit dalam mengembangkan desa wisata saling bekerjasama dari segi apapun, khusunya pada karang taruna desa Sapit dan untuk masyarakat baik dari kalangan remaja sampai dewasa masih mau berpartisipasi dalam proses pengembangan, walaupun hanya memberikan dukungan dari bentuk material mupun non material.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664547">
+                            <xmp>Wajah Toleransi Antar Budaya Pada Masyarakat Multikultural Di Desa Oi Bura Kecamatan Tambora Kabupaten Bima </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/7244291"><xmp>Andi Hasliyati Ike Safitri, Idris Sodikin</xmp></a>; <a class="author-article" href="/author/view/1825303"><xmp>Fahrudin</xmp></a>; <a class="author-article" href="/author/view/2056907"><xmp>Musafir, Musafir</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 1 (2022): Februari </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664547" onclick="show_abstract(3664547)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/11/8" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/11/8" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Wajah+Toleransi+Antar+Budaya+Pada+Masyarakat+Multikultural+Di+Desa+Oi+Bura+Kecamatan+Tambora+Kabupaten+Bima&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i1.11">
+                                    DOI: 10.60004/komunita.v1i1.11                                </a>
+                                                    </p>
+                        <div id="show_abstract3664547" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Artikel ini mengupas komunikasi antara budaya masyarakat berbagai budaya dan corak kehidupan masyarakat berbagai budaya di kampung Oi Bura, mukim Tambora, daerah Bima. Untuk menjawab persoalan ini, pengkaji menggunakan kaedah kualitatif yang berorientasikan kajian komunikasi antara budaya. Dengan menggunakan pendekatan deskriptif, pengkaji coba menguraikan bagaimana fenomena komunikasi antara budaya dalam masyarakat budaya dengan berbagai kearifan lokal yang dimiliki oleh kampung Oi Bura, pengkaji turut menerangkan bagaimana corak kelestarian kehidupan sosial yang menjadi ciri masyarakat majmuk. Hasil kajian ini menunjukkan bahwa masyarakat Oi Bura dalam memupuk semangat komunikasi antara budaya dengan menghidupkan kearifan lokal dalam menempelkan keharmonisan dalam masyarakat majmuk ialah: tradisi Nyongkolan, tradisi keagamaan, tradisi Weha Rima, tradisi Teka Ra Ne'e, dan Mbolo. Tradisi Weki. Masyarakat Oi Bura juga mempunyai corak kehidupan sosial seperti berikut: Pola gotong royong, pola sistem keagamaan, pola sistem kekerabatan/organisasi sosial, pola kehidupan ekonomi, pola sistem pendidikan, dan seni.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664548">
+                            <xmp>Penerapan Pembiayaan Mudharabah Dalam Pengembalian Pembiayaan UMKM Syariah Di Desa Pematang Serai Kecamatan Tanjung Pura Kabupaten Langkat </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/7244292"><xmp>Nasution, Nina Andriany, Miftha Rizkina</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 2 (2022): Agustus </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664548" onclick="show_abstract(3664548)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/19/13" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/19/13" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Penerapan+Pembiayaan+Mudharabah+Dalam+Pengembalian+Pembiayaan+UMKM+Syariah+Di+Desa+Pematang+Serai+Kecamatan+Tanjung+Pura+Kabupaten+Langkat&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i2.19">
+                                    DOI: 10.60004/komunita.v1i2.19                                </a>
+                                                    </p>
+                        <div id="show_abstract3664548" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">The main purpose of this service is to find out the application of Mudharabah Financing in Refunding Sharia UMKM Financing in Pematang Serai Village, Tanjung Pura District, Langkat Regency. This service uses a qualitative descriptive approach. The main data source from field data by collecting data from informants in this case is the BUMDes. The results of the service show that the most important thing in mudharabah financing is the return of financing in the form of profit sharing from both parties according to sharia principles, especially fund managers. Because the profits that are shared are the results of operations (reveneu sharing) and net income (profit sharing). BUMDes savings and loans provide capital to MSME entrepreneurs to be used in running MSME businesses, and MSME actors as managers of these funds can increase MSME businesses by purchasing assets, developing business, increasing net income and generating high profits.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664549">
+                            <xmp>Tata Kelola Dana Desa Agar Terhindar dari Tindak Pidana Korpusi Bagi Perangkat Desa di Desa Sekotong Barat </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/7244293"><xmp>fathur Rauzi, Khairul Aswadi, Sukarno</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 2 (2022): Agustus </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664549" onclick="show_abstract(3664549)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/22/12" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/22/12" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Tata+Kelola+Dana+Desa+Agar+Terhindar+dari+Tindak+Pidana+Korpusi+Bagi+Perangkat+Desa+di+Desa+Sekotong+Barat&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i2.22">
+                                    DOI: 10.60004/komunita.v1i2.22                                </a>
+                                                    </p>
+                        <div id="show_abstract3664549" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Dana Desa yang rutin diberikan oleh Pemerintah Pusat ke Desa rentan terjadi korupsi. Program pengabdian kepada masyarakat ini bertujuan untuk menguraikan urgensi peningkatan partisipasi masyarakat dalam mencegah korupsi untuk meningkatkan kualitas pelayanan publik di desa Sekotong Barat kecamatan Sekotong Kabupaten Lombok Barat. Setelah dilakukan program pengabdian dengan memberika penyuluhan hukum terkait tata kelola dana desa agar terhindar dari tindak pidana korpusi, para perangkata desa setempat menjadi lebih sadar dan paham tentang pentingnya akuntabilitas dan partisipasi masyarakat dalam pengelolaan keuangan desa. Kemudian, upaya yang dapat dilakukan dalam meningkatkan partisipasi publik dalam mencegah korupsi yakni dengan penyediaan akses informasi program dan anggaran desa yang memadai, kesadaran masyarakat untuk berpartisipasi, akses komunikasi terhadap perangkat desa oleh masyarakat yang mudah, optimalnya organisasi kemasyarakatan desa, dan optimalisasi peran Badan Perwakilan Daerah.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664550">
+                            <xmp>Pelatihan Membuat Website Digital Marketing Dengan Google Site Untuk Meningkatkan Kompetensi Keahlian Dikalangan Mahasiswa </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/3677817"><xmp>Lukman Nuzul Hakim</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 2 (2022): Agustus </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664550" onclick="show_abstract(3664550)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/23/14" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/23/14" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Pelatihan+Membuat+Website+Digital+Marketing+Dengan+Google+Site+Untuk+Meningkatkan+Kompetensi+Keahlian+Dikalangan+Mahasiswa&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i2.23">
+                                    DOI: 10.60004/komunita.v1i2.23                                </a>
+                                                    </p>
+                        <div id="show_abstract3664550" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Kegiatan ini bertujuan untuk memberikan pendampingan kepada pembuatan website sederhana untuk kegiatan pemasaran digital dan pengenalan pentingnya website sebagai salah satu channel digital yang paling lengkap untuk memberikan sumber informasi dalam memasarkan produk secara online. Pada pelaksanaan kegiatan pengabdian ini melakukan pelatihan pembuatan website sederhana dengan menggunakan fasilitas Google Site, sehingga mahasiswa dapat terampil dalam membuat dan mengelola website serta konten-konten pemasaran bekal untuk menghadapi persaingan di dunia kerja setelah lulus kuliah atau bagi yang ingin berwirausaha nantinya. Metode kegiatan dalam pelaksanaan menggunakan berbagai metode seperti ceramah, diskusi dan praktik pembuatan website (learning by doing). Kegiatan pelatihan ini diharapkan menghasilkan 1 website pada setiap pesertanya.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3664551">
+                            <xmp>The Appropriate Technology for Aquaponics in Narrow Land by KKN UNS Group in Ngarap-Arap Village, Grobogan </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/7244254"><xmp>Zuhri, Moh Sayful</xmp></a>; <a class="author-article" href="/author/view/2981381"><xmp>Sahirul Alim Tri Bawono</xmp></a>; <a class="author-article" href="/author/view/6362861"><xmp>Aziza Ridha Septika</xmp></a>; <a class="author-article" href="/author/view/6362862"><xmp>Willis Safitri</xmp></a>; <a class="author-article" href="/author/view/6362863"><xmp>Arnold Mario Luhut Martua Tambunan</xmp></a>; <a class="author-article" href="/author/view/6362864"><xmp>Mohamad Ashraf Irfanda</xmp></a>; <a class="author-article" href="/author/view/6362865"><xmp>Eka Febryani Raihan Putri</xmp></a>; <a class="author-article" href="/author/view/6362866"><xmp>Hanifah Pammula Istigfarin</xmp></a>; <a class="author-article" href="/author/view/6362867"><xmp>Filia Ariska Meylana</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> KOMUNITA: Jurnal Pengabdian dan Pemberdayaan Masyarakat Vol 1 No 2 (2022): Agustus </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">PELITA NUSA TENGGARA </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3664551" onclick="show_abstract(3664551)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/download/24/15" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.pelitanusa.or.id/index.php/komunita/article/view/24/15" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;The+Appropriate+Technology+for+Aquaponics+in+Narrow+Land+by+KKN+UNS+Group+in+Ngarap-Arap+Village+Grobogan&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.60004/komunita.v1i2.24">
+                                    DOI: 10.60004/komunita.v1i2.24                                </a>
+                                                    </p>
+                        <div id="show_abstract3664551" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Utilization of narrow land is a trend that needs to be developed at this time in supporting family food self-sufficiency. The role and use of yard land varies greatly from one area to another, depending on the level of need, socio-cultural, community education, as well as physical and ecological factors of the local area. Agriculture with aquaponics techniques can provide many benefits to farmers and the community, including being able to produce two products at once, namely fresh organic vegetables and fish. Real Work Lectures (KKN) by Sebelas Maret University students, carry out programs that have been agreed upon and adapted to the needs of the community at the KKN location. The activity was carried out at the home of the head of the Brenggolo hamlet with the work program of Extension on the Utilization of Vertical Farming and Workshop on Appropriate Aquaponic Technology in Narrow Land. Through this program, he hopes to be able to give the role of independence to the community in the use of narrow land in the yard of the house.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                            
+                            <div class="ui two column stackable grid">
+                    <div class="column">
+                        <p class="pagination-info">
+                            Page 1 of 23                            | Total Record : 223 
+                        </p>
+                    </div>
+                    <div class="column">
+                                                    <div class="page-column"  style="float: right !important;">
+                                <a href="?page=1" class="ui mini icon button">
+                                    <i class="angle double left icon"></i>
+                                </a>                                
+                                                                    <a href="?page=1" class="ui mini icon button red">
+                                        &nbsp;1&nbsp;
+                                    </a>
+                                                                    <a href="?page=2" class="ui mini icon button ">
+                                        &nbsp;2&nbsp;
+                                    </a>
+                                                                    <a href="?page=3" class="ui mini icon button ">
+                                        &nbsp;3&nbsp;
+                                    </a>
+                                                                    <a href="?page=4" class="ui mini icon button ">
+                                        &nbsp;4&nbsp;
+                                    </a>
+                                                                    <a href="?page=5" class="ui mini icon button ">
+                                        &nbsp;5&nbsp;
+                                    </a>
+                                                            
+                                <a href="?page=23" class="ui mini icon button">
+                                    <i class="angle double right icon"></i>
+                                </a>
+
+                                <a class="circular mini ui icon button right floated scroll-top">
+                                    <i class="icon arrow circle up"></i>
+                                </a>
+                            </div>                        
+                                            </div>
+                </div>
+                <br>
+            
+        </div>
+    </div>
+    <div class="four wide column">
+                
+        <div class="ui segment padded">
+            <a class="ui top attached label">Filter by Year</a>
+            <p>
+                2022                <span style="float: right"> 2026</span>
+            </p> 
+            <div id="slider-range"></div>
+            <br>
+
+            <form id="filter_year" class="ui mini form" action="" method="get">
+                                <div class="equal width fields">
+                    <div class="field">
+                        <label>From</label>
+                        <input type="text" id="from" name="from">
+                    </div>
+                    <div class="field">
+                        <label>To</label>
+                        <input type="text" id="to" name="to">
+                    </div>
+                </div>
+                <div class="equal width fields">
+                    <div class="field">
+                        <button class="ui mini fluid button" type="submit">Filter</button>
+                    </div>
+                    <div class="field">
+                        <a class="ui mini fluid button basic red" href="/journal/view/32451">Reset</a>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        
+                    <div class="ui segment padded issue-box">
+                <div class="ui top attached label">Filter By Issues</div>
+                                <a class="title-issue title-issue-active" href="/journal/view/32451"> All Issue</a>
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 5 No 1 (2026): Februari"> Vol 5 No 1 (2026): Februari</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 4 No 4 (2025): November"> Vol 4 No 4 (2025): November</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 4 No 3 (2025): Agustus"> Vol 4 No 3 (2025): Agustus</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 4 No 2 (2025): Mei"> Vol 4 No 2 (2025): Mei</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 4 No 1 (2025): Februari"> Vol 4 No 1 (2025): Februari</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 3 No 2 (2024): Agustus"> Vol 3 No 2 (2024): Agustus</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 3 No 1 (2024): Februari"> Vol 3 No 1 (2024): Februari</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 2 No 2 (2023): Agustus"> Vol 2 No 2 (2023): Agustus</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 2 No 1 (2023): Februari"> Vol 2 No 1 (2023): Februari</a>
+                     
+                                                            <span id="dots-issue"></span>
+                        <span id="more-issue">
+                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 1 No 2 (2022): Agustus"> Vol 1 No 2 (2022): Agustus</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/32451?issue=Vol 1 No 1 (2022): Februari"> Vol 1 No 1 (2022): Februari</a>
+                     
+                                </span>
+                                    <a onclick="readMore()" id="btn-issue">More Issue</a>
+                            </div>
+            </div>
+</div>
+
+<script>
+	var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [
+                                   2026,                                   2025,                                   2024,                                   2023,                                   2022,                			],
+			datasets: [{
+				label: 'Articles',
+				data: [
+                                            57,                                            125,                                            15,                                            13,                                            13,                    				],
+				backgroundColor: [
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                    				],
+				borderColor: [
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                    				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: true,
+    		maintainAspectRatio: false,
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero:true
+					}
+				}]
+			}
+		}
+	});
+
+    $( function() {
+        $("#slider-range" ).slider({
+            range: true,
+            min: 2022,
+            max: 2026,
+            values: [ 2022, 2026 ],
+            slide: function( event, ui ) {
+                $("#from").val(ui.values[ 0 ]);
+                $("#to").val(ui.values[ 1 ]);
+            }
+        });
+        $("#from").val( $( "#slider-range" ).slider( "values", 0 ));
+        $("#to").val($( "#slider-range" ).slider( "values", 1 ));
+    });
+
+    function readMore() {
+        var dots = document.getElementById("dots-issue");
+        var moreText = document.getElementById("more-issue");
+        var btnText = document.getElementById("btn-issue");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "More Issue"; 
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Less Issue"; 
+            moreText.style.display = "inline";
+        }
+    }
+</script><!-- </div> -->
+</main>
+
+<div class="links-box">
+    <ul>
+        <li><a href="https://sinta.kemdiktisaintek.go.id" target="_blank">Sinta</a></li>
+        <li><a title="Basis Informasi Penelitian dan Pengabdian kepada Masyarakat" href="https://bima.kemdiktisaintek.go.id" target="_blank">Bima</a></li>
+        <li><a title="Akreditasi Jurnal Nasional" href="https://arjuna.kemdiktisaintek.go.id" target="_blank">Arjuna</a></li>
+        <li><a title="Pangkalan Data Pendidikan Tinggi Ristekdikti" href="https://pddikti.kemdiktisaintek.go.id" target="_blank">PDDIKTI</a></li>
+        <li><a title="Data Riset dan Pengembangan Ristekdikti" href="https://dikti.kemdiktisaintek.go.id/" target="_blank">Risbang</a></li>
+        <li><a title="The Largest Abstract and Citation Database of Peer-Reviewed Literature" href="https://www.scopus.com" target="_blank">Scopus</a></li>
+        <li><a title="Repositori Tugas Akhir Mahasiswa" href="https://rama.kemdiktisaintek.go.id/" target="_blank">Rama</a></li>
+    </ul>
+</div>
+<footer class="ui grid equal width footer">
+    <div class="clearfix"></div>
+    <div class="column">
+        <img src="/assets/img/logo_dikbud.png" />
+        <div class="footer-company">Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi </div>
+        <div class="footer-subcompany">(The Ministry of Education, Culture, Research, and Technology)</div>
+        <div class="footer-copyright">&copy; 2018</div>
+    </div>
+    <div class="column"></div>
+</footer>
+<!-- UI KIT -->
+
+
+
+
+<script>
+    setTimeout(function() {
+        // $('#flash_message').slideUp( 300, "linear" );
+        $('#flash_message').fadeOut( "slow");
+    }, 2000);
+</script>
+<!-- AUTOSEARCH BUKU-->
+<script>
+    $(function() {
+        $("#suggest_pub").autocomplete({
+            source: "/suggest/findPublisher",
+            select: function( event, ui ) {
+                event.preventDefault();
+                $("#suggest_pub").val(ui.item.value);
+            }
+        });
+    });
+</script>
+<!-- END AUTOSEARCH BUKU-->
+
+
+<script type="text/javascript">
+    $('.ui.checkbox').checkbox();
+    $('select.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
+    $('.top.menu .item').tab();
+
+    $(document).ready(function () {
+
+        $("#sort").change(function () {
+            var page = 1;
+            // $("#sort").val(page);
+            $("#form_sort").submit();
+        });
+
+        $("#select_item").change(function () {
+            var page = 1;
+            $("#page").val(page);
+            $("#form_journal").submit();
+        });        
+
+        $("#select_item").change(function () {
+            var page = 1;
+            $("#page").val(page);
+            $("#form_alphabeth").submit();
+        });
+
+        $("#select_item").change(function () {
+            var page = 1;
+            $("#page").val(page);
+            $("#form_search").submit();
+        });
+
+        $('#page').keydown(function () {
+            var key = e.which;
+            if (key == 13) {
+                $('#form_journal').submit();
+            }
+        });
+
+        $('#form_journal').keydown(function () {
+            var key = e.which;
+            if (key == 13) {
+                // As ASCII code for ENTER key is "13"
+                $('#form_journal').submit(); // Submit form code
+            }
+        });
+
+        $('.demo.menu .item').tab({history: false});
+
+        $('.area-cloud a').tagcloud();
+
+    });
+
+    $('.ui.top.attached.tabular.menu .item').tab({history: false});
+
+    $.fn.tagcloud.defaults = {
+        size: {start: 9, end: 30, unit: 'pt'},
+        color: {start: '#444', end: '#ed462f'}
+    };
+
+    function show_abstract(id){
+        $('#show_abstract'+id).slideToggle();
+    }
+
+    $(document).ready(function () {
+        $('#adv-btn').on('click', function () {
+            $('#adv-box').slideToggle('slow');
+            $('#form-journal').slideToggle('slow');
+        });
+
+        $('#adv-less').on('click', function () {
+            $('#adv-box').slideToggle('slow');
+            $('#form-journal').slideToggle('slow');
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>

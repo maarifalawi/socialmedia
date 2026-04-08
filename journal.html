@@ -1,0 +1,993 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="garuda garba rujukan digital">
+        <meta name="author" content="kementrian riset, teknologi dan pendidikan tinggi">
+        <link rel="icon" href="/assets/img/garuda-icon.png">
+
+        <title>Garuda - Garba Rujukan Digital</title>
+
+        <!-- SEMANTIC UI -->
+        <link href="/assets/semantic/semantic.min.css" rel="stylesheet">
+        <link href="/assets/semantic/components/reset.css" rel="stylesheet"> 
+
+        <link href="/assets/css/main.css" rel="stylesheet">
+        <link href="/assets/css/app.css" rel="stylesheet">
+        <link href="/assets/css/flash-message.css" rel="stylesheet">
+        
+        <!-- JQUERY UI - AUTOCOMPLETE -->
+        <link href="/assets/css/jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+        <script src="/assets/js/jquery.js"></script>
+        <script src="/assets/semantic/semantic.min.js"></script>
+        <script src="/assets/js/jquery.tagcloud.js" type="text/javascript"></script>
+        <script src="/assets/js/Chart.js"></script>
+        <script src="/assets/custom/main.js"></script>
+        <script src="/assets/js/app.js"></script>
+        <!-- JQUERY UI - AUTOCOMPLETE -->
+        <script src="/assets/js/jquery-ui/jquery-ui.min.js"></script>
+    </head>
+
+
+
+    <body>
+                <div class="ui stackable menu top-menu">
+            <a class="header item brand" href="/">
+                 <img src="/assets/img/garuda1.png" alt=""> 
+            </a>
+            <div class="right menu">
+                <a class="nav item " href="/">Home</a>
+                <a class="nav item " href="/publisher">Publisher</a>
+                <a class="nav item active" href="/journal">Journal / Conference</a>
+                <a class="nav item " href="/area">Subject</a>
+                <a class="nav item " href="/suggest">Suggest</a>
+                <a class="nav item" target="_blank" href="https://drive.google.com/drive/folders/19TuyOLkABcMgh99AgLweV-B8BE1wcUl8?usp=sharing">Guidebook</a>
+                <a class="nav item disabled">&nbsp;</a>
+            </div>
+        </div>
+
+        <main role="main" class="container">
+
+<style>
+    #more-issue {display: none;}
+</style>
+
+<div class="clearfix"></div>
+<div class="ui grid stackable stat-box">
+
+</div>
+<div class="ui stackable grid content-wrapper">
+    <div class="ui three wide column">
+        <div class="ui segment">
+            <div class="j-meta-img">
+                <img width="100%" class="ui image rounded" src="/imageview/journal?id=28069&size=" alt="cover" />
+            </div>
+        </div>
+
+        <div class="ui segment padded">
+            <a class="ui top attached label">Article Per Year (5 Year)</a>
+            <div style="height:200px; width:100%">
+                <canvas id="myChart"></canvas>
+            </div>
+            <a class="ui mini fluid button" href="/journal/analysis/28069">All</a>
+        </div>
+    
+        <div class="ui segment padded">
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.unugiri.ac.id/index.php/JaRCOMS" target="_blank"><i class="angle right icon"></i>Home Page</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.unugiri.ac.id/index.php/JaRCOMS/oai" target="_blank"><i class="angle right icon"></i>OAI Link</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.unugiri.ac.id/index.php/JaRCOMS/about/editorialTeam" target="_blank"><i class="angle right icon"></i>Editorial Team</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.unugiri.ac.id/index.php/JaRCOMS/about/contact" target="_blank"><i class="angle right icon"></i>Contact</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://journal.unugiri.ac.id/index.php/JaRCOMS/reviewer" target="_blank"><i class="angle right icon"></i>Reviewer</a></h5>
+            <h5 class="ui header" style="margin: 4px !important;"><a href="https://scholar.google.com/citations?user=ROiwQo8AAAAJ" target="_blank"><i class="angle right icon"></i>Google Scholar</a></h5>
+            
+        </div>
+        <div class="ui segment">
+        <h5 class="ui header">
+                <i class="user outline icon red"></i>
+                <div class="content">
+                    Contact Name
+                    <div class="sub header">M. Ivan Ariful Fathoni</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="mail outline icon red"></i>
+                <div class="content">
+                    Contact Email
+                    <div class="sub header" style="word-break: break-all !important;">fathoni@unugiri.ac.id</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="phone icon red"></i>
+                <div class="content">
+                    Phone
+                    <div class="sub header">-</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="mail outline icon red"></i>
+                <div class="content">
+                    Journal Mail Official
+                    <div class="sub header" style="word-break: break-all !important;">jarcoms.pmtk@unugiri.ac.id</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="marker icon red"></i>
+                <div class="content">
+                    Editorial Address
+                    <div class="sub header">Program Studi Pendidikan Matematika Universitas Nahdlatul Ulama Sunan Giri Jl.A.Yani No.10 Bojonegoro Jawa Tmur 62115</div>
+                </div>
+            </h5>
+            <h5 class="ui header">
+                <i class="marker icon red"></i>
+                <div class="content">
+                    Location
+                    <div class="sub header">Kab. bojonegoro,</div>
+                    <div class="sub header">Jawa timur</div>
+                    <div class="sub header">INDONESIA</div>
+                </div>
+            </h5>
+        </div>
+    </div>
+    <div class="nine wide column">
+        <div class="ui segment j-info-box">
+            <div class="j-meta-title">
+				Journal of Research Applications in Community Services			</div>
+            <div class="j-meta-abbrev">
+                <ul>
+                    <li>JaRCOMS</li>
+                    <li><a target="_blank" href="https://journal.unugiri.ac.id/index.php/JaRCOMS"><i class="ui icon globe"></i>Website</a></li>
+                </ul>
+            </div>
+            <div class="j-meta-pub">
+                Published by <a href="#!">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro</a>
+            </div>
+
+            <div class="j-meta-pub">
+                ISSN : <a href="#!">29639271</a> &nbsp;&nbsp;&nbsp;
+                EISSN : <a href="#!">29629586</a> &nbsp;&nbsp;&nbsp;
+                DOI : <a href="#!">https://doi.org/10.32665/jarcoms</a>
+            </div>
+            
+            <div class="j-meta-pub">
+                Core Subject : <a href="#!">
+                                    Religion,
+                                    Economy,
+                                    Humanities,
+                                    Health,
+                                    Education,
+                                    Art,
+                                    Social,
+                </a>
+            </div>
+            
+            <div class="j-meta-subject">
+                                    <a class="ui tag label grey mini" href="/area/index/1">Religion</a>
+                                    <a class="ui tag label grey mini" href="/area/index/23">Arts</a>
+                                    <a class="ui tag label grey mini" href="/area/index/24">Humanities</a>
+                                    <a class="ui tag label grey mini" href="/area/index/95">Economics, Econometrics &amp; Finance</a>
+                                    <a class="ui tag label grey mini" href="/area/index/97">Education</a>
+                                    <a class="ui tag label grey mini" href="/area/index/135">Languange, Linguistic, Communication &amp; Media</a>
+                                    <a class="ui tag label grey mini" href="/area/index/170">Medicine &amp; Pharmacology</a>
+                                    <a class="ui tag label grey mini" href="/area/index/185">Public Health</a>
+                                    <a class="ui tag label grey mini" href="/area/index/190">Social Sciences</a>
+                                    <a class="ui tag label grey mini" href="/area/index/500">Other</a>
+                            </div>
+
+
+            <div class="j-meta-desc">Journal of Research Applications in Community Service (JaRCOMS) merupakan journal penerapan riset dalam kegiatan pengabdian kepada masyarakat (PKM). Jurnal ini terbit empat kali setiap tahun, yaitu edisi Maret, Juni, September, dan Desember. Dipublikasikan oleh Program Studi Pendidikan Matematika, Universitas Nahdlatul Ulama Sunan Giri. Focus dan Scope jurnal meliputi semua hasil pengabdian kepada Masyarakat yang berbasis riset di bidang sosial dan humaniora, kependidikan, sains, keolahragaan, bahasa, bisnis dan ekonomi, teknik dan kejuruan, kesenian, dan keagamaan.</div>
+            
+            <div class="j-meta-pub" style="font-size: 14px;">
+                Arjuna Subject : 
+                <a href="#!">
+                    Ilmu Sosial - Ilmu Sosial (Lain-Lain)                </a>
+            </div>
+        </div>
+        <div class="ui segment padded article-box">
+            <div class="ui top attached label">Articles 
+                <span style="float: right;">87 Documents</span>
+            </div>
+
+            <div class="ui equal width grid">
+                <div class="column">                    
+                    <form id="form-journal" class="ui form mini search-pub-form" action="" method="GET">
+                                                                                                <div class="inline fields">                            
+                            <div class="fourteen wide field">
+                                <input type="text" name="q" placeholder="Search Title" value="" minlength="3" required>
+                            </div>
+                            <div class="two wide field">
+                                <button class="ui icon button mini red" type="submit"><i class="icon search"></i></button>
+                            </div>
+                        </div>
+                    </form>                  
+                </div>
+                <div class="column right aligned">
+                                            <a href="?page=1" class="ui mini icon button">
+                            <i class="angle double left icon"></i>
+                        </a>                                
+                                                    <a href="?page=1" class="ui mini icon button red">
+                                &nbsp;1&nbsp;
+                            </a>
+                                                    <a href="?page=2" class="ui mini icon button ">
+                                &nbsp;2&nbsp;
+                            </a>
+                                                    <a href="?page=3" class="ui mini icon button ">
+                                &nbsp;3&nbsp;
+                            </a>
+                                                    <a href="?page=4" class="ui mini icon button ">
+                                &nbsp;4&nbsp;
+                            </a>
+                                                    <a href="?page=5" class="ui mini icon button ">
+                                &nbsp;5&nbsp;
+                            </a>
+                                                    
+                        <a href="?page=9" class="ui mini icon button page-button">
+                            <i class="angle double right icon"></i>
+                        </a>
+                                    </div>
+            </div>
+
+                        
+            <div class="ui divider"></div>
+
+                                                <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194294">
+                            <xmp>Meningkatkan Penjualan Pakan Ikan dan Obat Ikan pada Toko Indo Multi Fish P.S Melalui Marketing Digital </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/3644146"><xmp>Nalsa Cintya Resti</xmp></a>; <a class="author-article" href="/author/view/5662072"><xmp>Dwi Shinta Rahayu</xmp></a>; <a class="author-article" href="/author/view/4419526"><xmp>Apriliyani Diah Kartikasari</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 1 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194294" onclick="show_abstract(3194294)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/564/638" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/564/638" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Meningkatkan+Penjualan+Pakan+Ikan+dan+Obat+Ikan+pada+Toko+Indo+Multi+Fish+PS+Melalui+Marketing+Digital&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194294&val=28069&title=Meningkatkan Penjualan Pakan Ikan dan Obat Ikan pada Toko Indo Multi Fish PS Melalui Marketing Digital">
+                                    Full PDF (427.892 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i1.564">
+                                    DOI: 10.32665/jarcoms.v1i1.564                                </a>
+                                                    </p>
+                        <div id="show_abstract3194294" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Perkembangan teknologi digital sangat memungkinkan para pelaku usaha di Indonesia untuk memasarkan produknya secara online serta dapat melakukan transaksi melalui suatu sistem secara online pula. Hal ini tidak lepas dari sifat pemasaran yang  universal yang dapat diterapkan dimana-mana. Kegiatan pengabdian masyarakat “Meningkatkan Penjualan Pakan Ikan dan Obat Ikan pada Toko Indo Multi Fish P.S Melalui Marketing Digital” ini berupa pelatihan dengan metode Diskusi Kelompok Terarah atau Focus Group Discussion (FGD) dan demonstrasi penggunaan media sosial dalam memasarkan produk. Materi dalam pelatihan berupa pengenalan teknologi pemasaran, pengenalan media sosial sebagai saran promosi yang efektif dan efisien, dan pembuatan akun media sosial (Instagram, whatsapp, dan Facebook Page) untuk tujuan marketing digital toko. Dari kegiatan pelatihan ini, pengetahuan dan keterampilan peserta pelatihan dalam memanfaatkan teknologi pemasaran online meningkat, salah satunya ditunjukkan dengan dihasilkannya akun-akun media sosial untuk keperluan marketing digital toko Indo Multi Fish P.S. Berdasarkan kegiatan pengabdian ini dihasilkan bahwa pemilik dan staff Toko Indo Multi Fish P.S memahami keuntungan menggunakan media sosial sebagai alat marketing digital untuk meningkatkan penjualan produk secara lebih efektif dan efisien.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194295">
+                            <xmp>Pelatihan Strategi Marketing Bagi Masyarakat Desa Kanten Kecamatan Trucuk Kabupaten Bojonegoro </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/4230107"><xmp>Ida Fauziatun Nisa</xmp></a>; <a class="author-article" href="/author/view/991947"><xmp>M. Ivan Ariful Fathoni</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 1 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194295" onclick="show_abstract(3194295)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/565/637" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/565/637" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Pelatihan+Strategi+Marketing+Bagi+Masyarakat+Desa+Kanten+Kecamatan+Trucuk+Kabupaten+Bojonegoro&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194295&val=28069&title=Pelatihan Strategi Marketing Bagi Masyarakat Desa Kanten Kecamatan Trucuk Kabupaten Bojonegoro">
+                                    Full PDF (476.809 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i1.565">
+                                    DOI: 10.32665/jarcoms.v1i1.565                                </a>
+                                                    </p>
+                        <div id="show_abstract3194295" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Marketing atau pemasaran merupakan suatu kegiatan untuk mengenalkan dan mempromosikan produk kepada konsumen atau khalayak umum. Teknologi, dunia digital dan internet yang berkembang pesat sangat berpengaruh pada dunia pemasaran, sehingga terciptalah paradigma baru dalam dunia usaha yakni digital marketing. Target pelatihan ini adalah Ibu-Ibu PKK Desa Kanten Kabupaten Bojonegoro. Sebagian besar mata pencaharian masyarakat Desa Kanten adalah bertani dan berdagang, sehingga sangat tepat untuk menerapkan strategi marketing yang baik untuk menjalankannya. Tujuan utama kegiatan pengabdian masyarakat ini yaitu menanamkan semangat wirausaha. Selama pelatihan, peserta memberikan respon yang positif terhadap program yang dilaksanakan. Dari instrumen kepuasan yang dibagikan diketahui bahwa program ini dapat memberi manfaat bagi bagi peserta. Pemateri dan keseluruhan program ini mendapatkan respon positip dari para peserta.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194296">
+                            <xmp>Pelatihan Pembuatan Kerajinan Limbah Pohon Pisang Sebagai Upaya Peningkatan UMKM Masyarakat Desa Kedungrejo </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/1590901"><xmp>Aprillia Dwi Ardianti</xmp></a>; <a class="author-article" href="/author/view/3451340"><xmp>Fahmi Khumaini</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 1 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194296" onclick="show_abstract(3194296)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/582/636" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/582/636" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Pelatihan+Pembuatan+Kerajinan+Limbah+Pohon+Pisang+Sebagai+Upaya+Peningkatan+UMKM+Masyarakat+Desa+Kedungrejo&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194296&val=28069&title=Pelatihan Pembuatan Kerajinan Limbah Pohon Pisang Sebagai Upaya Peningkatan UMKM Masyarakat Desa Kedungrejo">
+                                    Full PDF (478.091 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i1.582">
+                                    DOI: 10.32665/jarcoms.v1i1.582                                </a>
+                                                    </p>
+                        <div id="show_abstract3194296" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Desa Kedungrejo merupakan desa yang terletak di Kec. Sumberrejo Kab. Bojonegoro. Desa Kedungrejo kaya akan pohon pisang yang limbah pohonnya dimanfaatkan oleh masyarakat setempat untuk dijual sebagai bahan baku tali dan kerajinan. Pohon pisang yang sudah berbuah biasanya ditebang dan tidak bisa menghasilkan apa-apa, padahal batang pisang masih bisa dimanfaatkan untuk menghasilkan produk-produk yang memiliki nilai ekonomis. Berdasarkan hasil analisis potensi yang dimiliki Desa Kedungrejo, maka kegiatan Pengabdian kepada masyarakat kali ini adalah memberikan pelatihan pembuatan tali dan kerajianan tangan dari pohon pisang. Sasaran kegiatan ini adalah kelompok pemuda-pemudi karang taruna dan ibu-ibu PKK. Metode pelaksanaan meliputi penyuluhan, pelatihan, dan pelaporan. Kegiatan ini menghasilkan beberapa produk kerajinan dari limbah pohon pisang diantaranya adalah tas, peci, wadah tisu, vas bunga, topi, kotak makan, dan dompet.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194297">
+                            <xmp>Peningkatan Perekonomian Masyarakat Desa Sambongrejo Melalui Produksi Makanan Berbahan Dasar Tahu </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/6252205"><xmp>Muhammmad Zaenal Abidin</xmp></a>; <a class="author-article" href="/author/view/3579518"><xmp>Ita Aristia Sa’ida</xmp></a>; <a class="author-article" href="/author/view/5662075"><xmp>Siti Cholifah</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 1 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194297" onclick="show_abstract(3194297)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/880/680" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/880/680" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Peningkatan+Perekonomian+Masyarakat+Desa+Sambongrejo+Melalui+Produksi+Makanan+Berbahan+Dasar+Tahu&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194297&val=28069&title=Peningkatan Perekonomian Masyarakat Desa Sambongrejo Melalui Produksi Makanan Berbahan Dasar Tahu">
+                                    Full PDF (375.728 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i1.880">
+                                    DOI: 10.32665/jarcoms.v1i1.880                                </a>
+                                                    </p>
+                        <div id="show_abstract3194297" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Desa Sambongrejo merupakan salah satu desa yang terletak di kecamatan Sumberrejo Kabupaten Bojonegoro. Di desa tersebut terdapat pabrik tahu yang dikelola secara tradisional. Tahu tersebut dijual secara langsung kepada para penjual lain ataupun konsumen lansung. Tahu yang diolah lebih lanjut tentunya memiliki nilai ekonomis lebih tinggi dan dapat meningkatan pendapatan masyarakat. Berdasarkan hasil analisa tersebut, kegiatan pengabdian kepada masyarakat ini adalah pemberian pelatihan produksi makanan berbahan baku tahu dan lomba memasak berbahan baku tahu. Sasaran kegiatan ini adalah ibu-ibu PKK dan kelompok pemuda-pemudi karang taruna Desa Sambongrejo. Metode pelaksanaan pengabdian adalah penyuluhan, pelatihan, perlombaan dan pelaporan. Kegiatan ini menghasilkan beberapa produk makanan berbahan dasar tahu di antaranyaadalah keripik tahu, lontong tahu, lumpia tahu dan rolade tahu.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194298">
+                            <xmp>Pelatihan Pembuangan Masker Sebagai Upaya Pencegahan Penyakit Infeksi di Desa Sukowati Kecamatan Kapas Kabupaten Bojonegoro </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/1908013"><xmp>Romadhiyana Kisno Saputri</xmp></a>; <a class="author-article" href="/author/view/4401670"><xmp>Titi Agni Hutahaen</xmp></a>; <a class="author-article" href="/author/view/5662077"><xmp>Musfirotun Ni'am</xmp></a>; <a class="author-article" href="/author/view/5662078"><xmp>Nabila Ulul Albabi</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 1 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194298" onclick="show_abstract(3194298)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/885/662" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/885/662" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Pelatihan+Pembuangan+Masker+Sebagai+Upaya+Pencegahan+Penyakit+Infeksi+di+Desa+Sukowati+Kecamatan+Kapas+Kabupaten+Bojonegoro&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194298&val=28069&title=Pelatihan Pembuangan Masker Sebagai Upaya Pencegahan Penyakit Infeksi di Desa Sukowati Kecamatan Kapas Kabupaten Bojonegoro">
+                                    Full PDF (351.792 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i1.885">
+                                    DOI: 10.32665/jarcoms.v1i1.885                                </a>
+                                                    </p>
+                        <div id="show_abstract3194298" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Pemakaian masker sekali pakai meningkat 30% -50% selama pandemi COVID-19. Sampah masker masuk ke dalam sampah infeksius atau sampah yang dapat menyebabkan penyakit infeksi, sehingga sebelum dibuang, perlu penanganan khusus yaitu didisinfeksi lalu dirusak masker dengan cara dilepas tali masker atau disobek.  Sampah masker skala rumah tangga harus dikumpulkan tersendiri, digunting, direndam dengan larutan disinfektan dan dibungkus dengan kantong plastik sebelum dibuang. Kegiatan pengabdian kepada masyarakat ini bertujuan untuk meningkatkan pengetahuan dan keterampilan masyarakat dalam membuang masker sebagai upaya pencegahan penyakit infeksi. Metode yang digunakan pada kegiatan ini adalah metode ceramah dan simulasi atau praktik langsung di depan sasaran. Sasaran adalah ibu-ibu PKK yang berjumlah 40 orang. Kegiatan ini memberikan hasil adanya peningkatan tingkat pengetahuan mengenai pembuangan masker yang tepat sebesar 55% dan peningkatan keterampilan mengenai pembuangan masker yang tepat sebesar 87,5%. Kegiatan pengabdian kepada masyarakat ini mampu meningkatkan pengetahuan dan keterampilan masyarakat dalam membuang masker sebagai upaya pencegahan penyakit infeksi.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194299">
+                            <xmp>Pelatihan Servis Sepeda Motor di Desa Wonosalam Kecamatan Wonosalam Kabupaten Jombang </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/369910"><xmp>Agung Samudra</xmp></a>; <a class="author-article" href="/author/view/4142879"><xmp>Mohammad Munib Rosadi</xmp></a>; <a class="author-article" href="/author/view/6530989"><xmp>Retno Eka Pramitasari</xmp></a>; <a class="author-article" href="/author/view/1703315"><xmp>Nanndo Yannuansa</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 2 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194299" onclick="show_abstract(3194299)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/1164/852" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/1164/852" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Pelatihan+Servis+Sepeda+Motor+di+Desa+Wonosalam+Kecamatan+Wonosalam+Kabupaten+Jombang&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194299&val=28069&title=Pelatihan Servis Sepeda Motor di Desa Wonosalam Kecamatan Wonosalam Kabupaten Jombang">
+                                    Full PDF (302.753 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i2.1164">
+                                    DOI: 10.32665/jarcoms.v1i2.1164                                </a>
+                                                    </p>
+                        <div id="show_abstract3194299" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Pada era revolusi industri 4.0, persaingan di dunia kerja sangatlah ketat dimana semua pekerjaan membutuhkan kemampuan dan keterampilan. Oleh karena itu, perlunya pelatihan yang dapat memberikan bekal kemampuan dan keterampilan untuk bekerja sehingga dapat bersaing dan mampu berdikari dengan menjadi seorang wirausahawan. Tujuan diadakannya pelatihan servis sepeda motor adalah untuk memberikan ilmu, pengalaman, dan kemampuan di bidang otomotif agar pemuda Desa Wonosalam dapat bersaing di dunia kerja dan diharapkan mampu membuka usaha sendiri. Pada program pelatihan yang telah diberikan terdiri atas teori dan praktik. Untuk teori, yang pertama dilakukan adalah memberikan pre-test kepada peserta pelatihan. Hal ini bertujuan untuk mengukur atau mengetahui pengetahuan awal peserta pelatihan sebelum diberikan materi. Selanjutnya, peserta pelatihan diberikan modul dan diberikan pemaparan oleh pemateri tentang servis sepeda motor dengan topik sistim bahan bakar sepeda motor menggunakan karburator. Setelah diberikan teori, peserta pelatihan melakukan praktik mulai dari pembongkaran, analisis komponen, pembersihan komponen, perakitan kembali komponen dan penyetelan karburator. Setelah selesai praktik, peserta diberikan post-test. Post-test bertujuan untuk mengetahui pengetahuan akhir dan pemahaman peserta pelatihan setelah mendapatkan pelatihan. Hasil yang didapatkan dari pelatihan adalah meningkatnya pengetahuan dan pemahaman peserta dalam servis sepeda motor dengan topik sistim bahan bakar sepeda motor menggunakan karburator.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194300">
+                            <xmp>Peningkatan Soft Skill Pengembangan Diri di Dunia Kerja Pada Santri Rumah Gemilang Indonesia Sentra Primer </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/2441171"><xmp>Bambang Eko Samiono</xmp></a>; <a class="author-article" href="/author/view/5662080"><xmp>Karina Amanda Puthy</xmp></a>; <a class="author-article" href="/author/view/5662081"><xmp>Yossi Anggraeni</xmp></a>; <a class="author-article" href="/author/view/5662082"><xmp>Helmi Yesri</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 2 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194300" onclick="show_abstract(3194300)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/1269/876" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/1269/876" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Peningkatan+Soft+Skill+Pengembangan+Diri+di+Dunia+Kerja+Pada+Santri+Rumah+Gemilang+Indonesia+Sentra+Primer&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194300&val=28069&title=Peningkatan Soft Skill Pengembangan Diri di Dunia Kerja Pada Santri Rumah Gemilang Indonesia Sentra Primer">
+                                    Full PDF (463.912 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i2.1269">
+                                    DOI: 10.32665/jarcoms.v1i2.1269                                </a>
+                                                    </p>
+                        <div id="show_abstract3194300" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Rumah Gemilang Indonesia (RGI) cabang Sentra Primer merupakan satu dari rumah singgah yang di kelola Al-Azhar Peduli Ummat dan merupakan salah satu program pemberdayaan yang mengadopsi platform pesantren dengan fokus pada penyelenggaraan pendidikan non formal dalam kemasan short course (kursus singkat).  Pada peserta short course Jurusan Perkantoran diperoleh permasalahan adanya kesiapan yang mereka punyai utamanya untuk menyongsong dunia kerja utamanya mengenai pengetahuan dan soft skill yang dibutuhkan di dunia kerja.  Solusi yang diberikan oleh program Pengabdian Masyarakat ini adalah dengan memberikan program motivasi, dan soft skill dalam bidang komunikasi dan problem solving.  Program ini di berikan dalam pelatihan yang dengan menerapkan metode paparan dan praktek berupa game serta test kemampuan kepada 8 orang peserta program.  Hasil yang diperoleh dalam kegiatan ini adalah bahwa program ini telah di ikuti oleh Santri RGI dengan baik berbagai materi dapat dipahami oleh siswa RGI sebagai bekal soft skill menuju jenjang karir yang akan datang.  Dari survei kepuasan diperoleh adanya angka kepuasan 4.5 dari 5 serta diperoleh informasi dari wawancara adanya perubahan pada pola pikir, cara pandang, dan adanya keinginan untuk mengaplikasikan ilmu barunya sebagai soft skill di lingkungan kerja.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194301">
+                            <xmp>Sosialisasi Hidup Ramah Lingkungan dan Pelatihan Menanam dengan Metode Hidroponik Sederhana Pada Anak PAUD Desa Candali Bogor </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/5662083"><xmp>Azka Salma Evandra</xmp></a>; <a class="author-article" href="/author/view/5662084"><xmp>Isna Ibnah Mudrikah</xmp></a>; <a class="author-article" href="/author/view/5662085"><xmp>Dinda Bunga Anugrah</xmp></a>; <a class="author-article" href="/author/view/5662086"><xmp>Ida Ayu Mas Amelia Kusumaningtyas</xmp></a>; <a class="author-article" href="/author/view/5662087"><xmp>Azzahra Putri Diandra</xmp></a>; <a class="author-article" href="/author/view/5662088"><xmp>Randilla Dewirani</xmp></a>; <a class="author-article" href="/author/view/5662089"><xmp>Iqbal Fattah</xmp></a>; <a class="author-article" href="/author/view/5662090"><xmp>Bagus Dwi Santoso</xmp></a>; <a class="author-article" href="/author/view/3345692"><xmp>Nunung Nurhasanah</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 2 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194301" onclick="show_abstract(3194301)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/1303/877" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/1303/877" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Sosialisasi+Hidup+Ramah+Lingkungan+dan+Pelatihan+Menanam+dengan+Metode+Hidroponik+Sederhana+Pada+Anak+PAUD+Desa+Candali+Bogor&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194301&val=28069&title=Sosialisasi Hidup Ramah Lingkungan dan Pelatihan Menanam dengan Metode Hidroponik Sederhana Pada Anak PAUD Desa Candali Bogor">
+                                    Full PDF (272.11 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i2.1303">
+                                    DOI: 10.32665/jarcoms.v1i2.1303                                </a>
+                                                    </p>
+                        <div id="show_abstract3194301" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Desa Candali adalah salah satu desa binaan Lembaga Amil Zakat (LAZ) Al-Azhar. Desa ini memiliki banyak potensi dan kelebihan, namun terdapat permasalahan yang dimiliki, salah satunya adalah keunggulan sumber daya alam yang dimiliki tidak diikuti dengan keunggulan sumber daya manusia dalam hal pertanian yang berkelanjutan. Penanganan solusi yang diangkat adalah melakukan sosialisasi kepada generasi selanjutnya mengenai pentingnya menjaga lingkungan sekitar serta pelatihan menanam dengan metode hidroponik kepada peserta PAUD Desa Candali. Pemberian pengetahuan pada anak-anak diharapkan dapat melekat dan dipraktekkan secara terus-menerus. Anak-anak PAUD sangat antusias dalam mengikuti kegiatan sehingga kegiatan dapat berjalan dengan lancar. Hasil dari kegiatan yang dilakukan memberikan peningkatan pengetahuan anak-anak PAUD mengenai bagaimana cara menanam dengan metode hidroponik sederhana serta bagaimana cara menjaga lingkungan agar tetap terjaga dan terhindar dari kerusakan. Hasil persentase keberhasilan untuk sosialisasi hidup ramah lingkungan sebesar 100%, sedangkan pelatihan menanam hidroponik sebesar 90%. Hal ini menunjukkan perlu adanya perbaikan kegiatan pelatihan menanam hidroponik dengan menambahkan jangka waktu pelatihan agar pemahaman dan penerapan kegiatan ini tersampaikan dengan lebih baik.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194302">
+                            <xmp>Meningkatkan Pendidikan dan Penghayatan Agama Islam di Bilik Pintar dalam Mewujudkan Indonesia Endemi </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/5662091"><xmp>Ajeng Anindya Maheswari</xmp></a>; <a class="author-article" href="/author/view/5662092"><xmp>Ma Zhilong Musa</xmp></a>; <a class="author-article" href="/author/view/5662093"><xmp>Revi Oktaviana</xmp></a>; <a class="author-article" href="/author/view/5662094"><xmp>Sha Haihong Muhammad</xmp></a>; <a class="author-article" href="/author/view/5662095"><xmp>Siti Fatimah Masnun</xmp></a>; <a class="author-article" href="/author/view/5662096"><xmp>Umi Kulsum</xmp></a>; <a class="author-article" href="/author/view/3345692"><xmp>Nunung Nurhasanah</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 2 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194302" onclick="show_abstract(3194302)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/1304/878" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/1304/878" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Meningkatkan+Pendidikan+dan+Penghayatan+Agama+Islam+di+Bilik+Pintar+dalam+Mewujudkan+Indonesia+Endemi&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194302&val=28069&title=Meningkatkan Pendidikan dan Penghayatan Agama Islam di Bilik Pintar dalam Mewujudkan Indonesia Endemi">
+                                    Full PDF (479.785 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i2.1304">
+                                    DOI: 10.32665/jarcoms.v1i2.1304                                </a>
+                                                    </p>
+                        <div id="show_abstract3194302" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Bilik Pintar merupakan sebuah tempat yang menginspirasi karena meskipun mayoritas masyarakatnya adalah pemulung, mereka semangat untuk belajar. Salah satu keterbatasan di Bilik Pintar adalah kurangnya relawan pengajar khususnya yang berkaitan dengan ilmu agama Islam. Permasalahan tersebut dapat ditangani dengan pelaksanaan pembelajaran ilmu agama secara gratis dengan metode belajar sambil bermain untuk meningkatkan efektivitasnya. Kegitan ini diikuti 25 peserta dari perwakilan anak-anak Bilik Pintar usia 6-12 tahun. Secara khusus, kegiatan ini terdiri atas pembelajaran Bahasa Arab yang ditujukan untuk meningkatkan pengetahuan kosa kata Bahasa Arab pada anak-anak. Hasil kegiatan ini ditunjukkan dengan peningkatan kemampuan anak-anak dalam Bahasa Arab yang ditandai dengan kemampuan mereka dalam memperkenalkan diri menggunakan Baha Arab di akhir kegiatan. Di samping itu, kegiatan membaca Al-Qur’an dengan metode Iqra juga menjadi salah satu kegiatan yang dilakukan, dan mampu meningkatkan kemampuan anak-anak dalam membaca Al-Qur’an dengan makharijul huruf dan tajwid yang baik. Selain itu, anak-anak juga dipaparkan informasi terkait kisah nabi, khususnya kisah nabi Yunus AS yang disampaikan melalui metode video (audio-visual). Selain disukai oleh anak-anak, metode ini juga dapat memudahkan anak-anak untuk memahami isi atau makna video tersebut. Selanjutnya, kegiatan ini dapat dikembangkan dengan mengintegrasikan berbagai ilmu selain ilmu agama sesuai dengan kebutuhan dari masyarakat.</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                                    <div class="article-item">        
+                        <a class="title-article" href="/documents/detail/3194303">
+                            <xmp>Manajemen Strategik KAP: Pentingnya Perencanaan dan Kebijakan Jangka Panjang </xmp>
+                        </a>
+                        <a class="author-article" href="/author/view/437285"><xmp>Made Sudarma</xmp></a>; <a class="author-article" href="/author/view/5662097"><xmp>Steffi Lituhayu Van Tama</xmp></a>                        <br>
+                        <xmp class="subtitle-article"> Journal of Research Applications in Community Service Vol. 1 No. 2 (2022): Journal of Research Applications in Community Service </xmp>
+                        <br>
+                        <i class="subtitle-article">Publisher : </i><xmp class="subtitle-article">Universitas Nahdlatul Ulama Sunan Giri Bojonegoro </xmp>
+                        <p class="action-article">
+                            <a class="btn_show_abstract title-citation" target="3194303" onclick="show_abstract(3194303)"> Show Abstract</a>
+                            | <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/download/1305/879" target="_blank">
+                                <i class="download icon"></i> Download Original
+                            </a>
+                            | <i>
+                                <a class="title-citation" href="https://journal.unugiri.ac.id/index.php/JaRCOMS/article/view/1305/879" target="_blank">
+                                    Original Source
+                                </a>
+                            </i>
+                            | <i>
+                                <a class="title-citation" href="http://scholar.google.com/scholar?q=%2Bintitle%3A&quot;Manajemen+Strategik+KAP+Pentingnya+Perencanaan+dan+Kebijakan+Jangka+Panjang&quot;" target="_blank">
+                                    Check in Google Scholar
+                                </a>
+                            </i>
+                                                            |
+                                <i class="file pdf outline icon"></i>
+                                <a class="title-citation" target="_blank" href="http://download.garuda.kemdiktisaintek.go.id/article.php?article=3194303&val=28069&title=Manajemen Strategik KAP Pentingnya Perencanaan dan Kebijakan Jangka Panjang">
+                                    Full PDF (136.724 KB)
+                                </a>
+                                                                                            
+                                | <a class="title-citation" target="_blank" href="https://doi.org/10.32665/jarcoms.v1i2.1305">
+                                    DOI: 10.32665/jarcoms.v1i2.1305                                </a>
+                                                    </p>
+                        <div id="show_abstract3194303" class="article-abstract">
+                            <div class="ui message tiny basic">
+                                <h4 class="ui header">
+                                    <b>Abstract</b>
+                                </h4>
+                                <div class="abstract-article">
+                                    <xmp class="abstract-article">Era modern menuntut segala aspek kehidupan manusia berkembang semakin cepat, tak terkecuali bisnis. Perkembangan bisnis yang cepat dan ketat mengakibatkan adanya persaingan bisnis yang dapat menjadi risiko yang harus dihadapi setiap usaha. Untuk bisa bertahan dalam persaingan bisnis, setiap usaha perlu memiliki perencanaan dan kebijakan strategis yang baik. Hal ini juga berlaku bagi Kantor Akuntan Publik, salah satunya adalah Kantor Akuntan Publik Made Sudarma, Thomas & Dewi. Sayangnya, Kantor Akuntan Publik (KAP) ini belum menentukan perencanaan dan kebijakan strategis untuk keberlangsungan usaha mereka maupun untuk menganalisis kekuatan dan kelemahannya. Untuk mengatasi masalah ini, Kantor Akuntan Publik Made Sudarma, Thomas & Dewi perlu menerima pendampingan mengenai pentingnya manajemen strategik dalam menyusun perencanaan dan kebijakan jangka panjang bagi Kantor Akuntan Publik (KAP). Setelah kegiatan pendampingan dilakukan, ditemukan bahwa kegiatan ini memberikan manfaat bagi peserta. Hal ini dibuktikan dengan hasil evaluasi yang mengungkapkan bahwa 88% dari jumlah peserta sangat puas dan 12% dari jumlah peserta puas terhadap materi yang dibawakan, 100% dari jumlah peserta sangat puas terhadap pemateri, dan 94% dari jumlah peserta sangat puas dan 6% dari jumlah peserta puas terhadap jalannya acara (waktu, tempat, dan lain-lain).</xmp>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                            
+                            <div class="ui two column stackable grid">
+                    <div class="column">
+                        <p class="pagination-info">
+                            Page 1 of 9                            | Total Record : 87 
+                        </p>
+                    </div>
+                    <div class="column">
+                                                    <div class="page-column"  style="float: right !important;">
+                                <a href="?page=1" class="ui mini icon button">
+                                    <i class="angle double left icon"></i>
+                                </a>                                
+                                                                    <a href="?page=1" class="ui mini icon button red">
+                                        &nbsp;1&nbsp;
+                                    </a>
+                                                                    <a href="?page=2" class="ui mini icon button ">
+                                        &nbsp;2&nbsp;
+                                    </a>
+                                                                    <a href="?page=3" class="ui mini icon button ">
+                                        &nbsp;3&nbsp;
+                                    </a>
+                                                                    <a href="?page=4" class="ui mini icon button ">
+                                        &nbsp;4&nbsp;
+                                    </a>
+                                                                    <a href="?page=5" class="ui mini icon button ">
+                                        &nbsp;5&nbsp;
+                                    </a>
+                                                            
+                                <a href="?page=9" class="ui mini icon button">
+                                    <i class="angle double right icon"></i>
+                                </a>
+
+                                <a class="circular mini ui icon button right floated scroll-top">
+                                    <i class="icon arrow circle up"></i>
+                                </a>
+                            </div>                        
+                                            </div>
+                </div>
+                <br>
+            
+        </div>
+    </div>
+    <div class="four wide column">
+                
+        <div class="ui segment padded">
+            <a class="ui top attached label">Filter by Year</a>
+            <p>
+                2022                <span style="float: right"> 2026</span>
+            </p> 
+            <div id="slider-range"></div>
+            <br>
+
+            <form id="filter_year" class="ui mini form" action="" method="get">
+                                <div class="equal width fields">
+                    <div class="field">
+                        <label>From</label>
+                        <input type="text" id="from" name="from">
+                    </div>
+                    <div class="field">
+                        <label>To</label>
+                        <input type="text" id="to" name="to">
+                    </div>
+                </div>
+                <div class="equal width fields">
+                    <div class="field">
+                        <button class="ui mini fluid button" type="submit">Filter</button>
+                    </div>
+                    <div class="field">
+                        <a class="ui mini fluid button basic red" href="/journal/view/28069">Reset</a>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        
+                    <div class="ui segment padded issue-box">
+                <div class="ui top attached label">Filter By Issues</div>
+                                <a class="title-issue title-issue-active" href="/journal/view/28069"> All Issue</a>
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 5 No. 1 (2026): Journal of Research Applications in Community Service"> Vol. 5 No. 1 (2026): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 4 No. 4 (2025): Journal of Research Applications in Community Service"> Vol. 4 No. 4 (2025): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 4 No. 3 (2025): Journal of Research Applications in Community Service"> Vol. 4 No. 3 (2025): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 4 No. 2 (2025): Journal of Research Applications in Community Service"> Vol. 4 No. 2 (2025): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 4 No. 1 (2025): Journal of Research Applications in Community Service"> Vol. 4 No. 1 (2025): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 3 No. 4 (2024): Journal of Research Applications in Community Service"> Vol. 3 No. 4 (2024): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 3 No. 3 (2024): Journal of Research Applications in Community Service"> Vol. 3 No. 3 (2024): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 3 No. 2 (2024): Journal of Research Applications in Community Service"> Vol. 3 No. 2 (2024): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 3 No. 1 (2024): Journal of Research Applications in Community Service"> Vol. 3 No. 1 (2024): Journal of Research Applications in Community Service</a>
+                     
+                                                            <span id="dots-issue"></span>
+                        <span id="more-issue">
+                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 2 No. 4 (2023): Journal of Research Applications in Community Service"> Vol. 2 No. 4 (2023): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 2 No. 3 (2023): Journal of Research Applications in Community Service"> Vol. 2 No. 3 (2023): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 2 No. 2 (2023): Journal of Research Applications in Community Service"> Vol. 2 No. 2 (2023): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 2 No. 1 (2023): Journal of Research Applications in Community Service"> Vol. 2 No. 1 (2023): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 1 No. 2 (2022): Journal of Research Applications in Community Service"> Vol. 1 No. 2 (2022): Journal of Research Applications in Community Service</a>
+                     
+                                                        <a class="title-issue " href="/journal/view/28069?issue=Vol. 1 No. 1 (2022): Journal of Research Applications in Community Service"> Vol. 1 No. 1 (2022): Journal of Research Applications in Community Service</a>
+                     
+                                </span>
+                                    <a onclick="readMore()" id="btn-issue">More Issue</a>
+                            </div>
+            </div>
+</div>
+
+<script>
+	var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [
+                                   2026,                                   2025,                                   2024,                                   2023,                                   2022,                			],
+			datasets: [{
+				label: 'Articles',
+				data: [
+                                            1,                                            20,                                            20,                                            26,                                            20,                    				],
+				backgroundColor: [
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                                            'rgba(56, 188, 0, 0.2)',
+                    				],
+				borderColor: [
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                                            'rgba(56, 188, 0, 1)',
+                    				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: true,
+    		maintainAspectRatio: false,
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero:true
+					}
+				}]
+			}
+		}
+	});
+
+    $( function() {
+        $("#slider-range" ).slider({
+            range: true,
+            min: 2022,
+            max: 2026,
+            values: [ 2022, 2026 ],
+            slide: function( event, ui ) {
+                $("#from").val(ui.values[ 0 ]);
+                $("#to").val(ui.values[ 1 ]);
+            }
+        });
+        $("#from").val( $( "#slider-range" ).slider( "values", 0 ));
+        $("#to").val($( "#slider-range" ).slider( "values", 1 ));
+    });
+
+    function readMore() {
+        var dots = document.getElementById("dots-issue");
+        var moreText = document.getElementById("more-issue");
+        var btnText = document.getElementById("btn-issue");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "More Issue"; 
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Less Issue"; 
+            moreText.style.display = "inline";
+        }
+    }
+</script><!-- </div> -->
+</main>
+
+<div class="links-box">
+    <ul>
+        <li><a href="https://sinta.kemdiktisaintek.go.id" target="_blank">Sinta</a></li>
+        <li><a title="Basis Informasi Penelitian dan Pengabdian kepada Masyarakat" href="https://bima.kemdiktisaintek.go.id" target="_blank">Bima</a></li>
+        <li><a title="Akreditasi Jurnal Nasional" href="https://arjuna.kemdiktisaintek.go.id" target="_blank">Arjuna</a></li>
+        <li><a title="Pangkalan Data Pendidikan Tinggi Ristekdikti" href="https://pddikti.kemdiktisaintek.go.id" target="_blank">PDDIKTI</a></li>
+        <li><a title="Data Riset dan Pengembangan Ristekdikti" href="https://dikti.kemdiktisaintek.go.id/" target="_blank">Risbang</a></li>
+        <li><a title="The Largest Abstract and Citation Database of Peer-Reviewed Literature" href="https://www.scopus.com" target="_blank">Scopus</a></li>
+        <li><a title="Repositori Tugas Akhir Mahasiswa" href="https://rama.kemdiktisaintek.go.id/" target="_blank">Rama</a></li>
+    </ul>
+</div>
+<footer class="ui grid equal width footer">
+    <div class="clearfix"></div>
+    <div class="column">
+        <img src="/assets/img/logo_dikbud.png" />
+        <div class="footer-company">Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi </div>
+        <div class="footer-subcompany">(The Ministry of Education, Culture, Research, and Technology)</div>
+        <div class="footer-copyright">&copy; 2018</div>
+    </div>
+    <div class="column"></div>
+</footer>
+<!-- UI KIT -->
+
+
+
+
+<script>
+    setTimeout(function() {
+        // $('#flash_message').slideUp( 300, "linear" );
+        $('#flash_message').fadeOut( "slow");
+    }, 2000);
+</script>
+<!-- AUTOSEARCH BUKU-->
+<script>
+    $(function() {
+        $("#suggest_pub").autocomplete({
+            source: "/suggest/findPublisher",
+            select: function( event, ui ) {
+                event.preventDefault();
+                $("#suggest_pub").val(ui.item.value);
+            }
+        });
+    });
+</script>
+<!-- END AUTOSEARCH BUKU-->
+
+
+<script type="text/javascript">
+    $('.ui.checkbox').checkbox();
+    $('select.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
+    $('.top.menu .item').tab();
+
+    $(document).ready(function () {
+
+        $("#sort").change(function () {
+            var page = 1;
+            // $("#sort").val(page);
+            $("#form_sort").submit();
+        });
+
+        $("#select_item").change(function () {
+            var page = 1;
+            $("#page").val(page);
+            $("#form_journal").submit();
+        });        
+
+        $("#select_item").change(function () {
+            var page = 1;
+            $("#page").val(page);
+            $("#form_alphabeth").submit();
+        });
+
+        $("#select_item").change(function () {
+            var page = 1;
+            $("#page").val(page);
+            $("#form_search").submit();
+        });
+
+        $('#page').keydown(function () {
+            var key = e.which;
+            if (key == 13) {
+                $('#form_journal').submit();
+            }
+        });
+
+        $('#form_journal').keydown(function () {
+            var key = e.which;
+            if (key == 13) {
+                // As ASCII code for ENTER key is "13"
+                $('#form_journal').submit(); // Submit form code
+            }
+        });
+
+        $('.demo.menu .item').tab({history: false});
+
+        $('.area-cloud a').tagcloud();
+
+    });
+
+    $('.ui.top.attached.tabular.menu .item').tab({history: false});
+
+    $.fn.tagcloud.defaults = {
+        size: {start: 9, end: 30, unit: 'pt'},
+        color: {start: '#444', end: '#ed462f'}
+    };
+
+    function show_abstract(id){
+        $('#show_abstract'+id).slideToggle();
+    }
+
+    $(document).ready(function () {
+        $('#adv-btn').on('click', function () {
+            $('#adv-box').slideToggle('slow');
+            $('#form-journal').slideToggle('slow');
+        });
+
+        $('#adv-less').on('click', function () {
+            $('#adv-box').slideToggle('slow');
+            $('#form-journal').slideToggle('slow');
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>
