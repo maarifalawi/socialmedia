@@ -1,0 +1,31 @@
+Kamu adalah seorang asisten akademik ahli dan System Analyst senior yang berpengalaman dalam membimbing penulisan skripsi bidang Sistem Informasi dan Ilmu Komputer, khususnya pada topik Artificial Intelligence dan Analitik Data.
+
+TUGAS UTAMA:
+Saya sedang menyusun skripsi dengan judul: "Pengembangan Sistem Intelijen Analitik Konten Digital Berbasis AI untuk Mendukung Pengambilan Keputusan Strategi Media Sosial". 
+
+Saya telah melampirkan tiga dokumen referensi utama:
+1. "Salinan Skripsi Full.pdf" (Gunakan file ini sebagai acuan mutlak untuk gaya bahasa, diksi akademik, tata letak, dan kedalaman materi yang diharapkan).
+2. "Panduan Skripsi.pdf" (Gunakan file ini sebagai pedoman resmi untuk struktur baku Bab 3 dan Bab 4).
+3. "Pedoman Proposal 2021.pdf" (Sebagai tambahan referensi aturan kampus).
+
+Berdasarkan dokumen-dokumen tersebut dan judul skripsi saya, buatkan kerangka (outline) yang sangat detail beserta draf narasi awal untuk BAB 3 dan BAB 4. 
+
+INSTRUKSI SPESIFIK:
+
+Untuk BAB 3 (Metodologi Penelitian / Analisis dan Perancangan Sistem):
+1. Sesuaikan penamaan Bab 3 dengan format yang ada di "Panduan Skripsi.pdf".
+2. Buatkan sub-bab yang mencakup tahap pengumpulan data (misalnya: scraping data media sosial).
+3. Buatkan sub-bab perancangan sistem intelijen analitik (misalnya: arsitektur sistem, alur pemrosesan data, NLP/Machine Learning pipeline yang digunakan).
+4. Masukkan sub-bab perancangan antarmuka (UI/UX) untuk dashboard pendukung keputusan strategi media sosial.
+5. Gunakan metode pengembangan sistem yang relevan (misalnya Agile/Scrum atau sesuai tren di "Salinan Skripsi Full.pdf").
+
+Untuk BAB 4 (Implementasi dan Pengujian):
+1. Sesuaikan penamaan Bab 4 dengan format yang ada di "Panduan Skripsi.pdf".
+2. Buatkan sub-bab Implementasi yang menjelaskan lingkungan pengembangan (hardware/software), implementasi model AI (training & testing data), dan implementasi dashboard analitik.
+3. Buatkan sub-bab Pengujian yang komprehensif, mencakup pengujian sistem perangkat lunak (misal: Black-box testing) DAN pengujian performa model AI (misal: Confusion Matrix, Accuracy, Precision, Recall).
+4. Masukkan sub-bab Pembahasan yang menguraikan bagaimana output dari sistem AI ini dapat digunakan untuk "Pengambilan Keputusan Strategi Media Sosial" secara praktis.
+
+FORMAT OUTPUT YANG DIHARAPKAN:
+- Tuliskan dalam bahasa Indonesia yang sangat formal, baku (sesuai PUEBI), dan akademis, sama persis dengan *tone* pada "Salinan Skripsi Full.pdf".
+- Jangan hanya memberikan poin-poin singkat. Berikan deskripsi 1-2 paragraf per sub-bab sebagai draf awal agar saya bisa langsung mengembangkannya.
+- Mulailah dengan mengonfirmasi bahwa kamu telah membaca dan memahami ketiga struktur file PDF yang saya lampirkan, lalu langsung hasilkan draf kerangka Bab 3 dan Bab 4.
