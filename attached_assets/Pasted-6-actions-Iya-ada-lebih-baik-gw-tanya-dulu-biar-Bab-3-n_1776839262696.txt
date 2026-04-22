@@ -1,0 +1,70 @@
+6 actions
+Iya ada — lebih baik gw tanya dulu biar Bab 3 nya gak
+ngarang dan langsung tembak akurat. Yang gw butuhin:
+
+ Judul
+     skripsi resmi yang udah disetujui pembimbing — gw mau pastiin tone/term di
+     Bab 3 konsisten sama judul. = Pengembangan Sistem Intelijen Analitik
+     Konten Digital Berbasis AI untuk Mendukung Pengambilan Keputusan Strategi
+     Media Sosial
+
+ Metode
+     pengumpulan data — ini yang paling penting buat sub-bab 3.3. Gw perlu tau:
+
+ 
+  Observasi
+      dilakuin di akun UMKM beneran, dataset sintetis, atau studi kasus 1–3
+      UMKM tertentu? Di akun umkm beneran
+
+  Kalau
+      ada UMKM partner, sektornya apa (kuliner, fashion, jasa, dll) dan
+      platformnya apa aja (IG/TikTok/YouTube)? Iya, umkm nya content creator gitu
+
+  Periode
+      observasi (misal: Jan–Mar 2026)? Buatkan yang relaistis aja teraserah lu
+      kapan
+
+  Sumber
+      data CSV-nya dari export native masing-masing platform, scraping, atau
+      input manual? Input manual
+
+ 
+
+ Soal
+     diagram Waterfall yang lu lampirin — urutannya di gambar itu Studi
+     Literatur → Pengumpulan Data → Analisis → Perancangan → Pengembangan →
+     Deployment → Pengujian. Tapi outline lu nulis 3.7 Pengujian dulu baru 3.8
+     Penerapan. Gw mau pastiin: ikutin urutan outline (Pengujian dulu baru
+     Penerapan, ini lebih lazim) atau ikutin gambar (Penerapan dulu baru
+     Pengujian)? Gw saranin ikut outline + gw kasih catatan kecil di narasi
+     yang nge-justifikasi kenapa pengujian dilakuin sebelum penerapan final. Ikutinn
+     yang ada di gambar aja
+
+ Rencana
+     penerapan/deployment konkret buat sub-bab 3.8:
+
+ 
+  Frontend
+      mau di-host di mana? (Replit Deployments, Vercel, Netlify, atau lainnya)
+      di vercel
+
+  Database
+      tetap di Supabase managed, atau ada rencana lain? supabase
+
+  Bakal
+      pakai custom domain atau subdomain default? default
+
+ 
+
+ UAT
+     target — kira-kira berapa responden UMKM yang ditargetin (5? 10? 15?),  ada 30 responden. dan instrumennya pakai
+     skala Likert biasa atau SUS (System Usability Scale)? Saran gw SUS karena
+     ada skor baku yang gampang dijustifikasi. Iyaudah pake SUS
+
+ Ada
+     term/teori spesifik dari Bab 2 yang udah lu tulis dan harus konsisten ke
+     Bab 3? (misal kalau Bab 2 pakai "konten media sosial" gw gak
+     bakal ganti jadi "post"). Kalau ada, share aja outline Bab 2
+     nya. Ngga ada
+
+check, apakah jawaban gua udah maksimal. itu udah gua jawab ya
