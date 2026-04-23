@@ -1,0 +1,58 @@
+[HTML] User-Centered Development of an Online Dashboard Tool for Economic Sustainability for Small and Medium Enterprises
+AW Bennett, S Müller Loose - Sustainability, 2024 - mdpi.com
+… tool for the economic sustainability of small and medium enterprises (SMEs) in the … business
+analysis has provided German wine businesses with feedback on general business data …
+Save Cite Cited by 9 Related articles All 7 versions 
+[HTML] mdpi.com
+[HTML] The degree of adoption of business intelligence in Romanian companies—The case of sentiment analysis as a marketing analytical tool
+DF Ciocodeică, RG Chivu, IC Popa, H Mihălcescu… - Sustainability, 2022 - mdpi.com
+… digital marketing, the reports in the analysis panels of google analytics and social networks,
+sentiment analysis … the executive dashboard placed as a “by-product” of sentiment analysis, …
+Save Cite Cited by 28 Related articles All 6 versions 
+[HTML] mdpi.com
+[HTML] An enterprise social analytics dashboard to support competence valorization and diversity management
+G Di Tommaso, S Faralli, M Gatti, M Iannotta, G Stilo… - Applied Sciences, 2021 - mdpi.com
+… enterprise, as a function of gender, time, roles, and discussed topics. The results of our
+empirical analysis demonstrate the power of social analytics … that Enterprise Social Networks are …
+Save Cite Cited by 6 Related articles All 9 versions 
+[HTML] mdpi.com
+[HTML] Designing a data visualization dashboard for managing the sustainability communication of healthcare organizations on Facebook
+F Conte, P Vitale, A Vollero, A Siano - Sustainability, 2018 - mdpi.com
+… consumer relationships on social media and aligning companies and consumers regarding
+… the analysis are presented showing the main elements of a data visualization dashboard for …
+Save Cite Cited by 25 Related articles All 10 versions 
+[HTML] mdpi.com
+[HTML] A dashboard for supporting slow tourism in green infrastructures. A methodological proposal in Sardinia (Italy)
+G Balletto, A Milesi, M Ladu, G Borruso - Sustainability, 2020 - mdpi.com
+… However, here we report only the matrix of social media analysis of the Montevecchio
+Mine Complex, as it is one of the most appreciated and best managed (Table 2). In fact, the …
+Save Cite Cited by 77 Related articles All 18 versions 
+[HTML] mdpi.com
+[HTML] Applications and competitive advantages of data mining and business intelligence in SMEs performance: A systematic review
+SV Tsiu, M Ngobeni, L Mathabela, B Thango - Businesses, 2025 - mdpi.com
+… grounded in the analysis of business intelligence tools used indicates that dashboards (31.18…
+Niche applications, such as social media analytics tools (1.08%) and topic modeling (LDA, …
+Save Cite Cited by 105 Related articles All 14 versions 
+[HTML] mdpi.com
+[HTML] A Comprehensive Business Intelligence Framework for Diabetes Management in Telemedicine: Advancing Data-Driven Decision Support Through Integrated …
+EA Pop, G Mircea, CRM Iliescu - Systems, 2026 - mdpi.com
+… displayed at the bottom of the dashboard. This section highlights the dedication to ethical
+practices in the analysis of sensitive medical data and acts as a methodological disclaimer. …
+Save Cite Related articles 
+[HTML] mdpi.com
+[HTML] Digital Innovation Through Behavioural Analytics: Evidence from Acquisition Channels and Engagement in Global Cruise Firms
+DP Reklitis, NT Giannakopoulos, MC Terzi, DP Sakas… - Information, 2025 - mdpi.com
+… engines, social networks and referral platforms to discover and book cruises, digital interfaces
+… This transforms analytics from diagnostic dashboards into decision-support infrastructures. …
+Save Cite Related articles All 5 versions 
+[HTML] mdpi.com
+[HTML] Social media use of small wineries in Alsace: Resources and motivations analysis
+C Haller, D Plotkina, T Vo-Thanh - Sustainability, 2021 - mdpi.com
+… as business networking sites (LinkedIn), social networking sites (Facebook), microblogging
+… enterprise social networking usage for business or commercial purposes [30,31]. Many top …
+Save Cite Cited by 11 Related articles All 6 versions 
+[HTML] mdpi.com
+[HTML] Evaluation of data-driven sustainability potential at SMEs using an altered Ecocanvas model
+LP Bálint, L Várallyai, S Botos - Economies, 2025 - mdpi.com
+… digital technologies and data analysis allows economic systems to evaluate and manage
+their impact on enterprise ESG … digital ecosystems and targeted support for small business …
