@@ -1,12 +1,10 @@
-# BAB IV
+# 4. HASIL DAN PEMBAHASAN
 
-# HASIL DAN PEMBAHASAN
-
-Bab ini memaparkan hasil dari pelaksanaan setiap tahapan penelitian yang telah diuraikan pada Bab III. Pemaparan disusun mengikuti urutan tahapan model *Waterfall*, dimulai dari hasil observasi terhadap akun media sosial Usaha Mikro, Kecil, dan Menengah (UMKM), hasil analisis kebutuhan sistem, hasil perancangan sistem, hasil implementasi sistem ke dalam kode program, hasil penerapan sistem pada lingkungan produksi, hingga hasil pengujian sistem secara fungsional dan penerimaan pengguna. Setiap sub-bab menyajikan hasil yang diperoleh disertai pembahasan singkat untuk memperjelas keterkaitan antara hasil dengan kebutuhan yang telah dirumuskan sebelumnya.
+Pada bagian ini dipaparkan hasil dari pelaksanaan setiap tahapan penelitian yang telah diuraikan pada metode penelitian sebelumnya. Pemaparan disusun mengikuti urutan tahapan model *Waterfall*, dimulai dari hasil observasi terhadap akun media sosial Usaha Mikro, Kecil, dan Menengah (UMKM), hasil analisis kebutuhan sistem, hasil perancangan sistem, hasil implementasi sistem ke dalam kode program, hasil penerapan sistem pada lingkungan produksi, hingga hasil pengujian sistem secara fungsional dan penerimaan pengguna. Setiap sub-bagian menyajikan hasil yang diperoleh disertai pembahasan singkat untuk memperjelas keterkaitan antara hasil dengan kebutuhan yang telah dirumuskan sebelumnya.
 
 ## 4.1 Hasil Observasi
 
-Sub-bab ini memaparkan hasil observasi yang dilakukan terhadap satu akun media sosial UMKM yang berperan sebagai pencipta konten. Observasi dilaksanakan selama tiga bulan, yaitu mulai tanggal satu Februari dua ribu dua puluh enam sampai dengan tiga puluh April dua ribu dua puluh enam. Hasil observasi dijadikan sebagai sumber data utama yang akan diunggah ke dalam sistem dan diolah pada modul-modul analitik. Pemaparan hasil observasi dibagi menjadi dua bagian, yaitu profil akun UMKM yang diobservasi dan hasil pengumpulan data konten beserta metriknya.
+Bagian ini memaparkan hasil observasi yang dilakukan terhadap satu akun media sosial UMKM yang berperan sebagai pencipta konten. Observasi dilaksanakan selama tiga bulan, yaitu mulai tanggal satu Februari dua ribu dua puluh enam sampai dengan tiga puluh April dua ribu dua puluh enam. Hasil observasi dijadikan sebagai sumber data utama yang akan diunggah ke dalam sistem dan diolah pada modul-modul analitik. Pemaparan hasil observasi dibagi menjadi dua bagian, yaitu profil akun UMKM yang diobservasi dan hasil pengumpulan data konten beserta metriknya.
 
 ### 4.1.1 Profil Akun UMKM yang Diobservasi
 
