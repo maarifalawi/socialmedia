@@ -1,6 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/api/generate-caption", "destination": "/api/generate-caption" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
 }
