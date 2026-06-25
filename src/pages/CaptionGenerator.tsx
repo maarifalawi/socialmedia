@@ -30,8 +30,6 @@ const CaptionGenerator = () => {
   const [generatedCaptions, setGeneratedCaptions] = useState<string[]>([]);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  
-
   if (authLoading || appLoading) {
     return (
       <AppLayout>
@@ -80,22 +78,18 @@ const CaptionGenerator = () => {
         tujuan_caption: tujuanCaption,
       };
 
-      // Call edge function from your own Supabase
-      const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-      const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-      
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/generate-caption`, {
+      // Call Vercel API endpoint
+      const response = await fetch("/api/generate-caption", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Error ${response.status}: ${errorText}`);
+        const errorData = await response.json();
+        throw new Error(errorData.error || `Error ${response.status}`);
       }
 
       const data = await response.json();
@@ -197,7 +191,7 @@ const CaptionGenerator = () => {
               </Select>
             </div>
 
-            {/* Custom Style (jika dipilih) */}
+            {/* Custom Style */}
             {gayaBahasa === "custom" && (
               <div className="space-y-2">
                 <Label htmlFor="customStyle">Keterangan Gaya Kustom</Label>
@@ -236,7 +230,7 @@ const CaptionGenerator = () => {
               </RadioGroup>
             </div>
 
-            {/* Penggunaan Hashtag */}
+            {/* Hashtag */}
             <div className="space-y-2">
               <Label>Penggunaan Hashtag</Label>
               <RadioGroup value={opsiHashtag} onValueChange={setOpsiHashtag}>
@@ -261,7 +255,7 @@ const CaptionGenerator = () => {
               </RadioGroup>
             </div>
 
-            {/* Penggunaan Emoji */}
+            {/* Emoji */}
             <div className="space-y-2">
               <Label>Penggunaan Emoji</Label>
               <RadioGroup value={opsiEmoji} onValueChange={setOpsiEmoji}>
@@ -303,7 +297,7 @@ const CaptionGenerator = () => {
               </Select>
             </div>
 
-            {/* Tombol Generate */}
+            {/* Generate Button */}
             <Button 
               onClick={handleGenerate} 
               disabled={isLoading || !deskripsi.trim()}
@@ -325,13 +319,13 @@ const CaptionGenerator = () => {
           </CardContent>
         </Card>
 
-        {/* Hasil Caption */}
+        {/* Results */}
         {generatedCaptions.length > 0 && (
           <div className="space-y-4">
             <div>
               <h2 className="text-2xl font-bold text-foreground">Hasil Caption</h2>
               <p className="text-sm text-muted-foreground mt-1">
-                Silakan cek kembali sebelum diposting. Angka promo, harga, atau klaim sensitif tetap harus disesuaikan manual.
+                Silakan cek kembali sebelum diposting.
               </p>
             </div>
             
@@ -344,26 +338,24 @@ const CaptionGenerator = () => {
                   <div className="p-4 bg-muted/50 rounded-lg">
                     <p className="whitespace-pre-wrap text-sm">{caption}</p>
                   </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleCopy(caption, index)}
-                      className="flex-1"
-                    >
-                      {copiedIndex === index ? (
-                        <>
-                          <Check className="mr-2 h-4 w-4" />
-                          Tersalin
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="mr-2 h-4 w-4" />
-                          Salin
-                        </>
-                      )}
-                    </Button>
-                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleCopy(caption, index)}
+                    className="flex-1"
+                  >
+                    {copiedIndex === index ? (
+                      <>
+                        <Check className="mr-2 h-4 w-4" />
+                        Tersalin
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="mr-2 h-4 w-4" />
+                        Salin
+                      </>
+                    )}
+                  </Button>
                 </CardContent>
               </Card>
             ))}
