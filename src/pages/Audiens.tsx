@@ -22,9 +22,7 @@ const Audiens = () => {
   const [loading, setLoading] = useState(false);
   const [insight, setInsight] = useState("");
 
-  useEffect(() => {
-    if (!authLoading && !user) navigate("/auth");
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     const fetchData = async () => {

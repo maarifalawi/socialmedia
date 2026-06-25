@@ -99,11 +99,7 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     const fetchDashboardData = async () => {

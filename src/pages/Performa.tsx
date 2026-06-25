@@ -208,11 +208,7 @@ const Performa = () => {
   const [contentTypes, setContentTypes] = useState<any[]>([]);
   const [insight, setInsight] = useState("");
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     const fetchMasterData = async () => {

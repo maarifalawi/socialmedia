@@ -33,11 +33,7 @@ const Kampanye = () => {
   const [tanggalSelesai, setTanggalSelesai] = useState("");
   const [catatan, setCatatan] = useState("");
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     fetchCampaigns();

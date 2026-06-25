@@ -1,15 +1,31 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { User, Session } from "@supabase/supabase-js";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
+import { User, Session, AuthError } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
+import type { Tables } from "@/integrations/supabase/types";
 import { toast } from "sonner";
+
+type Profile = Tables<"profil">;
+
+// Error dari Supabase Auth saat login / signup / logout
+type SignError = AuthError | { message: string; code?: string } | null;
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  profile: any;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
-  signUp: (email: string, password: string, fullName: string) => Promise<{ error: any }>;
+  profile: Profile | null;
+  signIn: (email: string, password: string) => Promise<{ error: SignError }>;
+  signUp: (
+    email: string,
+    password: string,
+    fullName: string,
+  ) => Promise<{ error: SignError }>;
   signOut: () => Promise<void>;
 }
 
@@ -19,21 +35,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<Profile | null>(null);
 
   useEffect(() => {
     // Set up auth state listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-        if (event === 'SIGNED_OUT') {
-          setUser(null);
-          setSession(null);
-          setProfile(null);
-        }
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      if (event === "SIGNED_OUT") {
+        setUser(null);
+        setSession(null);
+        setProfile(null);
       }
-    );
+    });
 
     // Check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -56,14 +72,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchProfile = async () => {
     if (!user) return;
-    
+
     try {
       const { data, error } = await supabase
         .from("profil")
         .select("*")
         .eq("id_profil", user.id)
         .single();
-      
+
       if (error) throw error;
       setProfile(data);
     } catch (error) {
@@ -76,33 +92,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       email,
       password,
     });
-    
+
     if (error) {
       toast.error(error.message);
     } else {
       toast.success("Login berhasil!");
     }
-    
+
     return { error };
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
     const redirectUrl = `${window.location.origin}/`;
-
-    // Pre-check email existence (prevents "success" message for already-registered emails)
-    try {
-      const { data, error } = await supabase.functions.invoke("check-email-exists", {
-        body: { email },
-      });
-
-      if (!error && data?.exists) {
-        const duplicateError = { message: "Email sudah terdaftar", code: "email_exists" };
-        toast.error("Email sudah terdaftar. Silakan gunakan email lain atau login.");
-        return { error: duplicateError };
-      }
-    } catch {
-      // If pre-check fails, continue with normal signup flow
-    }
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -125,7 +126,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         error.code === "user_already_exists" ||
         error.code === "email_exists"
       ) {
-        toast.error("Email sudah terdaftar. Silakan gunakan email lain atau login.");
+        toast.error(
+          "Email sudah terdaftar. Silakan gunakan email lain atau login.",
+        );
       } else {
         toast.error(error.message);
       }
@@ -158,7 +161,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, profile, signIn, signUp, signOut }}>
+    <AuthContext.Provider
+      value={{ user, session, loading, profile, signIn, signUp, signOut }}
+    >
       {children}
     </AuthContext.Provider>
   );

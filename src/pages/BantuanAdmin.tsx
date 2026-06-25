@@ -41,9 +41,7 @@ const BantuanAdmin = () => {
   const [filter, setFilter] = useState<"semua" | "menunggu" | "dijawab">("semua");
   const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    if (!authLoading && !user) navigate("/auth");
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     if (user && profile) {

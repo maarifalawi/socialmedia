@@ -19,11 +19,7 @@ const ProjectNew = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

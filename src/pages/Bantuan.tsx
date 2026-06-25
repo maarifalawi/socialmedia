@@ -79,9 +79,7 @@ const Bantuan = () => {
       .sort((a, b) => a - b)[0] || 0
   };
 
-  useEffect(() => {
-    if (!authLoading && !user) navigate("/auth");
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     if (user) {

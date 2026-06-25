@@ -30,11 +30,7 @@ const CaptionGenerator = () => {
   const [generatedCaptions, setGeneratedCaptions] = useState<string[]>([]);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   if (authLoading || appLoading) {
     return (

@@ -120,11 +120,7 @@ const AnggotaProyek = () => {
   // Project owner info
   const [projectOwner, setProjectOwner] = useState<{ id_pemilik: string; nama_lengkap: string | null } | null>(null);
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     if (selectedProject && user) {

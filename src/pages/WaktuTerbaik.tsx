@@ -60,11 +60,7 @@ const WaktuTerbaik = () => {
   const [showComparison, setShowComparison] = useState(false);
   const [previousTopSlots, setPreviousTopSlots] = useState<any[]>([]);
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   // Fetch platforms and content types
   useEffect(() => {

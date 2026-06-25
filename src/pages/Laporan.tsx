@@ -25,9 +25,7 @@ const Laporan = () => {
   const [generating, setGenerating] = useState(false);
   const [reportData, setReportData] = useState<any>(null);
 
-  useEffect(() => {
-    if (!authLoading && !user) navigate("/auth");
-  }, [user, authLoading, navigate]);
+  
 
   const generateReport = async () => {
     if (!dateFrom || !dateTo) {

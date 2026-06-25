@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 import { useAuth } from "./AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -20,7 +26,7 @@ interface Dataset {
 
 interface Profile {
   id_profil: string;
-  peran: 'admin' | 'user';
+  peran: "admin" | "user";
   nama_lengkap: string | null;
 }
 
@@ -85,7 +91,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       toast.error("Gagal memuat projects");
     } else {
       setProjects(data || []);
-      
+
       // Auto-select first project if none selected
       if (data && data.length > 0 && !selectedProject) {
         setSelectedProject(data[0]);
@@ -112,35 +118,31 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       toast.error("Gagal memuat datasets");
     } else {
       setDatasets(data || []);
-      
+
       // Find active dataset
-      const active = data?.find(d => d.dataset_aktif);
+      const active = data?.find((d) => d.dataset_aktif);
       setActiveDatasetState(active || null);
     }
   };
 
-  // Set active dataset
+  // Set active dataset — pakai RPC transaksional agar deactivate-all + activate-one
+  // berjalan atomik (mencegah state "semua non-aktif" bila salah satu update gagal).
   const setActiveDataset = async (datasetId: string) => {
     if (!selectedProject) return;
 
-    // First, deactivate all datasets for this project
-    const { error: deactivateError } = await supabase
-      .from("dataset")
-      .update({ dataset_aktif: false })
-      .eq("id_proyek", selectedProject.id_proyek);
+    // RPC set_active_dataset belum ada di generated types.ts (auto-generated),
+    // jadi pemanggilannya di-cast secara sempit di sini saja.
+    const { error } = await (
+      supabase.rpc as unknown as (
+        fn: string,
+        args: Record<string, string>,
+      ) => Promise<{ error: { message: string } | null }>
+    )("set_active_dataset", {
+      p_id_proyek: selectedProject.id_proyek,
+      p_id_dataset: datasetId,
+    });
 
-    if (deactivateError) {
-      toast.error("Gagal mengubah dataset aktif");
-      return;
-    }
-
-    // Then activate the selected dataset
-    const { error: activateError } = await supabase
-      .from("dataset")
-      .update({ dataset_aktif: true })
-      .eq("id_dataset", datasetId);
-
-    if (activateError) {
+    if (error) {
       toast.error("Gagal mengubah dataset aktif");
     } else {
       toast.success("Dataset aktif berhasil diubah");

@@ -1,0 +1,473 @@
+Next-Gen Social Media Intelligence: A Cloud-Native Generative AI Platform for SME Content Strategy
+
+
+Maarif Alawi1, Lely Prananingrum 2
+Departement of Information Systems, Gunadarma University1,3
+maarifalaawii@gmail.com1, mediacenter@gunadarma.ac.id 2                                                 
+
+Article Info
+
+ABSTRACT 
+Article history:
+Received Okt 27, 2017
+Revised Dec 21, 2017
+Accepted Jan 3, 2018
+
+
+Social media has become a primary marketing channel, yet most existing analytics tools were designed for large enterprises and remained too costly, too complex, or too shallow for small and medium enterprises with limited technical capacity. This research designed and built a web-based social media analytics platform enhanced with artificial intelligence to help small enterprise owners evaluate content performance and formulate data-driven content strategies. The platform was developed using React with TypeScript on the frontend, Supabase managed services for authentication, database, and serverless functions on the backend, and the Google Gemini language model for caption generation. A sequential development method covering literature study, requirement analysis, design, implementation, deployment, and testing was applied, and the system was deployed to a production environment. The platform was evaluated using a dataset of 56 Instagram posts through black box testing, key performance indicator validation, generative output evaluation, and a usability survey. Black box testing passed all 197 scenarios, indicator calculations matched manual computation for all 56 posts, and the usability survey produced a System Usability Scale score of 79.75, categorized as good and acceptable. The results confirmed that the platform delivered reliable, accessible, and useful analytics for small enterprises.
+Keyword:
+Social media analytics
+Small and medium enterprises
+Artificial intelligence
+Engagement rate
+Web application
+
+
+
+
+(c) This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+Corresponding Author:
+Corresponding Author
+Departement of Electrical and Computer Engineering
+xxxx University
+Address, City, Country
+Email: xxx@xxxx.xx.xx
+
+
+1. INTRODUCTION
+    Social media has evolved from a personal communication channel into a strategic instrument for marketing, brand building, and customer engagement [15]. For small and medium enterprises, these platforms offer low-cost access to broad audiences and a direct feedback loop with potential customers. In the Indonesian economy, small and medium enterprises play a decisive role, contributing more than sixty percent of gross domestic product and absorbing approximately ninety-seven percent of the national workforce [1], [23]. Their competitiveness therefore depends heavily on how effectively they can market their products through digital channels and interpret the resulting performance data [16].
+    Despite this dependence, the way most small enterprises measure social media performance remains shallow. Analytics activity is frequently limited to surface-level indicators such as follower counts and basic engagement figures, while deeper examination of trends, content effectiveness, and marketing conversion is rarely carried out consistently [19]. As a consequence, content strategies are often formed intuitively and reactively in response to passing trends rather than through systematic evaluation of historical data [19]. This gap is significant because social media analytics has been shown to strengthen organizational innovation and adaptability, effectively democratizing access to large-scale data for smaller organizations [9]. Prior work has likewise identified the core metrics-engagement rate, reach, impressions, follower growth, and related indicators-that should anchor any credible performance assessment [4].
+    The tools currently available do not adequately serve this segment. Native solutions such as Instagram Insights provide limited historical depth, no cross-period comparison, and no intelligent assistance, while platform-level dashboards such as Meta Business Suite expose only basic metrics. Comprehensive commercial suites such as Hootsuite, Sprout Social, and Buffer offer richer capabilities but at subscription costs and interface complexity that are poorly matched to non-technical small enterprise owners. Broader studies of digital transformation in small enterprises confirm this pattern, reporting persistent barriers in integrating management systems, digital marketing strategies, and comprehensive data analytics into a single coherent workflow [1].
+    At the same time, advances in artificial intelligence have created new opportunities for analytics systems. Artificial intelligence-based decision support systems can process large volumes of data, recognize hidden patterns, and generate actionable insights through machine learning, deep learning, and natural language processing techniques [20]. The applicability of these techniques across domains, including industrial manufacturing, is well documented [8]. Applied to social media analytics, these capabilities allow a system to move beyond the presentation of raw figures toward automated narrative interpretation and generative assistance, such as the composition of content captions. Combining accessible analytics with this kind of intelligent support is particularly relevant for users who lack a technical or data-analysis background.
+    A review of existing research and tools reveals a clear gap. Prior studies have measured the impact of social media analytics on decision making [9], catalogued the engagement metrics that matter across platforms [4], visualized analytics for public-sector social media accounts [10], examined surface-level analytics behavior among emerging users [19], and provided general guidance on small enterprise digital transformation [1], while broader reviews have established the value of artificial intelligence in decision support [20]. None of these efforts, however, has delivered a ready-to-use, integrated analytics platform designed specifically for the needs and constraints of small enterprises. In particular, no single affordable and user-friendly system unifies key performance indicator visualization, automated rule-based insight summaries, best posting time analysis, audience growth analysis, target setting and monitoring, campaign management, competitor analysis, artificial intelligence-assisted caption generation, dataset comparison, and report generation.
+    This research addresses that gap by designing and building a web-based social media analytics platform with artificial intelligence support to help small enterprise owners analyze content performance and develop data-driven content strategies. The contribution of this paper is threefold. First, it identifies the functional and non-functional requirements of an analytics platform oriented toward small enterprises rather than large organizations. Second, it proposes an integrated system architecture, data model, and interface design that consolidate ten feature groups into one accessible application usable without a technical background. Third, it implements and deploys the design to a production environment using React, Supabase managed services, and the Google Gemini language model, and validates it through black box testing, key performance indicator validation, generative output evaluation, and a usability survey.
+    To position this research within the existing literature, Table 1 summarizes the five most relevant prior studies, their key findings, and their relation to the present work.
+Table 1. Comparison with Related Work
+No
+Authors (Year)
+Title
+Key Findings
+Gap / Relation to This Research
+1
+Nugroho & Angela (2024) [9]
+The Impact of Social Media Analytics on SME Strategic Decision Making
+Social media analytics significantly improves organizational innovation and adaptability and democratizes access to large-scale data for small enterprises.
+Confirms the importance of analytics for small enterprise decision making but does not deliver an actual tool; this research operationalizes that need as a working platform.
+2
+Elango & Sithambalam (2023) [4]
+Social Media Analytics: Analyzing User Engagement and Marketing Strategies Across Popular Platforms
+Identified the core metrics-engagement rate, reach, impressions, follower growth, and click-through rate-that drive performance assessment.
+Defines which metrics matter; this research adopts these metrics as the calculation basis for its dashboard and indicators.
+3
+Awaludin et al. (2025) [1]
+Digital Transformation of SMEs: Integration of Management Systems, Digital Marketing, and Sales Data Analytics
+Dashboard analytics helps small enterprises understand sales patterns; identified persistent integration gaps in their digital transformation.
+Shares the small enterprise context and the integration problem; this research provides the integrated analytics application that addresses it.
+4
+Saifulloh et al. (2026) [19]
+Implementation of Social Media Analytics and Marketing in Optimizing the Digital Economy of Students
+Analytics usage remains limited to surface-level metrics; strategies are intuitive and reactive rather than systematic.
+Identifies the exact behavioral gap this research targets through deeper, automated, and consistent analytics.
+5
+Soori et al. (2026) [20]
+AI-based Decision Support Systems in Industry 4.0, A Review
+AI-based decision support systems process large data, recognize patterns, and generate actionable insights using ML, DL, and NLP.
+Supports the rationale for embedding artificial intelligence; this research applies it concretely in the caption generation feature.
+       As Table 1 shows, the reviewed studies collectively establish that social media analytics is valuable for small enterprise decision making [9], that a well-defined set of engagement metrics should anchor any assessment [4], that integration gaps persist across small enterprise digital transformation efforts [1], that current analytics practice remains shallow and reactive [19], and that artificial intelligence can meaningfully enhance decision support [20]. Each study, however, stops at measurement, conceptualization, or general guidance. None delivers a deployable, integrated, and affordable platform that unifies key performance indicator visualization, automated insight summaries, posting time and audience analysis, strategy and campaign management, competitor benchmarking, dataset comparison, reporting, and artificial intelligence-assisted caption generation in a single interface for non-technical users. This research fills that gap by synthesizing the metric foundations, the integration requirement, and the intelligent-support opportunity identified across all five studies into one production-ready system tailored to small enterprises.
+       The remainder of this paper is organized as follows. Section 2 describes the research method, including the development stages, system architecture, technology decisions, data collection, and testing approach. Section 3 presents the implementation results and analysis, covering the dataset characteristics and the four evaluation methods, followed by a discussion of significance and limitations. Section 4 concludes the paper and outlines directions for future work.
+       
+2. RESEARCH METHOD
+    This research applied a sequential development approach that progressed through seven stages: literature study, data collection, system analysis, system design, system development, system deployment, and system testing. Each stage produced defined artifacts that became the input for the following stage, ensuring traceability from initial requirements to the final evaluated product. The overall flow of these stages is illustrated in Figure 2.
+2.1 		Development Stages
+    The research began with a literature study that reviewed prior work on social media analytics, small enterprise digital transformation, and artificial intelligence-based decision support, establishing both the metric foundations and the research gap. Data collection followed, in which fifty-six Instagram posts were gathered from the digital-product account @maariversea, capturing post identifier, content type, platform, posting time, reach, views, likes, comments, shares, saves, follower count, and caption text. During system analysis, the collected requirements were formalized into twenty-five functional requirements (coded KF-01 to KF-25) and twelve non-functional requirements (coded KNF-01 to KNF-12) spanning security, usability, performance, portability, reliability, and maintainability. The system design stage produced the system architecture, use case diagrams for both administrator and user roles, activity diagrams, an entity relationship diagram comprising seventeen tables, the navigation structure, and nineteen interface wireframes, following established practices for information system design [6] and user-centered interface design [14]. System development implemented the frontend, backend, and artificial intelligence integration; system deployment released the application to a production environment; and system testing validated the result through four complementary methods.
+2.2	System Architecture
+    The platform was built as a layered web application with clearly separated concerns, as shown in Figure 1. The presentation layer is a React single-page application served to the user's browser over HTTPS and hosted on Vercel. This frontend communicates with Supabase managed services, which provide three logically distinct flows. The authentication flow routes login, registration, session management, and token issuance through Supabase Auth. The data flow performs create, read, update, and delete operations against a PostgreSQL database governed by Row Level Security. The artificial intelligence flow sends caption generation requests from the frontend to a Supabase Edge Function running on the Deno runtime, which in turn calls the Google Gemini API and returns the response to the interface.
+[ Insert Figure 1 here ]
+
+
+
+
+
+
+
+
+Figure 1. Layered system architecture and the three main data flows (authentication, data, and artificial intelligence).
+This separation underpins the platform's security design. The Gemini API key is stored exclusively in the Edge Function environment and is never exposed in frontend code, so that all calls to the external model pass through a controlled server-side intermediary. Row Level Security guarantees that each user can access only the data belonging to projects within their scope, and role-based access control is enforced at two levels: a system level distinguishing administrators from regular users, and a project level distinguishing owner, administrator, editor, and viewer roles.
+[ Insert Figure 2 here ]
+
+
+
+
+
+Figure 2. Seven-stage sequential research methodology.
+2.3 Technology Decisions
+The technology stack was selected to balance development speed, scalability, security, and cost-priorities that align with serving resource-constrained small enterprises. React with TypeScript was chosen for a component-based, type-safe interface [2], [7], built and served efficiently through Vite [18] and styled with the utility-first Tailwind CSS framework, while Recharts handled data visualization. The use of TypeScript over plain JavaScript further improved maintainability and reduced runtime errors through static typing [22]. Rather than building and maintaining a custom backend, the research adopted Supabase as a managed platform that bundles authentication, a PostgreSQL database, serverless Edge Functions, and storage, which reduced operational overhead and accelerated delivery; this managed approach reflects common practice in modern web application development [17]. The Google Gemini language model provided generative caption support, accessed through an Edge Function that applies a multi-model fallback strategy with exponential backoff for resilience. Vercel hosted the frontend with continuous deployment from the Git repository, HTTPS, and a custom domain, and the interface was implemented responsively so that it remained accessible on both desktop and mobile browsers, consistent with the growing emphasis on mobile-based information systems [11]. Table 2 summarizes the stack.
+Table 2. Technology Stack Summary
+Component
+Technology
+Purpose
+Frontend framework
+React 18+ with TypeScript
+Interface rendering and component logic
+Build tool
+Vite
+Fast development server and bundling
+Styling
+Tailwind CSS
+Utility-first styling framework
+Charting
+Recharts
+Line, bar, and pie chart visualization
+Backend platform
+Supabase
+Authentication, database, Edge Functions, storage
+Database
+PostgreSQL with Row Level Security
+Relational storage with scoped access
+Serverless functions
+Supabase Edge Functions (Deno)
+Secure middleware for the AI service
+Artificial intelligence service
+Google Gemini API
+Caption generation with multi-model fallback
+Frontend hosting
+Vercel
+Continuous deployment, HTTPS, custom domain
+
+2.4 Data Model
+The data model consists of seventeen related tables designed according to relational database principles [12], of which five form the operational core. The profil table extends the authentication users with full name, system role, and dashboard preferences; the proyek table represents an analysis project owned by a user; and the anggota_proyek table links users to projects with a project-level role of owner, administrator, editor, or viewer. The dataset table records each imported data source, its origin (CSV upload, Google Sheet, or sample), its row count, and its active state, while the postingan table stores every individual post together with its raw metrics. Two values in the post table-total engagement and engagement rate-are implemented as database-generated columns so that they are computed automatically and consistently at the data layer rather than in client code. The remaining tables support reference data (platform and content type), strategy and analysis features (targets, campaigns, competitors and their metrics), and supporting functions (questions, reports, notes, saved filters, import logs, and export history). Centralizing the engagement calculation in generated columns directly supports the reliability requirement that all modules report identical results.
+2.5 Engagement Rate Calculation
+The principal performance indicator is the engagement rate, defined in Equation (1).
+Engagement Rate" = "  (Likes + Comments + Shares + Saves)/Reach " � 100%" 
+(1)
+
+Reach was deliberately chosen as the denominator because it represents the number of unique accounts actually reached rather than the total number of views, yielding a conservative and meaningful measure of audience responsiveness. To prevent division by zero, the engagement rate is defined as zero whenever reach equals zero. Because both the total engagement and the engagement rate are generated columns, every post is evaluated under exactly the same rule across the entire system.
+2.6 Data Collection
+The case study used a single Instagram account, @maariversea, a small enterprise selling digital products. Fifty-six posts were exported and imported into the platform as a CSV file containing the complete set of metric and descriptive fields. The dataset spanned three content types-image, carousel, and reels-providing sufficient variety to exercise the platform's comparative analytics while keeping the study focused on one verifiable account.
+2.7 Testing Methodology
+       The platform was evaluated through four complementary methods. Black box testing verified functional behavior across all feature areas under normal, invalid, empty, boundary, unauthorized, and error conditions [13]. Key performance indicator validation compared the system-computed engagement values against manual calculations for the full dataset to confirm computational correctness. Generative output evaluation assessed the Gemini-produced captions against four qualitative criteria-context suitability, language clarity, result relevance, and usability as a draft. Finally, a System Usability Scale survey measured perceived usability with twenty respondents drawn from students, content creators, social media managers, and small enterprise owners. The detailed results of all four methods are presented in Section 3.
+       
+3. RESULTS AND ANALYSIS (11 Pt)
+    This section presents the implemented platform, the characteristics of the case-study dataset, and the outcomes of the four evaluation methods, followed by a discussion of their significance and the study's limitations.
+3.1 Implementation Overview
+The platform was successfully built and deployed to a production environment at the domain analyticsosmed.vercel.app, with the frontend hosted on Vercel and the backend operating on Supabase Cloud. The deployment connected reliably to the database, rendered all dashboard components correctly, and executed the Gemini-backed caption generation through the generate-caption Edge Function. Of the nineteen implemented interface pages, four features best illustrate the platform's contribution.
+The Dashboard (Figure 3) serves as the analytical entry point. It presents key performance indicator summary cards-total posts, average engagement rate, follower count, median reach, save ratio, and share ratio-alongside a weekly engagement-rate trend chart, a platform distribution chart, and a content-type distribution chart. By consolidating headline indicators and trends into a single view, the Dashboard allows a non-technical owner to grasp account performance at a glance.
+[ Insert Figure 3 here ]
+
+
+
+
+
+
+
+
+Figure 3. Dashboard page showing KPI summary cards and performance charts.
+The Content Performance page extends this overview to the level of individual posts, displaying a per-post metrics table with filtering by date range, content type, and platform, sorting by engagement rate, reach, or interactions, and export functionality. This supports granular evaluation of which specific posts performed well and why.
+The AI Caption Generator (Figure 4) embodies the platform's generative capability. The user supplies a content description and selects a language style, caption length, hashtag option, emoji option, and caption purpose; the request is routed through the Edge Function to the Gemini model, which returns several caption alternatives. Because the API key resides only in the server-side function, the feature delivers generative assistance without exposing credentials in the browser.
+[ Insert Figure 4 here ]
+
+
+
+
+
+
+
+
+Figure 4. AI Caption Generator interface with the input form and generated caption alternatives.
+The Automated Insight Summary translates computed analytics into readable narrative. It generates rule-based, template-driven summaries derived from engagement-rate trends, platform and content-type distributions, best posting times, audience growth, reach, and interaction indicators. Notably, this feature does not call the Gemini API; it relies solely on calculated analytics data, which keeps its output deterministic and explainable.
+3.2 Dataset Characteristics
+The case-study dataset comprised fifty-six Instagram posts from the @maariversea account, distributed across three content types: image (25 posts, 44.64%), carousel (17 posts, 30.36%), and reels (14 posts, 25.00%). Table 3 summarizes the aggregate metrics, and Table 4 breaks performance down by content type.
+Table 3. Dataset Statistics Overview
+Metric
+Total
+Average / Post
+Median
+Min
+Max
+Reach
+53,979,485
+963,919
+468,665
+11,658
+7,221,873
+Views
+94,311,764
+1,684,139
+954,624
+28,891
+14,225,218
+Likes
+6,348,187
+113,360
+68,900
+487
+815,000
+Comments
+17,895
+320
+76
+0
+3,600
+Shares
+715,963
+12,785
+6,550
+64
+95,000
+Saves
+746,383
+13,328
+5,550
+96
+159,000
+Total interactions
+7,828,428
+139,793
+80,931
+647
+1,072,600
+Engagement rate
+-
+14.41%
+14.13%
+5.55%
+22.70%
+
+Table 4. Performance by Content Type
+Content Type
+Count
+Avg Reach
+Avg Views
+Avg Interactions
+Avg Engagement Rate
+Image
+25
+593,533
+1,019,312
+84,850
+14.21%
+Carousel
+17
+968,971
+1,746,645
+125,106
+14.86%
+Reels
+14
+1,619,190
+2,795,429
+255,741
+14.24%
+
+Table 4 reveals an analytically important pattern. Reels achieved the highest average reach, views, and interactions, yet carousels recorded the highest average engagement rate at 14.86 percent. This divergence demonstrates that absolute volume and relative responsiveness are distinct dimensions: a format can reach the most people while another converts a larger proportion of its audience into interactions. The finding validates the platform's design decision to compute engagement rate relative to reach rather than relying on raw counts, since a tool reporting only totals would have misleadingly ranked reels as uniformly superior.
+3.3 Black Box Testing
+Functional behavior was verified through black box testing covering 197 scenarios. For presentation, the thirty-three original test categories were consolidated into ten logical groups, shown in Table 5. Every scenario passed, yielding a 100 percent success rate. The scenarios exercised normal usage, invalid inputs, empty data, character limits, unauthorized access, missing-dataset conditions, page protection, responsive display, loading states, and error handling.
+Table 5. Black Box Testing Results (Grouped)
+No
+Functional Group
+Scenarios
+Passed
+Rate
+1
+Authentication & access control
+21
+21
+100%
+2
+Project & member management
+9
+9
+100%
+3
+Data management (import, dataset, export)
+29
+29
+100%
+4
+Analytics & dashboard
+42
+42
+100%
+5
+Strategy planning (targets & campaigns)
+18
+18
+100%
+6
+AI caption & competitor tools
+23
+23
+100%
+7
+Reports & dataset comparison
+14
+14
+100%
+8
+Help & support
+16
+16
+100%
+9
+Administration (platform & Q&A)
+17
+17
+100%
+10
+System quality (responsiveness, loading, error handling, notes & filters)
+8
+8
+100%
+
+Total
+197
+197
+100%
+
+3.4 Key Performance Indicator Validation
+To confirm computational correctness, the engagement values produced by the system were compared against manual calculations for all fifty-six posts. Every post matched, with an average difference of 0.00 percentage points against a tolerance threshold of 0.01 percent. Table 6 summarizes the validation outcome.
+Table 6. Key Performance Indicator Validation Summary
+Aspect
+Result
+Posts validated
+56
+Posts matched
+56
+Posts mismatched
+0
+Match percentage
+100%
+Average engagement-rate difference
+0.00 percentage points
+Tolerance threshold
+= 0.01%
+
+As a representative example, post IG052 (a reels post) recorded 815,000 likes, 3,600 comments, 95,000 shares, and 159,000 saves against a reach of 4,725,452. Applying Equation (1):
+?ER?_"IG052"  " = "  "815,000 + 3,600 + 95,000 + 159,000" /"4,725,452"  " � 100% = "  "1,072,600" /"4,725,452"  " � 100% = 22.70%" 
+(2)
+
+The system-computed value of 22.70 percent matched the manual result exactly, confirming that the generated-column implementation reproduced the intended formula. The same agreement held for the carousel post IG006 (21.54 percent) and the image post IG032 (20.66 percent), reinforcing the reliability of the calculation across content types.
+3.5 Generative Output Evaluation
+The Gemini-backed caption feature was evaluated across two representative scenarios against four qualitative criteria. The results are summarized in Table 7.
+Table 7. Generative Output Evaluation
+Scenario
+Input & Settings
+Context
+Language
+Relevance
+Usability as Draft
+1. Product promotion
+Promote the digital product "Template Habit Tracker" for students; friendly style, medium length, moderate hashtags, no emoji
+Suitable
+Clear
+Relevant
+Usable
+2. Education / motivation
+Educational and motivational content for @maariversea; friendly style, medium length, moderate hashtags, no emoji
+Suitable
+Clear
+Relevant
+Usable
+
+In the first scenario the generated captions incorporated product benefits, the target audience, and a call to action, while in the second they addressed productivity, technology, self-development, and work-life balance in line with the account's communication style. In both cases the output was judged contextually suitable, linguistically clear, relevant, and usable as a draft. It must be emphasized, however, that the generated captions are drafts requiring human review before publication, and that their quality depends on the quality of the input, the product context, the account's communication style, and the promotional objective.
+3.6 Usability Evaluation
+Perceived usability was measured with the System Usability Scale across twenty respondents spanning several user types. Their profile appears in Table 8, and the resulting scores in Table 9.
+Table 8. System Usability Scale Respondent Profile
+Respondent Category
+Count
+Students
+6
+Content creators
+5
+Social media managers
+5
+Small enterprise owners
+3
+Others
+1
+Total
+20
+With social media management experience
+18
+Without social media management experience
+2
+
+Table 9. System Usability Scale Score Results
+Metric
+Value
+Average System Usability Scale score
+79.75
+Minimum score
+57.50
+Maximum score
+97.50
+Grade scale
+A-
+Adjective rating
+Good
+Acceptability range
+Acceptable
+Overall interpretation
+Good / Acceptable
+
+The scale was administered as ten statements on a five-point Likert scale, with odd-numbered items scored as the response minus one, even-numbered items scored as five minus the response, and the summed conversions multiplied by 2.5 to yield a final score between 0 and 100. The average score of 79.75 places the platform in the "good" adjective band and the "acceptable" range, exceeding the commonly cited acceptability threshold of 68 [3], [21]. The minimum individual score of 57.50 nevertheless indicates that some users found certain flows less intuitive, pointing to opportunities in feature comprehension, in-app guidance, and the simplification of particular workflows.
+3.7 Discussion
+Taken together, the four evaluations indicate that the platform achieved its central aim of delivering reliable, accessible, and useful analytics for small enterprises. The complete pass of all 197 functional scenarios demonstrates behavioral robustness across the full feature set, including edge and error conditions, while the exact agreement between system and manual calculations for every post establishes the trustworthiness of the engagement metrics on which all downstream insights depend. This computational reliability is a direct consequence of centralizing the engagement formula in database-generated columns, confirming that the architectural decision described in Section 2 produced its intended benefit.
+The findings also carry analytical value beyond the system itself. The contrast between reels and carousels-reels maximizing reach and interactions while carousels maximized engagement rate-illustrates precisely the kind of nuanced, data-driven insight that prior studies found small enterprises rarely derive from surface-level metrics [19]. By surfacing both absolute and relative dimensions of performance, the platform operationalizes the metric foundations identified in earlier work [4] and turns them into actionable guidance, consistent with evidence that engagement improves when content production is aligned with audience preferences [5], thereby addressing the shallow and reactive analytics behavior reported in the literature [19] and realizing the decision-support value attributed to social media analytics for small enterprises [9]. The generative caption feature extends this contribution by embedding artificial intelligence assistance directly in the analytics workflow, consistent with the role envisioned for artificial intelligence-based decision support [20], while the server-side handling of the model credential demonstrates that such assistance can be offered securely.
+The usability outcome situates these technical results in practice. A score of 79.75 from a mixed group of students, creators, managers, and owners suggests that the consolidation of ten feature groups into a single interface succeeded in remaining approachable to non-technical users, fulfilling a requirement that distinguishes this platform from the complex commercial suites it was designed to replace. Relative to the five prior studies summarized in Table 1, the present work advances the field by moving from measurement and conceptualization to a deployed, integrated, and validated artifact.
+       These contributions should be read alongside the study's limitations. The platform currently depends on manual CSV import rather than direct integration with the Instagram API, which constrains automation and timeliness. Although multi-platform capabilities were implemented, they were validated only with single-platform Instagram data, so cross-platform behavior remains to be confirmed. The automated insight summaries rely on a rule-based approach rather than generative narratives, and the generative captions themselves require human review before publication. Finally, while a twenty-respondent usability study provides an adequate initial assessment, a larger and more targeted sample would strengthen the evidence. These limitations frame the directions for future work discussed in the following section.
+
+4. CONCLUSION
+    This research designed, built, and deployed a web-based social media analytics platform with artificial intelligence support to help small enterprise owners evaluate content performance and develop data-driven content strategies. The outcomes can be mapped directly to the three specific objectives stated in the Introduction.
+First, the objective of identifying the requirements of a small enterprise-oriented analytics platform was met through the formalization of twenty-five functional and twelve non-functional requirements, which together defined a feature set deliberately scoped to the needs and constraints of non-technical users rather than large organizations. Second, the objective of designing an accessible architecture, data model, and interface was achieved through a layered architecture with separated authentication, data, and artificial intelligence flows, a seventeen-table data model that centralizes engagement calculation in generated columns, and nineteen interface pages that consolidate ten feature groups into a single application; the resulting System Usability Scale score of 79.75 confirmed that this design remained approachable to its intended users. Third, the objective of implementing and deploying the design was fulfilled by building the system with React, Supabase managed services, and the Google Gemini model and releasing it to a live production environment, where black box testing passed all 197 scenarios and engagement-rate calculations matched manual computation for all fifty-six posts.
+The key contributions of this work are a requirements model for small enterprise social media analytics, an integrated and secure architecture that unifies analytics visualization, automated insight summaries, strategy and campaign management, competitor benchmarking, reporting, and artificial intelligence-assisted caption generation, and an empirically validated production system that demonstrates the feasibility of delivering these capabilities affordably and accessibly.
+The study is nonetheless bounded by several limitations: data entry depends on manual CSV import rather than direct platform integration, multi-platform features were validated only with single-platform Instagram data, automated insight summaries are rule-based rather than generative, and the usability assessment involved twenty respondents.
+       Building on these results, four concrete directions are proposed for future work. First, integrate the official Instagram and other platform APIs to automate data ingestion and enable near real-time analytics. Second, validate and extend the platform with genuinely multi-platform datasets to confirm cross-platform comparability. Third, expand the automated insight summaries from rule-based templates to artificial intelligence-generated narratives with appropriate human-in-the-loop safeguards. Fourth, conduct a larger and more representative usability study, prioritizing small enterprise owners, to refine the workflows associated with the lowest-scoring interactions.
+
+ACKNOWLEDGEMENTS
+       The authors thank the Departement of Information Systems, Universitas Gunadarma, for its support, and the twenty respondents who participated in the usability evaluation of the platform.
+
+REFERENCES
+[1] D. T. Awaludin, D. Prawita Sari, A. Hariyadi, and S. Kartika Dhamayanti, "Transformasi Digital UMKM: Integrasi Sistem Manajemen, Pemasaran Digital, dan Analitik Data Penjualan," JIPITI: Jurnal Pengabdian Kepada Masyarakat, vol. 2, no. 4, pp. 276-283, 2025.
+[2] D. Budiyanto, "Rancang Bangun Frontend Website untuk Pemungutan Suara dengan Menggunakan React.JS," vol. 12, no. 2, 2024.
+[3] F. Darmawansyah, S. Adilah, S. Atikah, L. Mazia, and S. Fauziah, "Evaluasi Usability Aplikasi Pedulilindungi Menggunakan Metode Usability Testing dan System Usability Scale," IJIS - Indonesian Journal on Information System, vol. 8, no. 1, p. 1, 2023.
+[4] D. Elango and Y. Sithambalam, "Social Media Analytics: Analyzing User Engagement and Marketing Strategies Across Popular Platforms," MAHSA International Journal of Business and Social Sciences, vol. 3, no. 2, pp. 1-23, 2023.
+[5] S. H. Fikriyah, P. B. Sulistyo, and I. Tomohardjo, "Strategi Peningkatan Engagement Melalui Produksi Konten dan Preferensi Audiens," Jurnal Dinamika Ilmu Komunikasi, vol. 11, no. 2, pp. 215-229, 2025.
+[6] F. Ibrahim, P. Broos, and C. M. Susyana, "Perancangan Sistem Informasi E-Arsip Dokumen di Bappelitbang Kota Bandung Berbasis PHPRAD," vol. 7, no. 1, 2023.
+[7] K. Juan and S. Budi, "Pengembangan Menu Digital Menggunakan ReactJs Implementasi Hasil Belajar Studi Independen," Jurnal Strategi, vol. 5, pp. 130-142, 2023.
+[8] M. S. Y. Lubis, "Implementasi Artificial Intelligence Pada System Manufaktur," in Semnastek UISU, 2021, pp. 1-7.
+[9] D. Nugroho and P. Angela, "The Impact of Social Media Analytics on SME Strategic Decision Making," IAIC Transactions on Sustainable Digital Innovation (ITSDI), vol. 5, no. 2, pp. 169-178, 2024.
+[10] E. Nurfarida, B. A. Nugroho, and F. S. Efendi, "Visualisasi Social Media Analytics Pada Akun Media Sosial Pemerintah Kota Kediri," vol. 6, no. 2, pp. 183-192, 2022.
+[11] N. Pradita, W. Setyawan, R. P. Setiawan, H. L. Kheishi, and U. P. Bangsa, "Perancangan Sistem Informasi Pos Berbasis Mobile," vol. 2, no. 1, 2023.
+[12] L. Prananingrum et al., Sistem Basis Data. Gitalentera, 2024.
+[13] S. D. Pratama, Lasimin, and M. N. Dadaprawira, "Pengujian Black Box Testing Pada Aplikasi Edu Digital Berbasis Website," vol. 6, pp. 560-569, 2023.
+[14] R. Puspita and R. Astriani, "Perancangan Design UI/UX Pada Website Toko Mister Shop ID Menggunakan Metode Design Thinking," vol. 2, no. 3, pp. 35-46, 2023.
+[15] M. R. A. Qadir, "Media Sosial (Definisi, Sejarah dan Jenis-Jenisnya)," Al-Furqan: Jurnal Agama, Sosial, Dan Budaya, vol. 4, no. 1, pp. 1-23, 2024.
+[16] M. Raffi and I. A. Dianita, "Analisis Strategi Komunikasi Pemasaran @Ninetysixvintages Pada Media Sosial Instagram," Jurnal Pustaka Komunikasi, vol. 7, no. 1, pp. 50-63, 2024.
+[17] F. A. Raharjo, I. Purnamasari, and S. Defiyanti, "Aplikasi Pemesanan Berbasis Website Pada Dobro Coffee dengan Menerapkan Payment," vol. 14, no. 1, 2025.
+[18] T. A. Rizzi, R. A. Abdillah, Y. E. Yancandra, and M. Wijaya, "Implementasi React Vite dalam Pengembangan Antarmuka Sistem," Jurnal Processor, vol. 20, no. 1, pp. 121-130, 2025.
+[19] M. Saifulloh, C. E. Putri, and R. E. Hamzah, "Implementasi Social Media Analytics dan Marketing dalam Optimalisasi Ekonomi Digital Mahasiswa," Jurnal Communio, vol. 15, no. 1, pp. 47-57, 2026.
+[20] M. Soori, F. K. G. Jough, R. Dastres, and B. Arezoo, "AI-based Decision Support Systems in Industry 4.0, A Review," Journal of Economy and Technology, vol. 4, pp. 206-225, 2026.
+[21] A. P. Sukma, R. Yusuf, and R. H. Dai, "Analisis Pengukuran Usability Sistem Informasi Baznas Menggunakan Metode System Usability Scale," DIFFUSION Journal, vol. 3, no. 2, pp. 224-231, 2023.
+[22] T. Wijaya, "Teknik Coding Hybrid antara TypeScript dan JavaScript dalam Framework Angular," vol. 8, no. 1, pp. 21-28, 2025.
+[23] C. Yolanda, "Peran UMKM dalam Pengembangan Ekonomi Indonesia," Jurnal Manajemen Dan Bisnis, vol. 2, no. 3, pp. 170-186, 2024.
+
+
+2
+     			IT Jou Res and Dev,, Vol.3, No.1, January 2018 : 1 - 10
+
+3
+IT Jou Res and Dev,, Vol.3, No.1, January 2018 : 1 - 10	
+    
+
+Title of manuscript is short and clear, implies research results (Maarif Alawi)
+
+Title of manuscript is short and clear, implies research results (First Author)
+
+IT Journal Research and Development (ITJRD)
+Vol.3, No.1, Maret 2018, E-ISSN : 2528-4053 | P-ISSN : 2528-4061
+DOI : 10.25299/itjrd.2022.xxxx	    	1
+	
+
+Journal homepage: http://journal.uir.ac.id/index/php/ITJRD
+

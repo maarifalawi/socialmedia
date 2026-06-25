@@ -30,11 +30,7 @@ const Platform = () => {
     platform_aktif: true
   });
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     if (profile && profile.peran !== "admin") {

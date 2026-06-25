@@ -35,11 +35,7 @@ const TargetKPI = () => {
   const [targetER, setTargetER] = useState("");
   const [targetFollowers, setTargetFollowers] = useState("");
 
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     fetchTargets();

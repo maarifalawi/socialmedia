@@ -15,10 +15,7 @@ const AdminTest = () => {
   const { selectedProject } = useApp();
   const [loading, setLoading] = useState<string | null>(null);
 
-  if (!user) {
-    navigate("/auth");
-    return null;
-  }
+  
 
   if (profile?.peran !== 'admin') {
     navigate("/");

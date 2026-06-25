@@ -41,9 +41,7 @@ const RingkasanInsight = () => {
     audience: "",
   });
 
-  useEffect(() => {
-    if (!authLoading && !user) navigate("/auth");
-  }, [user, authLoading, navigate]);
+  
 
   useEffect(() => {
     if (selectedProject && activeDataset) {

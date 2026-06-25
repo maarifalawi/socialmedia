@@ -96,11 +96,7 @@ const KompetitorAnalysis = () => {
     handle_kompetitor: "",
   });
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/auth");
-    }
-  }, [user, navigate]);
+  
 
   useEffect(() => {
     fetchPlatforms();
