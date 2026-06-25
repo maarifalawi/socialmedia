@@ -109,7 +109,7 @@ Output JSON saja: {"captions": ["caption1", "caption2", "caption3"]}`;
       console.log("Calling Gemini API...");
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${geminiApiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
