@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useApp } from "@/contexts/AppContext";
 import AppLayout from "@/components/layout/AppLayout";
@@ -10,12 +9,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
-
 import { Sparkles, Copy, Check, Loader2, AlertCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-const CaptionGenerator = () => {
-  const navigate = useNavigate();
+export default function CaptionGenerator() {
   const { user, loading: authLoading } = useAuth();
   const { selectedProject, loading: appLoading } = useApp();
   const { toast } = useToast();
@@ -47,7 +44,7 @@ const CaptionGenerator = () => {
           <AlertCircle className="h-4 w-4" />
           <AlertTitle>Project Belum Dipilih</AlertTitle>
           <AlertDescription>
-            Silakan pilih project terlebih dahulu dari dropdown di atas untuk menggunakan fitur AI Caption Generator.
+            Silakan pilih project terlebih dahulu dari dropdown di atas.
           </AlertDescription>
         </Alert>
       </AppLayout>
@@ -56,11 +53,7 @@ const CaptionGenerator = () => {
 
   const handleGenerate = async () => {
     if (!deskripsi.trim()) {
-      toast({
-        title: "Deskripsi diperlukan",
-        description: "Silakan isi deskripsi konten terlebih dahulu",
-        variant: "destructive",
-      });
+      toast({ title: "Deskripsi diperlukan", description: "Silakan isi deskripsi", variant: "destructive" });
       return;
     }
 
@@ -68,293 +61,209 @@ const CaptionGenerator = () => {
     setGeneratedCaptions([]);
 
     try {
-      const payload = {
-        deskripsi: deskripsi.trim(),
-        gaya_bahasa: gayaBahasa,
-        custom_style: gayaBahasa === "custom" ? customStyle.trim() : undefined,
-        panjang_caption: panjangCaption,
-        opsi_hashtag: opsiHashtag,
-        opsi_emoji: opsiEmoji,
-        tujuan_caption: tujuanCaption,
+      const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      console.log("API Key:", geminiApiKey ? "ADA" : "TIDAK ADA");
+
+      if (!geminiApiKey) {
+        throw new Error("GEMINI_API_KEY tidak dikonfigurasi");
+      }
+
+      const styleMap: Record<string, string> = {
+        friendly: "Bahasa ramah, hangat",
+        casual: "Bahasa santai",
+        formal: "Bahasa formal",
+        professional: "Bahasa profesional",
+        confident: "Bahasa percaya diri",
+        simplified: "Bahasa sederhana",
+        direct: "Bahasa langsung",
       };
 
-      // Call Vercel API endpoint
-      const response = await fetch("/api/generate-caption", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const lengthMap: Record<string, string> = {
+        pendek: "1-2 kalimat",
+        sedang: "3-5 kalimat",
+        panjang: "6-10 kalimat",
+      };
+
+      const hashtagMap: Record<string, string> = {
+        tanpa: "Tanpa hashtag",
+        seperlunya: "3-5 hashtag",
+        banyak: "10-15 hashtag",
+      };
+
+      const emojiMap: Record<string, string> = {
+        tanpa: "Tanpa emoji",
+        sedikit: "2-4 emoji",
+        banyak: "5-10 emoji",
+      };
+
+      const prompt = `Buat 3 caption Instagram berbeda dalam Bahasa Indonesia.
+
+DESKRIPSI: ${deskripsi}
+GAYA: ${gayaBahasa === "custom" ? customStyle : styleMap[gayaBahasa]}
+PANJANG: ${lengthMap[panjangCaption]}
+HASHTAG: ${hashtagMap[opsiHashtag]}
+EMOJI: ${emojiMap[opsiEmoji]}
+
+Output JSON saja: {"captions": ["caption1", "caption2", "caption3"]}`;
+
+      console.log("Calling Gemini API...");
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${geminiApiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { temperature: 1, maxOutputTokens: 2048 },
+          }),
+        }
+      );
+
+      console.log("Response status:", response.status);
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || `Error ${response.status}`);
+        const errorText = await response.text();
+        console.error("Gemini error:", errorText);
+        throw new Error("Gagal menghubungi AI (Status: " + response.status + ")");
       }
 
       const data = await response.json();
+      console.log("Response data:", data);
 
-      if (data?.captions && Array.isArray(data.captions)) {
-        setGeneratedCaptions(data.captions);
-        toast({
-          title: "Caption berhasil dibuat!",
-          description: `${data.captions.length} caption siap digunakan`,
-        });
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!text) throw new Error("Format jawaban AI tidak sesuai");
+
+      let jsonText = text.replace(/```json?|```/g, "").trim();
+      const parsed = JSON.parse(jsonText);
+
+      if (parsed.captions && Array.isArray(parsed.captions)) {
+        setGeneratedCaptions(parsed.captions);
+        toast({ title: "Berhasil!", description: `${parsed.captions.length} caption siap` });
       } else {
-        throw new Error("Format response tidak valid");
+        throw new Error("Format tidak valid");
       }
     } catch (error) {
-      console.error("Error generating caption:", error);
-      toast({
-        title: "Gagal generate caption",
-        description: error instanceof Error ? error.message : "Terjadi kesalahan, silakan coba lagi",
-        variant: "destructive",
-      });
+      console.error("Error:", error);
+      toast({ title: "Gagal", description: error instanceof Error ? error.message : "Error", variant: "destructive" });
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleCopy = async (caption: string, index: number) => {
-    try {
-      await navigator.clipboard.writeText(caption);
-      setCopiedIndex(index);
-      toast({
-        title: "Caption disalin",
-        description: "Caption berhasil disalin ke clipboard",
-      });
-      setTimeout(() => setCopiedIndex(null), 2000);
-    } catch (error) {
-      toast({
-        title: "Gagal menyalin",
-        description: "Tidak dapat menyalin caption",
-        variant: "destructive",
-      });
-    }
+    await navigator.clipboard.writeText(caption);
+    setCopiedIndex(index);
+    toast({ title: "Disalin!" });
+    setTimeout(() => setCopiedIndex(null), 2000);
   };
 
   return (
     <AppLayout>
       <div className="space-y-6">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Generator Caption AI</h1>
-          <p className="text-muted-foreground mt-2">
-            Buat caption Instagram yang menarik dengan bantuan AI
-          </p>
-        </div>
+        <h1 className="text-2xl font-bold">Generator Caption AI</h1>
 
         <Card>
           <CardHeader>
             <CardTitle>Pengaturan Caption</CardTitle>
-            <CardDescription>
-              Isi form di bawah untuk menghasilkan caption yang sesuai dengan kebutuhan Anda
-            </CardDescription>
+            <CardDescription>Isi form untuk menghasilkan caption</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            {/* Deskripsi Konten */}
+          <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="deskripsi">Deskripsi Konten *</Label>
-              <Textarea
-                id="deskripsi"
-                placeholder="Contoh: video behind the scenes produksi, promo diskon 20% untuk follower baru, tips skincare routine untuk kulit berminyak, dll."
-                value={deskripsi}
-                onChange={(e) => setDeskripsi(e.target.value)}
-                className="min-h-[100px]"
-                maxLength={1000}
-              />
-              <p className="text-xs text-muted-foreground">
-                {deskripsi.length}/1000 karakter
-              </p>
+              <Label>Deskripsi Konten *</Label>
+              <Textarea value={deskripsi} onChange={(e) => setDeskripsi(e.target.value)} placeholder="Contoh: promo diskon..." className="min-h-[100px]" />
             </div>
 
-            {/* Gaya Bahasa */}
             <div className="space-y-2">
-              <Label htmlFor="gaya">Gaya Bahasa</Label>
+              <Label>Gaya Bahasa</Label>
               <Select value={gayaBahasa} onValueChange={setGayaBahasa}>
-                <SelectTrigger id="gaya">
-                  <SelectValue />
-                </SelectTrigger>
+                <SelectTrigger><SelectValue /></SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="formal">Formal</SelectItem>
                   <SelectItem value="friendly">Ramah</SelectItem>
                   <SelectItem value="casual">Santai</SelectItem>
+                  <SelectItem value="formal">Formal</SelectItem>
                   <SelectItem value="professional">Profesional</SelectItem>
-                  <SelectItem value="confident">Percaya Diri</SelectItem>
-                  <SelectItem value="academic">Akademis</SelectItem>
                   <SelectItem value="simplified">Sederhana</SelectItem>
-                  <SelectItem value="vivid">Deskriptif</SelectItem>
-                  <SelectItem value="empathetic">Empatik</SelectItem>
-                  <SelectItem value="persuasive">Persuasif</SelectItem>
                   <SelectItem value="direct">Langsung</SelectItem>
                   <SelectItem value="custom">Kustom</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
-            {/* Custom Style */}
             {gayaBahasa === "custom" && (
-              <div className="space-y-2">
-                <Label htmlFor="customStyle">Keterangan Gaya Kustom</Label>
-                <Textarea
-                  id="customStyle"
-                  placeholder="Contoh: campur Indo-Inggris ala Gen Z, santai tapi tetap sopan"
-                  value={customStyle}
-                  onChange={(e) => setCustomStyle(e.target.value)}
-                  className="min-h-[80px]"
-                />
-              </div>
+              <Textarea value={customStyle} onChange={(e) => setCustomStyle(e.target.value)} placeholder="Jelaskan gaya..." />
             )}
 
-            {/* Panjang Caption */}
             <div className="space-y-2">
-              <Label>Panjang Caption</Label>
+              <Label>Panjang</Label>
               <RadioGroup value={panjangCaption} onValueChange={setPanjangCaption}>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-2">
                   <RadioGroupItem value="pendek" id="pendek" />
-                  <Label htmlFor="pendek" className="font-normal cursor-pointer">
-                    Pendek (1-2 kalimat)
-                  </Label>
+                  <Label htmlFor="pendek" className="font-normal">Pendek</Label>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-2">
                   <RadioGroupItem value="sedang" id="sedang" />
-                  <Label htmlFor="sedang" className="font-normal cursor-pointer">
-                    Sedang (3-5 kalimat)
-                  </Label>
+                  <Label htmlFor="sedang" className="font-normal">Sedang</Label>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-2">
                   <RadioGroupItem value="panjang" id="panjang" />
-                  <Label htmlFor="panjang" className="font-normal cursor-pointer">
-                    Panjang (story-like, 6-10 kalimat)
-                  </Label>
+                  <Label htmlFor="panjang" className="font-normal">Panjang</Label>
                 </div>
               </RadioGroup>
             </div>
 
-            {/* Hashtag */}
             <div className="space-y-2">
-              <Label>Penggunaan Hashtag</Label>
+              <Label>Hashtag</Label>
               <RadioGroup value={opsiHashtag} onValueChange={setOpsiHashtag}>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="tanpa" id="tanpa-hashtag" />
-                  <Label htmlFor="tanpa-hashtag" className="font-normal cursor-pointer">
-                    Tanpa hashtag
-                  </Label>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="tanpa" id="tanpa" />
+                  <Label htmlFor="tanpa" className="font-normal">Tanpa</Label>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-2">
                   <RadioGroupItem value="seperlunya" id="seperlunya" />
-                  <Label htmlFor="seperlunya" className="font-normal cursor-pointer">
-                    Hashtag seperlunya (3-5 relevan)
-                  </Label>
+                  <Label htmlFor="seperlunya" className="font-normal">Seperlunya</Label>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="banyak" id="banyak-hashtag" />
-                  <Label htmlFor="banyak-hashtag" className="font-normal cursor-pointer">
-                    Hashtag lebih banyak (10-15 relevan)
-                  </Label>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="banyak" id="banyak" />
+                  <Label htmlFor="banyak" className="font-normal">Banyak</Label>
                 </div>
               </RadioGroup>
             </div>
 
-            {/* Emoji */}
             <div className="space-y-2">
-              <Label>Penggunaan Emoji</Label>
+              <Label>Emoji</Label>
               <RadioGroup value={opsiEmoji} onValueChange={setOpsiEmoji}>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="tanpa" id="tanpa-emoji" />
-                  <Label htmlFor="tanpa-emoji" className="font-normal cursor-pointer">
-                    Tanpa emoji
-                  </Label>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="tanpa" id="e-tanpa" />
+                  <Label htmlFor="e-tanpa" className="font-normal">Tanpa</Label>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="sedikit" id="sedikit-emoji" />
-                  <Label htmlFor="sedikit-emoji" className="font-normal cursor-pointer">
-                    Sedikit emoji (2-4 emoji)
-                  </Label>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="sedikit" id="e-sedikit" />
+                  <Label htmlFor="e-sedikit" className="font-normal">Sedikit</Label>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="banyak" id="banyak-emoji" />
-                  <Label htmlFor="banyak-emoji" className="font-normal cursor-pointer">
-                    Banyak emoji (5-10 emoji)
-                  </Label>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="banyak" id="e-banyak" />
+                  <Label htmlFor="e-banyak" className="font-normal">Banyak</Label>
                 </div>
               </RadioGroup>
             </div>
 
-            {/* Tujuan Caption */}
-            <div className="space-y-2">
-              <Label htmlFor="tujuan">Tujuan Caption (Opsional)</Label>
-              <Select value={tujuanCaption} onValueChange={setTujuanCaption}>
-                <SelectTrigger id="tujuan">
-                  <SelectValue placeholder="Pilih tujuan caption" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="none">Tidak ada preferensi</SelectItem>
-                  <SelectItem value="awareness">Awareness / Branding</SelectItem>
-                  <SelectItem value="interaksi">Mengajak Interaksi</SelectItem>
-                  <SelectItem value="traffic">Traffic ke Link</SelectItem>
-                  <SelectItem value="konversi">Konversi / Jualan</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Generate Button */}
-            <Button 
-              onClick={handleGenerate} 
-              disabled={isLoading || !deskripsi.trim()}
-              className="w-full"
-              size="lg"
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Membuat...
-                </>
-              ) : (
-                <>
-                  <Sparkles className="mr-2 h-4 w-4" />
-                  Buat Caption dengan AI
-                </>
-              )}
+            <Button onClick={handleGenerate} disabled={isLoading || !deskripsi.trim()} className="w-full" size="lg">
+              {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Membuat...</> : <><Sparkles className="mr-2 h-4 w-4" />Buat Caption</>}
             </Button>
           </CardContent>
         </Card>
 
-        {/* Results */}
         {generatedCaptions.length > 0 && (
           <div className="space-y-4">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">Hasil Caption</h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                Silakan cek kembali sebelum diposting.
-              </p>
-            </div>
-            
-            {generatedCaptions.map((caption, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <CardTitle className="text-base">Opsi {index + 1}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="p-4 bg-muted/50 rounded-lg">
-                    <p className="whitespace-pre-wrap text-sm">{caption}</p>
-                  </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleCopy(caption, index)}
-                    className="flex-1"
-                  >
-                    {copiedIndex === index ? (
-                      <>
-                        <Check className="mr-2 h-4 w-4" />
-                        Tersalin
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="mr-2 h-4 w-4" />
-                        Salin
-                      </>
-                    )}
+            <h2 className="text-xl font-bold">Hasil</h2>
+            {generatedCaptions.map((caption, i) => (
+              <Card key={i}>
+                <CardHeader><CardTitle className="text-base">Opsi {i + 1}</CardTitle></CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="p-3 bg-muted rounded-lg text-sm">{caption}</div>
+                  <Button variant="outline" onClick={() => handleCopy(caption, i)} className="w-full">
+                    {copiedIndex === i ? <><Check className="mr-2 h-4 w-4" />Tersalin</> : <><Copy className="mr-2 h-4 w-4" />Salin</>}
                   </Button>
                 </CardContent>
               </Card>
@@ -364,6 +273,4 @@ const CaptionGenerator = () => {
       </div>
     </AppLayout>
   );
-};
-
-export default CaptionGenerator;
+}
